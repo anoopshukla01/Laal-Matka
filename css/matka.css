@@ -1,0 +1,998 @@
+/* ============================================================
+   LAAL MATKA — MAIN MATKA SECTION & INTERACTIVE REVEAL (matka.css)
+   Progressive Tap-to-Draw + 3D Emergence + Expandable Menu Folio
+   Zero external libraries. GPU-accelerated 60fps animations.
+   ============================================================ */
+
+/* ── Matka section wrapper ────────────────────────────────── */
+.matka-section {
+  position: relative;
+  background: var(--bg-matka, #1C120C);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-block: var(--space-24, 6rem) var(--space-20, 5rem);
+}
+
+/* Atmospheric ambient warmth */
+.matka-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 55%, hsla(20, 80%, 45%, 0.22) 0%, transparent 65%),
+    radial-gradient(circle at 50% 25%, hsla(42, 96%, 54%, 0.12) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 80%, hsla(16, 75%, 35%, 0.15) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+/* ── Section intro label ──────────────────────────────────── */
+.matka-intro {
+  text-align: center;
+  margin-bottom: var(--space-8, 2rem);
+  position: relative;
+  z-index: 2;
+}
+
+.matka-intro .section-label {
+  display: inline-block;
+  margin-bottom: var(--space-3, 0.75rem);
+  color: var(--marigold, #F39C12);
+  font-size: var(--text-sm, 0.85rem);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 700;
+  text-shadow: 0 0 12px hsla(42, 96%, 54%, 0.4);
+}
+
+.matka-intro p {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(1.3rem, 2.8vw, 2rem);
+  font-style: italic;
+  color: var(--ivory, #FAF3E0);
+  line-height: 1.45;
+  margin-inline: auto;
+  max-width: 640px;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.6);
+}
+
+/* ── Status Pill Indicator ────────────────────────────────── */
+.main-matka-status-pill {
+  position: relative;
+  z-index: 5;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.55rem 1.4rem;
+  border-radius: 9999px;
+  background: rgba(30, 16, 12, 0.82);
+  border: 1px solid hsla(42, 96%, 54%, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: var(--ivory, #FAF3E0);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.45), 0 0 20px hsla(42, 96%, 54%, 0.18);
+  transition: all 0.35s var(--ease-out, ease-out);
+  cursor: pointer;
+  user-select: none;
+}
+
+.main-matka-status-pill:hover {
+  border-color: var(--marigold, #F39C12);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55), 0 0 26px hsla(42, 96%, 54%, 0.35);
+}
+
+.status-pulse-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--marigold, #F39C12);
+  box-shadow: 0 0 8px var(--marigold, #F39C12);
+  animation: radarPulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  flex-shrink: 0;
+}
+
+@keyframes radarPulse {
+  0%, 100% { opacity: 1; transform: scale(1); box-shadow: 0 0 6px var(--marigold, #F39C12); }
+  50%      { opacity: 0.5; transform: scale(1.4); box-shadow: 0 0 16px var(--marigold, #F39C12); }
+}
+
+/* ── Matka Stage Container ────────────────────────────────── */
+.matka-zoom-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 980px;
+  margin-inline: auto;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ── Handcrafted Matka SVG Trigger ────────────────────────── */
+.matka-illustration {
+  width: 100%;
+  max-width: 440px;
+  position: relative;
+  filter: drop-shadow(0 24px 50px rgba(0, 0, 0, 0.75));
+  cursor: pointer;
+  touch-action: manipulation;
+  outline: none;
+  transform-origin: center 85%;
+  transition:
+    transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1),
+    filter 0.3s ease;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Idle Breathing Motion */
+.matka-illustration {
+  animation: matkaIdleBreathe 3.4s ease-in-out infinite;
+}
+
+@keyframes matkaIdleBreathe {
+  0%, 100% { transform: scale(1) translateY(0); }
+  50%      { transform: scale(1.025) translateY(-6px); }
+}
+
+/* Hover Lift on Idle */
+.matka-illustration:hover {
+  filter: drop-shadow(0 28px 60px rgba(243, 156, 18, 0.4)) drop-shadow(0 20px 45px rgba(0, 0, 0, 0.8));
+}
+
+/* Instant Tactile Squash / Compression on Each Tap */
+.matka-zoom-wrap.is-squashing .matka-illustration,
+.matka-illustration:active {
+  transform: scale(0.93, 0.88) translateY(14px) !important;
+  transition: transform 0.12s cubic-bezier(0.2, 0, 0.1, 1) !important;
+}
+
+/* Rim glow flash on tap */
+.matka-zoom-wrap.is-squashing .matka-rim,
+.matka-zoom-wrap.is-steaming .matka-rim {
+  stroke: #FFD54F;
+  filter: drop-shadow(0 0 14px #FFA000);
+}
+
+/* ── Tap Affordance Cue ───────────────────────────────────── */
+.matka-tap-cue {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding: 0.45rem 1.15rem;
+  border-radius: 9999px;
+  background: rgba(224, 105, 67, 0.2);
+  border: 1px solid hsla(20, 80%, 55%, 0.45);
+  color: var(--marigold, #F39C12);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-inline: auto;
+  width: fit-content;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+  animation: cueBounce 2.2s ease-in-out infinite;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+}
+
+@keyframes cueBounce {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-5px); }
+}
+
+.tap-icon {
+  font-size: 1rem;
+}
+
+/* ── Ambient glow behind pot ──────────────────────────────── */
+.matka-glow {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  max-width: 480px;
+  height: 120px;
+  background: radial-gradient(ellipse, hsla(42, 96%, 54%, 0.45) 0%, hsla(20, 80%, 50%, 0.35) 45%, transparent 75%);
+  filter: blur(32px);
+  z-index: -1;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+/* ── Matka Centerpiece Area ───────────────────────────────── */
+.matka-centerpiece-area {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-inline: auto;
+  margin-bottom: 1.5rem;
+}
+
+/* ── Fast GPU Steam Animation (Radial Gradient Feathering) ─ */
+.steam-container {
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 180px;
+  height: 160px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 16px;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.steam-warp {
+  width: 28px;
+  border-radius: 9999px;
+  /* Soft radial-gradient feathering: zero filter:blur for max FPS */
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255, 248, 235, 0.88) 0%,
+    rgba(243, 156, 18, 0.55) 45%,
+    rgba(255, 255, 255, 0) 75%
+  );
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+/* Gentle idle steam */
+.steam-warp.wisp-1 {
+  height: 70px;
+  animation: steamRise1 2.8s ease-in-out infinite 0.2s;
+}
+
+.steam-warp.wisp-2 {
+  height: 90px;
+  animation: steamRise2 3.2s ease-in-out infinite 0.8s;
+}
+
+.steam-warp.wisp-3 {
+  height: 65px;
+  animation: steamRise3 2.6s ease-in-out infinite 0.5s;
+}
+
+/* Rapid steam surge on tap */
+.steam-container.is-surging .steam-warp.wisp-1 {
+  height: 120px;
+  animation: steamSurge1 1.4s ease-out forwards;
+}
+
+.steam-container.is-surging .steam-warp.wisp-2 {
+  height: 150px;
+  animation: steamSurge2 1.6s ease-out 0.05s forwards;
+}
+
+.steam-container.is-surging .steam-warp.wisp-3 {
+  height: 100px;
+  animation: steamSurge3 1.5s ease-out 0.1s forwards;
+}
+
+@keyframes steamSurge1 {
+  0%   { opacity: 0; transform: translate3d(-10px, 10px, 0) scale(0.6); }
+  35%  { opacity: 0.95; }
+  100% { opacity: 0; transform: translate3d(-35px, -130px, 0) scale(1.6); }
+}
+
+@keyframes steamSurge2 {
+  0%   { opacity: 0; transform: translate3d(0, 10px, 0) scale(0.7); }
+  30%  { opacity: 1; }
+  100% { opacity: 0; transform: translate3d(15px, -160px, 0) scale(1.8); }
+}
+
+@keyframes steamSurge3 {
+  0%   { opacity: 0; transform: translate3d(10px, 10px, 0) scale(0.6); }
+  40%  { opacity: 0.85; }
+  100% { opacity: 0; transform: translate3d(40px, -125px, 0) scale(1.5); }
+}
+
+/* ── "THE MENU" Headline ──────────────────────────────────── */
+.steam-menu-text {
+  position: relative;
+  text-align: center;
+  margin-inline: auto;
+  margin-top: 0.5rem;
+  margin-bottom: 1.8rem;
+  white-space: nowrap;
+  font-family: var(--font-display, 'Cinzel', serif);
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
+  font-weight: 800;
+  color: var(--marigold, #F39C12);
+  letter-spacing: 0.22em;
+  opacity: 1;
+  pointer-events: none;
+  z-index: 6;
+  text-shadow:
+    0 0 24px hsla(42, 96%, 54%, 0.8),
+    0 0 50px hsla(20, 80%, 45%, 0.5),
+    0 4px 16px rgba(0, 0, 0, 0.9);
+}
+
+.matka-zoom-wrap.has-drawn .steam-menu-text {
+  opacity: 1;
+}
+
+/* ── Emerging 6 Courses Deck (2x3 Luxury Heritage Grid) ────────── */
+.matka-emerging-deck {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  max-width: 1220px;
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.25rem;
+  margin-bottom: 2.75rem;
+}
+
+@media (max-width: 1060px) {
+  .matka-emerging-deck {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+}
+
+@media (max-width: 680px) {
+  .matka-emerging-deck {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+}
+
+/* Individual Luxury Course Page Card */
+.matka-course-card {
+  position: relative;
+  background: linear-gradient(145deg, hsl(20, 24%, 13%) 0%, hsl(24, 20%, 9%) 100%);
+  border: 1px solid hsla(42, 96%, 54%, 0.4);
+  border-radius: 6px;
+  min-height: 220px;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.6), inset 0 0 20px rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+  outline: none;
+  text-align: left;
+  transform-origin: center bottom;
+  will-change: transform, opacity;
+  transition:
+    transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+  overflow: hidden;
+  display: none; /* hidden until tapped out of matka */
+}
+
+.matka-course-card.is-drawn {
+  display: flex;
+  animation: matkaPageSummon 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Theatrical 3D Emerge UPWARDS from inside the Matka mouth */
+@keyframes matkaPageSummon {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 80px, -120px) scale(0.4) rotateX(25deg);
+    filter: brightness(1.8) drop-shadow(0 0 25px #F39C12);
+  }
+  60% {
+    opacity: 1;
+    transform: translate3d(0, -10px, 20px) scale(1.03) rotateX(-3deg);
+    filter: brightness(1.15) drop-shadow(0 12px 30px rgba(243, 156, 18, 0.35));
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1) rotateX(0deg);
+    filter: brightness(1) drop-shadow(0 12px 28px rgba(0, 0, 0, 0.55));
+  }
+}
+
+/* Hover Lift & Golden Illumination */
+.matka-course-card:hover,
+.matka-course-card:focus-visible {
+  transform: translateY(-6px);
+  border-color: var(--marigold, #F39C12);
+  box-shadow:
+    0 22px 48px rgba(0, 0, 0, 0.75),
+    0 0 28px hsla(42, 96%, 54%, 0.35);
+}
+
+.matka-course-card:hover .card-dish-photo {
+  transform: scale(1.08);
+  filter: saturate(1.15) contrast(1.08);
+}
+
+.matka-course-card:hover .card-explore-btn {
+  color: var(--ivory, #FAF3E0);
+}
+
+.matka-course-card:hover .explore-arrow {
+  transform: translateX(5px);
+}
+
+/* Glowing golden border flare on newly arrived card */
+.matka-course-card.is-newest {
+  border-color: var(--marigold, #F39C12);
+  box-shadow:
+    0 0 0 2px var(--marigold, #F39C12),
+    0 16px 36px rgba(0, 0, 0, 0.6),
+    0 0 25px hsla(42, 96%, 54%, 0.4);
+}
+
+/* Inner Filigree Frame (Double-Line Border with Corner Accents) */
+.card-filigree-frame {
+  position: absolute;
+  inset: 5px;
+  border: 1px solid hsla(42, 96%, 54%, 0.25);
+  border-radius: 4px;
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* Haveli Arch Silhouette Watermark in Top-Right Corner */
+.card-arch-watermark {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 130px;
+  height: 150px;
+  pointer-events: none;
+  z-index: 4;
+  opacity: 0.9;
+  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.5));
+}
+
+.card-arch-watermark svg {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+
+/* Left Content Column */
+.card-content-col {
+  flex: 1.25;
+  padding: 1.35rem 0.85rem 1.3rem 1.35rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  z-index: 6;
+}
+
+/* Serial Number & Flourish: "01 ── ❖" */
+.card-header-row {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-bottom: 0.35rem;
+}
+
+.card-serial {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--marigold, #F39C12);
+  letter-spacing: 0.05em;
+  line-height: 1;
+}
+
+.card-divider-flourish {
+  font-size: 0.85rem;
+  color: hsla(42, 96%, 54%, 0.7);
+  letter-spacing: 0.1em;
+}
+
+/* Category Title */
+.card-category-title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(1.2rem, 1.55vw, 1.4rem);
+  font-weight: 700;
+  color: var(--ivory, #FAF3E0);
+  line-height: 1.2;
+  margin-bottom: 0.35rem;
+  letter-spacing: -0.01em;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+/* Category Subtitle / Tagline */
+.card-category-tagline {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--ivory-muted, rgba(250, 243, 224, 0.8));
+  line-height: 1.35;
+  margin-bottom: 0.9rem;
+  opacity: 0.9;
+}
+
+/* Bottom Action Row: EXPLORE → */
+.card-action-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  margin-top: auto;
+  padding-top: 0.7rem;
+  border-top: 1px solid hsla(42, 96%, 54%, 0.16);
+}
+
+.card-explore-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--marigold, #F39C12);
+  transition: color 0.2s ease;
+}
+
+.card-explore-btn .explore-arrow {
+  display: inline-block;
+  font-size: 0.95rem;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-dish-pill {
+  font-size: 0.68rem;
+  color: var(--ivory-subtle, rgba(250, 243, 224, 0.7));
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid hsla(42, 96%, 54%, 0.15);
+  padding: 2px 7px;
+  border-radius: 9999px;
+}
+
+/* Right Image Column */
+.card-image-col {
+  flex: 1.1;
+  min-width: 140px;
+  position: relative;
+  overflow: hidden;
+  align-self: stretch;
+  display: block;
+  z-index: 2;
+}
+
+.card-image-wrap {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.card-dish-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), filter 0.3s ease;
+  filter: saturate(1.08) contrast(1.05);
+}
+
+/* Soft Vignette Gradient: Fades image into left content body */
+.card-image-gradient {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, hsl(20, 24%, 13%) 0%, hsla(20, 24%, 13%, 0.5) 24%, transparent 68%),
+    linear-gradient(180deg, hsla(6, 75%, 26%, 0.15) 0%, transparent 40%, hsla(24, 20%, 9%, 0.55) 100%);
+  pointer-events: none;
+}
+
+/* ── Settled State Bottom Controls ────────────────────────── */
+.matka-settled-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.75rem;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(12px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  z-index: 5;
+}
+
+.matka-zoom-wrap.has-drawn .matka-settled-bar {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.matka-to-menu-btn {
+  background: var(--gradient-vermilion, linear-gradient(135deg, #E06943 0%, #C4431E 100%));
+  color: #FFF;
+  border: 1px solid hsla(42, 96%, 54%, 0.4);
+  padding: 0.75rem 1.6rem;
+  border-radius: 9999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  box-shadow: 0 8px 24px rgba(224, 105, 67, 0.35);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.matka-to-menu-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(224, 105, 67, 0.5);
+  color: #FFF;
+}
+
+.matka-reveal-all-btn,
+.matka-replay-btn {
+  background: rgba(30, 16, 12, 0.85);
+  border: 1px solid hsla(42, 96%, 54%, 0.35);
+  color: var(--ivory, #FAF3E0);
+  padding: 0.75rem 1.35rem;
+  border-radius: 9999px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.matka-reveal-all-btn:hover,
+.matka-replay-btn:hover {
+  border-color: var(--marigold, #F39C12);
+  color: var(--marigold, #F39C12);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* ── Expandable Page Modal Dialog ─────────────────────────── */
+.matka-page-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.matka-page-modal.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(14, 8, 6, 0.82);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.modal-folio-card {
+  position: relative;
+  z-index: 2;
+  background: linear-gradient(145deg, rgba(38, 20, 14, 0.98) 0%, rgba(24, 12, 8, 0.99) 100%);
+  border: 1px solid hsla(42, 96%, 54%, 0.45);
+  border-radius: 20px;
+  width: 100%;
+  max-width: 680px;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow:
+    0 28px 70px rgba(0, 0, 0, 0.85),
+    0 0 45px hsla(42, 96%, 54%, 0.25),
+    inset 0 1px 0 hsla(42, 96%, 54%, 0.35);
+  transform: scale(0.92) translateY(24px);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+.matka-page-modal.is-open .modal-folio-card {
+  transform: scale(1) translateY(0);
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid hsla(42, 96%, 54%, 0.3);
+  color: var(--ivory, #FAF3E0);
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.modal-close-btn:hover {
+  background: var(--marigold, #F39C12);
+  color: #1A0D08;
+  transform: rotate(90deg) scale(1.1);
+}
+
+.modal-folio-header {
+  padding: 2rem 2rem 1rem 2rem;
+  text-align: left;
+}
+
+.modal-folio-badge {
+  font-family: var(--font-display, 'Cinzel', serif);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--marigold, #F39C12);
+  display: inline-block;
+  margin-bottom: 0.4rem;
+}
+
+.modal-folio-title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  color: var(--ivory, #FAF3E0);
+  margin-bottom: 0.4rem;
+}
+
+.modal-folio-desc {
+  font-size: 0.95rem;
+  color: rgba(250, 243, 224, 0.8);
+  font-style: italic;
+}
+
+.modal-folio-divider {
+  width: 100%;
+  height: 1.5px;
+  margin-top: 1rem;
+  background: linear-gradient(90deg, var(--marigold, #F39C12) 0%, rgba(243, 156, 18, 0.2) 80%, transparent 100%);
+}
+
+.modal-folio-dishes {
+  padding: 0 2rem 1.5rem 2rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Custom Scrollbar for Modal */
+.modal-folio-dishes::-webkit-scrollbar {
+  width: 6px;
+}
+.modal-folio-dishes::-webkit-scrollbar-thumb {
+  background: hsla(42, 96%, 54%, 0.3);
+  border-radius: 9999px;
+}
+
+/* Individual Dish in Modal */
+.modal-dish-row {
+  background: rgba(18, 9, 6, 0.6);
+  border: 1px solid rgba(243, 156, 18, 0.18);
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  transition: all 0.2s ease;
+}
+
+.modal-dish-row:hover {
+  background: rgba(30, 15, 10, 0.8);
+  border-color: var(--marigold, #F39C12);
+  transform: translateX(4px);
+}
+
+.modal-dish-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.modal-dish-name-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.dish-veg-tag {
+  width: 12px;
+  height: 12px;
+  border: 1.5px solid currentColor;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.dish-veg-tag.veg {
+  color: #2ECC71;
+}
+
+.dish-veg-tag.nonveg {
+  color: #E74C3C;
+}
+
+.dish-veg-tag::after {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.modal-dish-name {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: 1.1rem;
+  color: var(--ivory, #FAF3E0);
+  font-weight: 600;
+}
+
+.modal-dish-price {
+  font-family: var(--font-display, 'Cinzel', serif);
+  font-size: 1.05rem;
+  color: var(--marigold, #F39C12);
+  font-weight: 700;
+}
+
+.modal-dish-desc {
+  font-size: 0.85rem;
+  color: rgba(250, 243, 224, 0.75);
+  line-height: 1.45;
+}
+
+.modal-dish-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.2rem;
+}
+
+.modal-dish-tag {
+  font-size: 0.7rem;
+  background: rgba(243, 156, 18, 0.12);
+  color: var(--marigold, #F39C12);
+  padding: 0.15rem 0.55rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(243, 156, 18, 0.2);
+}
+
+.modal-folio-footer {
+  padding: 1.25rem 2rem;
+  border-top: 1px solid rgba(243, 156, 18, 0.2);
+  background: rgba(20, 10, 7, 0.7);
+  display: flex;
+  justify-content: flex-end;
+}
+
+.modal-to-menu-btn {
+  background: var(--gradient-vermilion, linear-gradient(135deg, #E06943 0%, #C4431E 100%));
+  color: #FFF;
+  border: 1px solid hsla(42, 96%, 54%, 0.4);
+  padding: 0.75rem 1.6rem;
+  border-radius: 9999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.modal-to-menu-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(224, 105, 67, 0.4);
+}
+
+/* ── Folk motif decorative row ────────────────────────────── */
+.matka-motif-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-6, 1.5rem);
+  margin-top: var(--space-12, 3rem);
+  color: var(--marigold, #F39C12);
+  opacity: 0.75;
+}
+
+.matka-motif-row span {
+  font-size: 1.6rem;
+  filter: drop-shadow(0 0 10px hsla(42, 96%, 54%, 0.4));
+}
+
+.matka-motif-row::before,
+.matka-motif-row::after {
+  content: '';
+  width: 120px;
+  height: 1.5px;
+  background: linear-gradient(90deg, transparent, var(--marigold, #F39C12), transparent);
+}
+
+/* ── Responsive Adaptations ───────────────────────────────── */
+@media (max-width: 1024px) {
+  .matka-emerging-deck {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 700px;
+  }
+}
+
+@media (max-width: 768px) {
+  .matka-illustration {
+    max-width: 300px;
+  }
+
+  .steam-menu-text {
+    top: -12px;
+  }
+
+  .matka-emerging-deck {
+    grid-template-columns: 1fr;
+    max-width: 360px;
+    gap: 0.85rem;
+    padding-inline: 0.75rem;
+  }
+
+  .matka-course-card {
+    padding: 1rem;
+  }
+
+  .matka-settled-bar {
+    flex-direction: column;
+    width: 100%;
+    padding-inline: 1rem;
+  }
+
+  .matka-reveal-all-btn,
+  .matka-to-menu-btn,
+  .matka-replay-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .modal-folio-header {
+    padding: 1.5rem 1.25rem 0.75rem 1.25rem;
+  }
+
+  .modal-folio-dishes {
+    padding: 0 1.25rem 1rem 1.25rem;
+  }
+
+  .modal-folio-footer {
+    padding: 1rem 1.25rem;
+  }
+
+  .modal-to-menu-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

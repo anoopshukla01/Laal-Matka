@@ -1,0 +1,270 @@
+/* ============================================================
+   LAAL MATKA — GALLERY SECTION (gallery.css)
+   Deep Royal Sand & Amber Umber Background with Asymmetric Grid
+   ============================================================ */
+
+.gallery-section {
+  background: var(--bg-gallery);
+  padding-block: var(--section-pad);
+  position: relative;
+  overflow: hidden;
+}
+
+.gallery-header {
+  text-align: center;
+  margin-bottom: var(--space-16);
+}
+
+.gallery-header .section-label {
+  color: var(--marigold);
+  text-shadow: 0 0 10px hsla(42, 96%, 54%, 0.4);
+}
+
+.gallery-header h2 {
+  font-family: var(--font-serif);
+  font-size: var(--text-4xl);
+  color: var(--ivory);
+  margin-bottom: var(--space-4);
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.5);
+}
+
+.gallery-header p {
+  font-size: var(--text-lg);
+  color: var(--ivory-muted);
+  font-style: italic;
+  margin-inline: auto;
+}
+
+/* ── Asymmetric editorial grid ────────────────────────────── */
+.gallery-grid {
+  max-width: var(--max-w);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-auto-rows: 85px;
+  gap: var(--space-4);
+}
+
+/* Asymmetric slot sizes — 9 images */
+.gallery-item:nth-child(1) { grid-column: 1 / 6;  grid-row: 1 / 6;  } /* portrait */
+.gallery-item:nth-child(2) { grid-column: 6 / 13; grid-row: 1 / 5;  } /* landscape */
+.gallery-item:nth-child(3) { grid-column: 6 / 9;  grid-row: 5 / 8;  } /* square */
+.gallery-item:nth-child(4) { grid-column: 9 / 13; grid-row: 5 / 10; } /* portrait */
+.gallery-item:nth-child(5) { grid-column: 1 / 7;  grid-row: 6 / 10; } /* landscape */
+.gallery-item:nth-child(6) { grid-column: 7 / 9;  grid-row: 8 / 11; } /* small */
+.gallery-item:nth-child(7) { grid-column: 1 / 5;  grid-row: 10 / 15;} /* portrait */
+.gallery-item:nth-child(8) { grid-column: 5 / 10; grid-row: 10 / 14;} /* landscape */
+.gallery-item:nth-child(9) { grid-column: 10 / 13;grid-row: 10 / 14;} /* square */
+
+/* ── Gallery item ─────────────────────────────────────────── */
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  border: 1px solid hsla(40, 42%, 96%, 0.18);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+  background: hsla(24, 25%, 16%, 0.95);
+  transition:
+    transform var(--duration-med) var(--ease-out),
+    border-color var(--duration-fast),
+    box-shadow var(--duration-fast);
+}
+
+.gallery-item:hover {
+  transform: translateY(-3px);
+  border-color: hsla(42, 96%, 54%, 0.6);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), 0 0 16px hsla(42, 96%, 54%, 0.2);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition:
+    transform var(--duration-slow) var(--ease-out),
+    filter var(--duration-slow);
+  filter: brightness(0.9) saturate(1.0);
+}
+
+.gallery-item:hover img {
+  transform: scale(1.06);
+  filter: brightness(1.0) saturate(1.15);
+}
+
+/* Hover overlay */
+.gallery-item-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, hsla(24, 25%, 10%, 0.85) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity var(--duration-med) var(--ease-out);
+  display: flex;
+  align-items: flex-end;
+  padding: var(--space-4);
+  border-top: 2px solid var(--marigold);
+}
+
+.gallery-item:hover .gallery-item-overlay { opacity: 1; }
+
+.gallery-item-overlay span {
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--marigold);
+  font-weight: 700;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.8);
+}
+
+.gallery-item .img-placeholder {
+  border-radius: 0;
+  height: 100%;
+  min-height: unset;
+  font-size: 0.7rem;
+  background: hsla(24, 25%, 18%, 0.9);
+  border-color: hsla(42, 96%, 54%, 0.4);
+  color: var(--ivory);
+}
+
+.gallery-item .img-placeholder .slot-label {
+  font-size: 0.72rem;
+  color: var(--ivory);
+  font-weight: 600;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.7);
+}
+
+/* ── Lightbox (native <dialog>) ───────────────────────────── */
+.gallery-lightbox {
+  border: none;
+  padding: 0;
+  background: hsla(24, 25%, 8%, 0.97);
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  position: fixed;
+  inset: 0;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: var(--z-lightbox);
+}
+
+.gallery-lightbox[open] {
+  display: flex;
+  animation: lightboxIn 0.4s var(--ease-out) both;
+}
+
+.gallery-lightbox::backdrop {
+  background: hsla(24, 25%, 8%, 0.97);
+}
+
+.lightbox-img-wrap {
+  position: relative;
+  width: 90vw;
+  height: 82vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox-img-wrap img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 24px 60px rgba(0,0,0,0.8);
+  animation: scaleIn 0.35s var(--ease-out) both;
+}
+
+/* Lightbox controls */
+.lightbox-controls {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: var(--space-6);
+}
+
+.lightbox-btn {
+  pointer-events: all;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: hsla(24, 25%, 18%, 0.85);
+  border: 1.5px solid hsla(42, 96%, 54%, 0.4);
+  color: var(--ivory);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition:
+    background var(--duration-fast),
+    border-color var(--duration-fast),
+    transform var(--duration-fast),
+    box-shadow var(--duration-fast);
+}
+
+.lightbox-btn:hover {
+  background: hsla(42, 96%, 54%, 0.25);
+  border-color: var(--marigold);
+  color: var(--marigold-light);
+  transform: scale(1.1);
+  box-shadow: 0 0 16px hsla(42, 96%, 54%, 0.4);
+}
+
+.lightbox-btn svg {
+  width: 22px;
+  height: 22px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.lightbox-close {
+  position: fixed;
+  top: var(--space-6);
+  right: var(--space-6);
+  z-index: 5;
+  pointer-events: all;
+}
+
+.lightbox-counter {
+  position: fixed;
+  bottom: var(--space-6);
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--marigold);
+  text-shadow: 0 0 10px hsla(42, 96%, 54%, 0.4);
+  pointer-events: none;
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 150px;
+    gap: var(--space-3);
+  }
+
+  .gallery-item:nth-child(n) {
+    grid-column: span 1;
+    grid-row: span 2;
+  }
+
+  .gallery-item:nth-child(2),
+  .gallery-item:nth-child(5),
+  .gallery-item:nth-child(8) {
+    grid-column: span 2;
+    grid-row: span 1;
+  }
+}

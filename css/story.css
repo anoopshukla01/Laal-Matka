@@ -1,0 +1,234 @@
+/* ============================================================
+   LAAL MATKA — OUR STORY SECTION (story.css)
+   Deep Peacock Turquoise-Charcoal Blend Echoing the Hero
+   ============================================================ */
+
+.story-section {
+  background: var(--bg-story);
+  padding-block: var(--section-pad);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Warm painted texture & turquoise atmospheric radiance */
+.story-section::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  right: -100px;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, hsla(42, 96%, 54%, 0.08) 0%, hsla(174, 48%, 38%, 0.06) 50%, transparent 70%);
+  pointer-events: none;
+}
+
+/* ── Layout ──────────────────────────────────────────────── */
+.story-grid {
+  max-width: var(--max-w);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+  display: grid;
+  grid-template-columns: 1fr 440px;
+  gap: var(--space-20);
+  align-items: start;
+}
+
+/* ── Text side ───────────────────────────────────────────── */
+.story-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-10);
+}
+
+.story-text .section-label {
+  color: var(--marigold);
+  text-shadow: 0 0 10px hsla(42, 96%, 54%, 0.4);
+}
+
+/* Large "LAAL." / "MATKA." headings */
+.story-word-block {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.story-word {
+  font-family: var(--font-display);
+  font-size: var(--text-5xl);
+  line-height: 1;
+  letter-spacing: 0.04em;
+}
+
+.story-word.laal {
+  color: hsl(6, 90%, 64%);
+  text-shadow: 0 0 20px hsla(6, 82%, 46%, 0.45);
+}
+
+.story-word.matka {
+  color: hsl(6, 92%, 64%);
+  text-shadow: 0 0 20px hsla(6, 88%, 56%, 0.45);
+}
+
+.story-word.devanagari-display {
+  font-family: var(--font-devanagari);
+  font-size: clamp(2.8rem, 5.5vw, 4.8rem);
+  color: hsl(6, 92%, 64%);
+  text-shadow: 0 0 24px hsla(6, 88%, 56%, 0.5);
+  letter-spacing: 0.02em;
+}
+
+.story-meaning {
+  font-family: var(--font-serif);
+  font-size: var(--text-lg);
+  color: var(--ivory);
+  line-height: 1.8;
+  font-style: italic;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* Combined statement */
+.story-combined {
+  position: relative;
+  padding-left: var(--space-8);
+  margin-top: var(--space-4);
+}
+
+.story-combined::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(to bottom, var(--laal), var(--marigold), var(--teal-bright));
+  border-radius: 2px;
+  box-shadow: 0 0 10px hsla(42, 96%, 54%, 0.4);
+}
+
+.story-combined p {
+  font-size: var(--text-base);
+  color: var(--ivory-muted);
+  line-height: 1.85;
+  font-family: var(--font-sans);
+}
+
+/* ── Illustration side ───────────────────────────────────── */
+.story-illustration {
+  position: sticky;
+  top: 6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.story-illus-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3/4;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.6);
+  border: 1px solid hsla(42, 96%, 54%, 0.3);
+}
+
+/* Decorative painted corner ornaments */
+.story-illus-frame::before,
+.story-illus-frame::after {
+  content: '';
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  border-color: var(--marigold);
+  border-style: solid;
+  opacity: 0.75;
+  z-index: 2;
+  filter: drop-shadow(0 0 6px hsla(42, 96%, 54%, 0.5));
+}
+
+.story-illus-frame::before {
+  top: 10px;
+  left: 10px;
+  border-width: 2.5px 0 0 2.5px;
+}
+
+.story-illus-frame::after {
+  bottom: 10px;
+  right: 10px;
+  border-width: 0 2.5px 2.5px 0;
+}
+
+.story-illus-frame .img-placeholder {
+  border-radius: 0;
+  background: hsla(24, 25%, 16%, 0.95);
+  border-color: hsla(42, 96%, 54%, 0.4);
+}
+
+.story-illus-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: var(--radius-sm);
+  transition: transform var(--duration-slow) var(--ease-out);
+}
+
+.story-illus-frame:hover .story-illus-img {
+  transform: scale(1.03);
+}
+
+/* Folk art caption */
+.story-illus-caption {
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ivory-subtle);
+  font-weight: 600;
+  text-align: center;
+}
+
+/* ── Decorative motif between story blocks ───────────────── */
+.story-motif {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  color: var(--marigold);
+  margin-block: var(--space-2);
+}
+
+.story-motif-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--teal-bright);
+  box-shadow: 0 0 8px var(--teal-bright);
+}
+
+.story-motif-line {
+  flex: 1;
+  height: 1.5px;
+  background: linear-gradient(90deg, var(--marigold), hsla(174, 60%, 65%, 0.4), transparent);
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .story-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-16);
+  }
+
+  .story-illustration {
+    position: static;
+    max-width: 360px;
+    margin-inline: auto;
+  }
+
+  .story-word { font-size: var(--text-4xl); }
+}
+
+@media (max-width: 768px) {
+  .story-illustration { display: none; }
+  .story-word { font-size: var(--text-3xl); }
+}

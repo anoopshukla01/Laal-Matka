@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Matka → Menu Reveal Interactive Animation — LAAL MATKA</title>
+  <meta name="description" content="Interactive Matka → Menu Reveal animation built with React and Framer Motion for Laal Matka." />
+
+  <!-- Google Fonts: Playfair Display + Outfit + Yatra One (Devanagari) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Yatra+One&family=Rozha+One&family=Federo&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/menu.css" />
+  <link rel="stylesheet" href="css/matka-menu-reveal.css" />
+
+  <style>
+    body {
+      background:
+        radial-gradient(ellipse at 50% 20%, hsla(24, 92%, 24%, 0.4) 0%, transparent 60%),
+        radial-gradient(circle at 10% 80%, hsla(180, 85%, 15%, 0.3) 0%, transparent 50%),
+        linear-gradient(180deg, #18100E 0%, #1A1210 50%, #120B0A 100%);
+      min-height: 100vh;
+      color: var(--ivory);
+      font-family: var(--font-sans);
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    .demo-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px var(--gutter);
+      background: rgba(22, 14, 12, 0.9);
+      border-bottom: 1px solid hsla(42, 96%, 54%, 0.25);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .demo-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .demo-logo-title {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--ivory);
+      letter-spacing: 0.1em;
+    }
+
+    .demo-logo-title span {
+      color: var(--laal);
+      font-family: var(--font-devanagari);
+    }
+
+    .demo-badge {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 3px 10px;
+      border-radius: var(--radius-full);
+      background: hsla(24, 92%, 52%, 0.2);
+      color: var(--marigold);
+      border: 1px solid hsla(42, 96%, 54%, 0.4);
+    }
+
+    .demo-hero {
+      text-align: center;
+      padding: 40px 20px 20px;
+      max-width: 800px;
+      margin-inline: auto;
+    }
+
+    .demo-hero h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      margin-bottom: 10px;
+      color: var(--ivory);
+    }
+
+    .demo-hero p {
+      color: hsla(40, 42%, 96%, 0.75);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .demo-mount-area {
+      position: relative;
+      width: 100%;
+      max-width: 1200px;
+      margin-inline: auto;
+      padding-inline: 20px;
+    }
+
+    .demo-controls-panel {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 30px;
+      padding-bottom: 60px;
+      flex-wrap: wrap;
+    }
+  </style>
+
+  <!-- ESM Import Map for Native React 18 + Framer Motion in Browser -->
+  <script type="importmap">
+  {
+    "imports": {
+      "react": "https://esm.sh/react@18.3.1?dev",
+      "react/jsx-runtime": "https://esm.sh/react@18.3.1/jsx-runtime?dev",
+      "react-dom": "https://esm.sh/react-dom@18.3.1?dev",
+      "react-dom/client": "https://esm.sh/react-dom@18.3.1/client?dev",
+      "framer-motion": "https://esm.sh/framer-motion@11.11.17?dev"
+    }
+  }
+  </script>
+</head>
+
+<body>
+  <!-- Header Nav -->
+  <header class="demo-nav">
+    <a href="index.html" class="demo-brand">
+      <div class="demo-logo-title">LAAL <span>मटका</span></div>
+      <span class="demo-badge">React + Framer Motion</span>
+    </a>
+
+    <div style="display: flex; gap: 12px; align-items: center;">
+      <a href="index.html#menu" class="btn btn-outline" style="padding: 8px 16px; font-size: 0.78rem;">
+        ← Back to Main Website
+      </a>
+      <a href="uploader.html" class="btn btn-dark" style="padding: 8px 16px; font-size: 0.78rem;">
+        📸 Asset Studio
+      </a>
+    </div>
+  </header>
+
+  <!-- Intro -->
+  <div class="demo-hero">
+    <span class="section-label">INTERACTIVE MENU REVEAL</span>
+    <h1>The Sacred Matka Reveal</h1>
+    <p>
+      State Machine: <code>idle</code> → <code>clicked</code> (tactile tap) → <code>steaming</code> (swirling wisps) → <code>revealing</code> (5 pages emerge from the matka's mouth) → <code>settled</code> (interactive menu).
+    </p>
+  </div>
+
+  <!-- React Mount Point -->
+  <main class="demo-mount-area">
+    <div id="matka-menu-reveal-root">
+      <div style="text-align: center; padding: 100px 0; color: var(--marigold);">
+        <span>✦ Initializing Framer Motion Engine...</span>
+      </div>
+    </div>
+  </main>
+
+  <!-- Mount Script -->
+  <script type="module">
+    import React from 'react';
+    import ReactDOM from 'react-dom/client';
+    import MatkaMenuReveal from './components/MatkaMenuReveal.js';
+
+    const rootEl = document.getElementById('matka-menu-reveal-root');
+    if (rootEl) {
+      const root = ReactDOM.createRoot(rootEl);
+      root.render(React.createElement(MatkaMenuReveal));
+    }
+  </script>
+</body>
+</html>

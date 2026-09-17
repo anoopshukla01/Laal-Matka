@@ -1,0 +1,226 @@
+/* ============================================================
+   LAAL MATKA — NAVIGATION (nav.css)
+   ============================================================ */
+
+.site-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--z-nav);
+  padding: var(--space-4) var(--gutter);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-8);
+  transition:
+    background var(--duration-med) var(--ease-out),
+    backdrop-filter var(--duration-med) var(--ease-out),
+    box-shadow var(--duration-med) var(--ease-out),
+    padding var(--duration-med) var(--ease-out);
+}
+
+/* Transparent over hero with subtle dark vignette */
+.site-nav:not(.scrolled) {
+  background: linear-gradient(180deg, rgba(14, 38, 36, 0.75) 0%, rgba(14, 38, 36, 0) 100%);
+}
+
+/* Solid/blurred on scroll — Deep Royal Charcoal-Teal with Marigold accent border */
+.site-nav.scrolled {
+  background: hsla(24, 25%, 12%, 0.92);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  border-bottom: 1px solid hsla(42, 96%, 54%, 0.25);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.45);
+  padding-block: var(--space-3);
+}
+
+/* ── Logo ──────────────────────────────────────────────── */
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-shrink: 0;
+  text-decoration: none;
+}
+
+.nav-logo-text {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  color: var(--ivory);
+  letter-spacing: 0.08em;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  transition: color var(--duration-fast), text-shadow var(--duration-fast);
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.28em;
+}
+
+.nav-logo-devanagari {
+  font-family: var(--font-devanagari);
+  color: hsl(6, 92%, 64%);
+  font-weight: 400;
+  font-size: 1.05em;
+  letter-spacing: 0.02em;
+  text-shadow: 0 0 12px hsla(6, 88%, 56%, 0.5);
+}
+
+.site-nav:hover .nav-logo-text {
+  color: var(--marigold-light);
+  text-shadow: 0 0 16px hsla(42, 96%, 54%, 0.5);
+}
+
+/* ── Nav links ─────────────────────────────────────────── */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ivory-muted);
+  position: relative;
+  padding-block: 4px;
+  transition: color var(--duration-fast), text-shadow var(--duration-fast);
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--marigold);
+  box-shadow: 0 0 8px var(--marigold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--ivory);
+  text-shadow: 0 0 10px hsla(42, 96%, 54%, 0.6);
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+  transform: scaleX(1);
+}
+
+/* ── Reserve button ─────────────────────────────────────── */
+.nav-reserve {
+  font-size: var(--text-xs) !important;
+  padding: var(--space-2) var(--space-6) !important;
+  white-space: nowrap;
+}
+
+.site-nav:not(.scrolled) .nav-reserve {
+  background: var(--laal);
+  color: var(--ivory);
+  border: 1.5px solid var(--marigold);
+  box-shadow: 0 2px 12px hsla(6, 82%, 46%, 0.5);
+}
+
+.site-nav:not(.scrolled) .nav-reserve:hover {
+  background: var(--laal-light);
+  box-shadow: 0 4px 20px hsla(6, 82%, 46%, 0.7), var(--glow-marigold);
+}
+
+.site-nav.scrolled .nav-reserve {
+  background: var(--laal);
+  color: var(--ivory);
+  border: 1.5px solid var(--marigold);
+  box-shadow: 0 2px 14px hsla(6, 82%, 46%, 0.5);
+}
+
+.site-nav.scrolled .nav-reserve:hover {
+  background: var(--laal-light);
+  box-shadow: 0 4px 24px hsla(6, 82%, 46%, 0.7), var(--glow-marigold);
+}
+
+/* ── Hamburger (mobile) ─────────────────────────────────── */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: var(--space-2);
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.nav-hamburger span {
+  display: block;
+  width: 26px;
+  height: 2.5px;
+  background: var(--ivory);
+  border-radius: 2px;
+  transition: transform var(--duration-fast), opacity var(--duration-fast), background var(--duration-fast);
+}
+
+.nav-hamburger.open span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); background: var(--marigold); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); background: var(--marigold); }
+
+/* ── Mobile drawer ──────────────────────────────────────── */
+@media (max-width: 768px) {
+  .nav-hamburger { display: flex; }
+
+  .nav-links,
+  .nav-reserve {
+    display: none;
+  }
+
+  .nav-mobile-open .nav-links {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: hsla(24, 25%, 10%, 0.98);
+    backdrop-filter: blur(20px);
+    padding: 6rem var(--gutter) var(--space-8);
+    align-items: flex-start;
+    gap: var(--space-6);
+    z-index: calc(var(--z-nav) - 1);
+    animation: fadeIn var(--duration-med) var(--ease-out) both;
+  }
+
+  .nav-mobile-open .nav-links a {
+    font-size: var(--text-2xl);
+    font-family: var(--font-serif);
+    color: var(--ivory);
+    letter-spacing: 0.04em;
+  }
+
+  .nav-mobile-open .nav-links a:hover,
+  .nav-mobile-open .nav-links a.active {
+    color: var(--marigold);
+  }
+
+  .nav-mobile-open .nav-reserve {
+    display: inline-flex;
+    position: fixed;
+    bottom: var(--space-8);
+    left: var(--gutter);
+    right: var(--gutter);
+    justify-content: center;
+    z-index: calc(var(--z-nav) - 1);
+    background: var(--laal);
+    color: var(--ivory);
+    border: 1.5px solid var(--marigold);
+    padding: var(--space-4) !important;
+    font-size: var(--text-base) !important;
+    box-shadow: 0 4px 20px hsla(6, 82%, 46%, 0.6);
+  }
+}

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Asset Studio & Image Placement Manager — LAAL MATKA</title>
+  <meta name="description" content="Upload and manage all photos and illustrations for the Laal Matka website with automatic placement and live site sync." />
+
+  <!-- Google Fonts: Playfair Display + Outfit + Yatra One (Devanagari) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Yatra+One&family=Rozha+One&family=Federo&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/uploader.css" />
+</head>
+
+<body class="uploader-page">
+  <!-- ═══════════════════════════════════════════════════════════
+       TOP NAVIGATION BAR
+       ═══════════════════════════════════════════════════════════ -->
+  <header class="uploader-nav">
+    <div class="uploader-nav-inner">
+      <a href="index.html" class="uploader-brand">
+        <div class="uploader-logo-title">LAAL <span>मटका</span></div>
+        <span class="uploader-badge">Asset Studio</span>
+      </a>
+
+      <div class="uploader-nav-actions">
+        <span class="uploader-badge" id="active-assets-badge" style="background: hsla(142, 70%, 45%, 0.15); color: #86EFAC; border-color: hsla(142, 70%, 45%, 0.4);">
+          0 / 24 Assigned
+        </span>
+
+        <button class="btn btn-outline" id="btn-export-manifest" style="padding: 8px 16px; font-size: 0.78rem;">
+          📦 Export Manifest
+        </button>
+
+        <button class="btn btn-dark" id="btn-reset-all" style="padding: 8px 16px; font-size: 0.78rem; border-color: hsla(6, 92%, 64%, 0.4); color: #FCA5A5;">
+          🗑️ Reset All
+        </button>
+
+        <a href="index.html" class="btn btn-primary" style="padding: 8px 18px; font-size: 0.78rem;">
+          👁️ View Live Website
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ═══════════════════════════════════════════════════════════
+         HERO & SMART BULK DROPZONE
+         ═══════════════════════════════════════════════════════════ -->
+    <section class="uploader-hero">
+      <span class="section-label">IMAGE PLACEMENT & REPLACEMENT STUDIO</span>
+      <h1 class="uploader-headline">Upload Images for <span style="color: var(--laal);">LAAL</span> <span style="font-family: var(--font-devanagari); color: var(--laal);">मटका</span></h1>
+      <p class="uploader-tagline">
+        Drop all your images here at once. Our smart placement system analyzes them and automatically maps each photo to the best-suited section across the website. You can also drag & drop photos directly onto specific slots below.
+      </p>
+
+      <!-- Bulk Drop Area -->
+      <div class="bulk-dropzone" id="bulk-dropzone">
+        <div class="bulk-dropzone-icon">📥</div>
+        <h2 class="bulk-dropzone-title">Drop Multiple Images Anywhere Here</h2>
+        <p class="bulk-dropzone-desc">Supports PNG, JPG, WEBP, SVG • Auto-assigned to Hero, Menu, Gallery, Craft & Haveli Courtyard</p>
+        <div class="bulk-dropzone-btn">
+          <span>📁 Browse Files From Computer</span>
+        </div>
+        <input type="file" class="bulk-file-input" id="bulk-file-input" multiple accept="image/*" />
+      </div>
+
+      <!-- Staged Upload Review / Mapping Bar -->
+      <div class="staged-uploads-wrap" id="staged-uploads-wrap">
+        <div class="staged-header">
+          <div class="staged-title">
+            <span>✨</span>
+            <span id="staged-count">Images Ready to Assign</span>
+          </div>
+          <button class="btn btn-primary" id="btn-apply-staged" style="padding: 8px 20px; font-size: 0.8rem;">
+            ⚡ Apply & Place All Images
+          </button>
+        </div>
+        <div class="staged-list" id="staged-list">
+          <!-- Populated by js/uploader.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         SECTION FILTER TABS
+         ═══════════════════════════════════════════════════════════ -->
+    <div class="uploader-tabs-wrap">
+      <nav class="uploader-tabs" aria-label="Slot Category Filter">
+        <button class="tab-btn active" data-filter="all">All Slots (29)</button>
+        <button class="tab-btn" data-filter="hero">🌟 Hero & Mascots</button>
+        <button class="tab-btn" data-filter="story">📜 Our Story</button>
+        <button class="tab-btn" data-filter="art-to-table">🎨 Art to Table (5 Stages)</button>
+        <button class="tab-btn" data-filter="menu">🍽️ Menu Courses (6)</button>
+        <button class="tab-btn" data-filter="experience">🏛️ Café Experience (6)</button>
+        <button class="tab-btn" data-filter="gallery">🖼️ Folk Gallery (9)</button>
+      </nav>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         SLOT CARDS CONTAINER
+         ═══════════════════════════════════════════════════════════ -->
+    <div class="slots-container" id="slots-container">
+      <!-- Generated dynamically by js/uploader.js -->
+    </div>
+  </main>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Scripts -->
+  <script type="module" src="js/uploader.js"></script>
+</body>
+</html>

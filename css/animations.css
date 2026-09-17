@@ -1,0 +1,195 @@
+/* ============================================================
+   LAAL MATKA — ALL KEYFRAMES & SCROLL-DRIVEN ANIMATIONS
+   (animations.css)
+   ============================================================ */
+
+/* ── Load / entry animations ─────────────────────────────── */
+
+@keyframes paintSpread {
+  from { clip-path: inset(0 100% 0 0); }
+  to   { clip-path: inset(0 0% 0 0);   }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: scale(1);    }
+}
+
+@keyframes slideLeft {
+  from { opacity: 0; transform: translateX(40px); }
+  to   { opacity: 1; transform: translateX(0);    }
+}
+
+@keyframes slideRight {
+  from { opacity: 0; transform: translateX(-40px); }
+  to   { opacity: 1; transform: translateX(0);     }
+}
+
+/* ── Character animations ────────────────────────────────── */
+
+@keyframes characterBreathe {
+  0%, 100% { transform: translateY(0) scaleY(1);    }
+  50%       { transform: translateY(-6px) scaleY(1.01); }
+}
+
+@keyframes characterPointRight {
+  0%   { transform: rotate(0deg);   }
+  40%  { transform: rotate(-8deg) translateX(8px); }
+  100% { transform: rotate(0deg);   }
+}
+
+@keyframes turbanSway {
+  0%, 100% { transform: rotate(0deg) translateX(0);   }
+  25%       { transform: rotate(1.5deg) translateX(2px); }
+  75%       { transform: rotate(-1.5deg) translateX(-2px); }
+}
+
+@keyframes greetingPop {
+  0%   { opacity: 0; transform: scale(0.7) translateY(10px); }
+  70%  { opacity: 1; transform: scale(1.05) translateY(-2px); }
+  100% { opacity: 1; transform: scale(1) translateY(0);       }
+}
+
+/* ── Steam animation ─────────────────────────────────────── */
+
+@keyframes steamRise1 {
+  0%   { opacity: 0;   transform: translateY(0) scaleX(1);    }
+  30%  { opacity: 0.7; }
+  100% { opacity: 0;   transform: translateY(-80px) scaleX(1.4); }
+}
+
+@keyframes steamRise2 {
+  0%   { opacity: 0;   transform: translateY(0) scaleX(1);    }
+  30%  { opacity: 0.6; }
+  100% { opacity: 0;   transform: translateY(-70px) scaleX(0.8) translateX(12px); }
+}
+
+@keyframes steamRise3 {
+  0%   { opacity: 0;   transform: translateY(0);    }
+  40%  { opacity: 0.5; }
+  100% { opacity: 0;   transform: translateY(-90px) translateX(-10px); }
+}
+
+/* ── Matka zoom (JS-driven, keyframes for reference) ──────── */
+
+@keyframes matkaZoom {
+  from { transform: scale(1)   perspective(800px); }
+  to   { transform: scale(2.5) perspective(800px); }
+}
+
+/* ── Doorway reveal ──────────────────────────────────────── */
+
+@keyframes doorOpenLeft {
+  from { transform: perspective(1000px) rotateY(0deg);  }
+  to   { transform: perspective(1000px) rotateY(-90deg) translateX(-100%); }
+}
+
+@keyframes doorOpenRight {
+  from { transform: perspective(1000px) rotateY(0deg);  }
+  to   { transform: perspective(1000px) rotateY(90deg) translateX(100%);  }
+}
+
+/* ── Gallery lightbox ────────────────────────────────────── */
+
+@keyframes lightboxIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to   { opacity: 1; transform: scale(1);    }
+}
+
+/* ── Noise texture shimmer (hero) ────────────────────────── */
+
+@keyframes noiseShift {
+  0%   { transform: translate(0, 0); }
+  25%  { transform: translate(-2px, 1px); }
+  50%  { transform: translate(1px, -2px); }
+  75%  { transform: translate(2px, 1px); }
+  100% { transform: translate(0, 0); }
+}
+
+/* ── Tag float in (menu hover) ───────────────────────────── */
+
+@keyframes tagFloat {
+  from { opacity: 0; transform: translateY(8px) scale(0.9); }
+  to   { opacity: 1; transform: translateY(0) scale(1);     }
+}
+
+/* ── Pulse glow (CTA buttons) ────────────────────────────── */
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 4px 20px hsla(6, 78%, 42%, 0.35); }
+  50%       { box-shadow: 0 4px 36px hsla(6, 78%, 42%, 0.6);  }
+}
+
+/* ── Scroll-driven: parallax hero layers ──────────────────── */
+/* Uses native CSS scroll-driven animations where supported  */
+
+@supports ((animation-timeline: scroll()) and (animation-range: entry)) {
+  .hero-parallax-slow {
+    animation: heroParallaxSlow linear both;
+    animation-timeline: scroll(root);
+    animation-range: 0vh 60vh;
+  }
+
+  @keyframes heroParallaxSlow {
+    from { transform: translateY(0);    }
+    to   { transform: translateY(30vh); }
+  }
+
+  .hero-parallax-fast {
+    animation: heroParallaxFast linear both;
+    animation-timeline: scroll(root);
+    animation-range: 0vh 60vh;
+  }
+
+  @keyframes heroParallaxFast {
+    from { transform: translateY(0);    }
+    to   { transform: translateY(50vh); }
+  }
+}
+
+/* ── Scroll-driven: section entry (view-timeline) ─────────── */
+
+@supports ((animation-timeline: view()) and (animation-range: entry)) {
+  .scroll-reveal-native {
+    animation: scrollRevealNative linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 40%;
+  }
+
+  @keyframes scrollRevealNative {
+    from { opacity: 0; transform: translateY(32px); }
+    to   { opacity: 1; transform: translateY(0);    }
+  }
+}
+
+/* ── Reduced motion overrides ────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  @supports ((animation-timeline: scroll()) and (animation-range: entry)) {
+    .hero-parallax-slow,
+    .hero-parallax-fast {
+      animation: none;
+    }
+  }
+
+  @supports ((animation-timeline: view()) and (animation-range: entry)) {
+    .scroll-reveal-native {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  .character-idle { animation: none !important; }
+  .steam-warp     { animation: none !important; display: none; }
+}

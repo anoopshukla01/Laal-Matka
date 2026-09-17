@@ -1,0 +1,1317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LAAL MATKA — Restaurant, Gorakhpur | Veg & Non-Veg Delights</title>
+  <meta name="description" content="Authentic slow-cooked clay matka delicacies, rich tandoor and traditional hand-crafted hospitality at Taramandal, Gorakhpur.">
+
+  <!-- Open Graph / Meta -->
+  <meta property="og:title" content="LAAL MATKA — Restaurant, Gorakhpur">
+  <meta property="og:description" content="Authentic slow-cooked clay matka delicacies, outdoor seating & private dining room at Taramandal, Gorakhpur.">
+  <meta property="og:type" content="website">
+
+  <!-- Google Fonts Preconnect & Stylesheets with Authentic Rajasthani & Devanagari Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..800;1,9..40,300..800&family=Kalam:wght@400;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Rozha+One&family=Yatra+One&display=swap" rel="stylesheet">
+
+  <!-- Core Design System & Component Styles -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/nav.css">
+  <link rel="stylesheet" href="css/hero.css">
+  <link rel="stylesheet" href="css/matka.css">
+  <link rel="stylesheet" href="css/menu.css">
+  <link rel="stylesheet" href="css/art-to-table.css">
+  <link rel="stylesheet" href="css/story.css">
+  <link rel="stylesheet" href="css/gallery.css">
+  <link rel="stylesheet" href="css/experience.css">
+  <link rel="stylesheet" href="css/reviews.css">
+  <link rel="stylesheet" href="css/visit.css">
+  <link rel="stylesheet" href="css/closing.css">
+</head>
+<body>
+
+  <!-- SVG Filter Definitions (Noise, Textures) -->
+  <svg style="position: absolute; width: 0; height: 0; overflow: hidden;" aria-hidden="true">
+    <defs>
+      <filter id="folk-noise">
+        <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch" />
+        <feColorMatrix type="saturate" values="0" />
+        <feBlend in="SourceGraphic" mode="multiply" />
+      </filter>
+    </defs>
+  </svg>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       1. NAVIGATION
+       ═══════════════════════════════════════════════════════════ -->
+  <nav class="site-nav" id="site-nav" aria-label="Main Navigation">
+    <a href="#hero" class="nav-logo" id="nav-logo-link" aria-label="Laal Matka Home">
+      <div class="nav-logo-text">LAAL <span class="nav-logo-devanagari">मटका</span></div>
+    </a>
+
+    <ul class="nav-links" id="nav-links-list">
+      <!-- Populated dynamically from content.js -->
+      <li><a href="#story">Our Story</a></li>
+      <li><a href="#art-to-table">Our Craft</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#visit">Visit Us</a></li>
+    </ul>
+
+    <a href="#visit" class="btn btn-primary nav-reserve js-reserve-btn" id="nav-reserve-btn">
+      Reserve a Table
+    </a>
+
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle Navigation Menu" aria-expanded="false" aria-controls="nav-links-list">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       2. HERO SECTION
+       ═══════════════════════════════════════════════════════════ -->
+  <header class="hero" id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-bg-noise"></div>
+    <div class="hero-border-pattern"></div>
+
+    <!-- Paint Spread Reveal Layers -->
+    <div class="paint-spread" aria-hidden="true">
+      <div class="paint-spread-layer terracotta"></div>
+      <div class="paint-spread-layer laal"></div>
+    </div>
+
+    <!-- Folk Art Corner Ornaments -->
+    <div class="hero-ornament tl" aria-hidden="true">✦</div>
+    <div class="hero-ornament br" aria-hidden="true">✦</div>
+
+    <div class="hero-content">
+      <!-- Left: Brand Copy & CTAs -->
+      <div class="hero-text">
+        <span class="hero-greeting" id="hero-greeting">
+          Khamma Ghani!
+        </span>
+
+        <div class="hero-brand">
+          <h1 class="hero-brand-name" aria-label="LAAL MATKA">
+            <span class="brand-word brand-english">
+              <span class="letter">L</span><span class="letter">A</span><span class="letter">A</span><span class="letter">L</span>
+            </span>
+            <span class="brand-word brand-devanagari">
+              <span class="letter">म</span><span class="letter">ट</span><span class="letter">का</span>
+            </span>
+          </h1>
+          <p class="hero-subtitle">RESTAURANT • TARAMANDAL, GORAKHPUR</p>
+        </div>
+
+        <p class="hero-tagline">
+          "Veg &amp; Non-Veg Delights. Served with soul."
+        </p>
+
+        <div class="hero-ctas">
+          <a href="#matka" class="btn btn-primary" id="hero-explore-btn">
+            Explore the Experience
+          </a>
+          <a href="#menu" class="btn btn-outline" id="hero-menu-btn">
+            View Menu
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: Folk Character Illustration -->
+      <div class="hero-character" id="hero-character-wrap">
+        <div class="hero-arch"></div>
+        <div class="character-svg-wrap character-idle">
+          <!-- Stylized Rajasthani Folk Character SVG -->
+          <svg viewBox="0 0 400 600" width="380" height="570" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Rajasthani Folk Character with Saffron Pagdi and Royal Moustache">
+            <!-- Aura / Glow -->
+            <circle cx="200" cy="240" r="160" fill="url(#hero-char-glow)" opacity="0.4"/>
+            
+            <!-- Body / Angrakha (Kurta) -->
+            <path d="M120 380 L70 580 L330 580 L280 380 L230 360 L200 370 L170 360 Z" fill="#D95338" stroke="#F5ECD7" stroke-width="3"/>
+            <!-- Saffron Dupatta / Stole -->
+            <path d="M130 380 C130 460 150 560 170 600 L190 600 C170 540 160 460 160 380 Z" fill="#F5A623"/>
+            <path d="M270 380 C270 460 250 560 230 600 L210 600 C230 540 240 460 240 380 Z" fill="#F5A623"/>
+            <path d="M140 390 Q200 440 260 390" stroke="#F5A623" stroke-width="12" stroke-linecap="round"/>
+
+            <!-- Royal Necklace / Kanthi -->
+            <path d="M160 370 Q200 410 240 370" stroke="#F5ECD7" stroke-width="4" stroke-dasharray="2 8" stroke-linecap="round"/>
+            <circle cx="200" cy="392" r="8" fill="#F5A623" stroke="#F5ECD7" stroke-width="2"/>
+
+            <!-- Neck -->
+            <rect x="180" y="310" width="40" height="60" rx="10" fill="#E8A87C"/>
+
+            <!-- Face -->
+            <path d="M150 210 C150 160 250 160 250 210 C250 280 230 325 200 325 C170 325 150 280 150 210 Z" fill="#F3B78C"/>
+
+            <!-- Ears & Royal Kundal (Earrings) -->
+            <ellipse cx="146" cy="225" rx="10" ry="16" fill="#F3B78C"/>
+            <circle cx="144" cy="235" r="7" fill="#F5A623" stroke="#F5ECD7" stroke-width="1.5"/>
+            <ellipse cx="254" cy="225" rx="10" ry="16" fill="#F3B78C"/>
+            <circle cx="256" cy="235" r="7" fill="#F5A623" stroke="#F5ECD7" stroke-width="1.5"/>
+
+            <!-- Eyes & Eyebrows (Rajasthani Regal Lotus Eyes) -->
+            <path d="M165 200 Q180 195 192 202" stroke="#2B1810" stroke-width="3.5" stroke-linecap="round"/>
+            <path d="M208 202 Q220 195 235 200" stroke="#2B1810" stroke-width="3.5" stroke-linecap="round"/>
+            
+            <path d="M166 212 Q180 205 193 214 Q180 222 166 212 Z" fill="#FAF6EE" stroke="#2B1810" stroke-width="1.5"/>
+            <circle cx="180" cy="213" r="3.5" fill="#2B1810"/>
+            <path d="M207 214 Q220 205 234 212 Q220 222 207 214 Z" fill="#FAF6EE" stroke="#2B1810" stroke-width="1.5"/>
+            <circle cx="220" cy="213" r="3.5" fill="#2B1810"/>
+
+            <!-- Tilak (Red & Sandalwood) -->
+            <path d="M197 165 L203 165 L203 192 L197 192 Z" fill="#F5ECD7"/>
+            <circle cx="200" cy="180" r="3.5" fill="#C42B1C"/>
+
+            <!-- Nose -->
+            <path d="M200 210 L203 238 L196 242" stroke="#D18760" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+            <!-- Majestic Rajasthani Moustache -->
+            <path d="M152 248 C175 252 195 248 200 255 C205 248 225 252 248 248 C265 244 268 230 262 225 C260 238 245 258 200 260 C155 258 140 238 138 225 C132 230 135 244 152 248 Z" fill="#241510"/>
+
+            <!-- Lips -->
+            <path d="M192 268 Q200 274 208 268" stroke="#B85D43" stroke-width="2" stroke-linecap="round"/>
+
+            <!-- Turban / Royal Pagdi -->
+            <g class="turban-layer">
+              <ellipse cx="200" cy="150" rx="75" ry="40" fill="#E65100"/>
+              <!-- Swirling layers of Pagdi -->
+              <path d="M125 155 C120 90 280 80 280 150 C270 95 140 90 125 155 Z" fill="#F57C00"/>
+              <path d="M130 140 C145 70 270 65 275 130 C265 80 150 75 130 140 Z" fill="#FF9800"/>
+              <path d="M140 120 C160 55 255 50 265 110 C250 65 160 60 140 120 Z" fill="#FFA726"/>
+              <!-- Pagdi Crest / Kalgi -->
+              <path d="M200 50 Q205 20 215 15 Q210 35 200 55" stroke="#F5A623" stroke-width="4" stroke-linecap="round"/>
+              <circle cx="215" cy="15" r="5" fill="#E53935"/>
+              <!-- Turban Brooch (Sarpech) -->
+              <circle cx="200" cy="115" r="10" fill="#F5A623" stroke="#F5ECD7" stroke-width="2"/>
+              <circle cx="200" cy="115" r="4" fill="#C42B1C"/>
+              <!-- Turban tail flowing right -->
+              <path d="M270 145 Q310 170 300 280 Q290 240 265 170 Z" fill="#E65100"/>
+            </g>
+
+            <defs>
+              <radialGradient id="hero-char-glow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#F5A623" stop-opacity="0.8"/>
+                <stop offset="100%" stop-color="#3D8B88" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll Hint -->
+    <a href="#story" class="hero-scroll-hint" aria-label="Scroll down to explore">
+      <span>Scroll</span>
+      <div class="scroll-arrow">
+        <div class="scroll-dot"></div>
+      </div>
+    </a>
+  </header>
+
+  <main>
+    <!-- ═══════════════════════════════════════════════════════════
+         2. OUR STORY (SECOND SECTION)
+         ═══════════════════════════════════════════════════════════ -->
+    <section class="story-section" id="story" aria-label="Our Story">
+      <div class="container story-grid">
+        <div class="story-text reveal">
+          <span class="section-label">ORIGIN & MEANING</span>
+
+          <div class="story-word-block">
+            <h2 class="story-word laal">
+              LAAL.
+            </h2>
+            <p class="story-meaning" id="story-laal-meaning">
+              Laal is red — but not just a colour. It is the vermilion of a bride's maang. The marigold fire of a village festival. The warmth of a clay hearth at dusk. In Rajasthan, laal means life itself: vivid, unapologetic, full of energy.
+            </p>
+          </div>
+
+          <div class="story-motif" aria-hidden="true">
+            <span class="story-motif-dot"></span>
+            <span class="story-motif-line"></span>
+          </div>
+
+          <div class="story-word-block">
+            <h2 class="story-word matka devanagari-display">
+              मटका.
+            </h2>
+            <p class="story-meaning" id="story-matka-meaning">
+              Matka is earth — shaped by a craftsman's hands, hardened by fire, filled with water, tea, or dal. It is the vessel that holds things together. The pot that every grandmother had. The symbol of honest craft, patient tradition, and generous hospitality.
+            </p>
+          </div>
+
+          <div class="story-combined">
+            <p id="story-combined-text">
+              Together, they are us. A café that doesn't pretend to be anything it isn't. We cook the way our grandmothers did — with time, with spice, with love. We serve it in spaces that feel like home. Come as you are. Leave full.
+            </p>
+          </div>
+        </div>
+
+        <!-- Illustration Side Frame -->
+        <aside class="story-illustration reveal reveal-delay-2" aria-label="Heritage Art Illustration">
+          <div class="story-illus-frame" data-slot="story-illustration">
+            <img src="images/story-art.jpg" alt="Rajasthani Miniature Painting Mural at Laal Matka" class="story-illus-img" loading="lazy">
+          </div>
+          <span class="story-illus-caption">Hand-painted Rajasthani heritage mural at our restaurant</span>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         3. FROM ART TO TABLE (5-STAGE SEQUENCE)
+         ═══════════════════════════════════════════════════════════ -->
+    <section class="art-to-table" id="art-to-table" aria-label="From Art to Table">
+      <div class="container att-header reveal">
+        <span class="section-label">OUR SACRED CRAFT</span>
+        <h2>From Art to Table</h2>
+        <p>Five acts of devotion. One unforgettable philosophy.</p>
+      </div>
+
+      <div class="att-track-wrapper">
+        <div class="att-track" id="att-track">
+          <!-- Populated dynamically by main.js from content.js -->
+        </div>
+      </div>
+
+      <!-- Carousel Navigation & Dots -->
+      <div class="att-nav" aria-label="Art to Table Steps Navigation">
+        <button class="att-nav-btn" id="att-prev" aria-label="Previous Stage">
+          <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <div class="att-nav-dots" id="att-dots">
+          <!-- Populated dynamically by main.js -->
+        </div>
+        <button class="att-nav-btn" id="att-next" aria-label="Next Stage">
+          <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         4. THE SOULFUL MATKA & MENU REVEAL
+         ═══════════════════════════════════════════════════════════ -->
+    <div id="menu" style="position: relative; top: -80px;"></div>
+    <section class="matka-section" id="matka" aria-label="The Soulful Matka">
+      <div class="container matka-intro reveal">
+        <span class="section-label">THE VESSEL OF HERITAGE</span>
+        <p>"Centuries of slow simmering, preserved in baked desert clay."</p>
+      </div>
+
+      <!-- State Status Indicator -->
+      <div class="main-matka-status-pill" id="main-matka-status" role="status" aria-live="polite">
+        <span class="status-pulse-dot" aria-hidden="true"></span>
+        <span class="status-text">TAP MATKA TO DRAW COURSE 1 (0 / 6 REVEALED)</span>
+      </div>
+
+      <div class="matka-zoom-wrap" id="main-matka-stage" data-state="idle">
+        <!-- Headline: THE MENU -->
+        <div class="steam-menu-text" id="steam-menu-heading">
+          THE MENU
+        </div>
+
+        <!-- Emerging 6 Courses Deck (Summoned UPPER OF the Matka Pot) -->
+        <div class="matka-emerging-deck" id="matka-emerging-deck" aria-label="Menu Courses Preview">
+          <!-- Card 01: Rajasthani Specials -->
+          <div class="matka-course-card" data-category-index="0" role="button" tabindex="0" aria-label="Explore Rajasthani Specials">
+            <div class="card-arch-watermark" aria-hidden="true">
+              <svg viewBox="0 0 140 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M140 0 H45 C28 0 14 14 14 32 C14 46 24 56 32 64 C22 74 14 88 14 102 C14 116 26 130 45 138 C62 146 95 154 140 158 V0 Z" fill="url(#arch-grad-0)" opacity="0.55"/>
+                <path d="M140 14 H55 C38 14 28 24 28 38 C28 50 36 60 44 68 C34 78 28 88 28 100 C28 112 40 124 58 132 C75 140 105 148 140 150" stroke="#F5A623" stroke-width="1" stroke-dasharray="3 3" opacity="0.35"/>
+                <defs>
+                  <linearGradient id="arch-grad-0" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#C43B2B"/>
+                    <stop offset="100%" stop-color="#5E140F"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+            <div class="card-filigree-frame" aria-hidden="true"></div>
+            
+            <div class="card-content-col">
+              <div class="card-header-row">
+                <span class="card-serial">01</span>
+                <span class="card-divider-flourish">── ❖</span>
+              </div>
+              <h3 class="card-category-title">Rajasthani Specials</h3>
+              <p class="card-category-tagline">Rooted in tradition. Rich in flavour.</p>
+              
+              <div class="card-action-wrap">
+                <span class="card-explore-btn">
+                  <span>EXPLORE</span>
+                  <span class="explore-arrow" aria-hidden="true">→</span>
+                </span>
+                <span class="card-dish-pill">5 Royal Dishes</span>
+              </div>
+            </div>
+
+            <div class="card-image-col">
+              <div class="card-image-wrap" data-slot="menu-1">
+                <img src="images/dal-baati.jpg" alt="Rajasthani Specials — Dal Baati Churma and Royal Curries" class="card-dish-photo" id="menu-dish-img-1" data-slot="menu-1" loading="lazy">
+                <div class="card-image-gradient" aria-hidden="true"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 02: Matka Chai & Drinks -->
+          <div class="matka-course-card" data-category-index="1" role="button" tabindex="0" aria-label="Explore Matka Chai and Drinks">
+            <div class="card-arch-watermark" aria-hidden="true">
+              <svg viewBox="0 0 140 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M140 0 H45 C28 0 14 14 14 32 C14 46 24 56 32 64 C22 74 14 88 14 102 C14 116 26 130 45 138 C62 146 95 154 140 158 V0 Z" fill="url(#arch-grad-1)" opacity="0.55"/>
+                <path d="M140 14 H55 C38 14 28 24 28 38 C28 50 36 60 44 68 C34 78 28 88 28 100 C28 112 40 124 58 132 C75 140 105 148 140 150" stroke="#F5A623" stroke-width="1" stroke-dasharray="3 3" opacity="0.35"/>
+                <defs>
+                  <linearGradient id="arch-grad-1" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#C43B2B"/>
+                    <stop offset="100%" stop-color="#5E140F"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+            <div class="card-filigree-frame" aria-hidden="true"></div>
+
+            <div class="card-content-col">
+              <div class="card-header-row">
+                <span class="card-serial">02</span>
+                <span class="card-divider-flourish">── ❖</span>
+              </div>
+              <h3 class="card-category-title">Matka Chai &amp; Drinks</h3>
+              <p class="card-category-tagline">Tradition in every sip.</p>
+              
+              <div class="card-action-wrap">
+                <span class="card-explore-btn">
+                  <span>EXPLORE</span>
+                  <span class="explore-arrow" aria-hidden="true">→</span>
+                </span>
+                <span class="card-dish-pill">4 Infusions</span>
+              </div>
+            </div>
+
+            <div class="card-image-col">
+              <div class="card-image-wrap" data-slot="menu-2">
+                <img src="images/matka-chai.jpg" alt="Matka Chai &amp; Drinks — Clay-brewed saffron chai and infusions" class="card-dish-photo" id="menu-dish-img-2" data-slot="menu-2" loading="lazy">
+                <div class="card-image-gradient" aria-hidden="true"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 03: Artisan Coffee -->
+          <div class="matka-course-card" data-category-index="2" role="button" tabindex="0" aria-label="Explore Artisan Coffee">
+            <div class="card-arch-watermark" aria-hidden="true">
+              <svg viewBox="0 0 140 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M140 0 H45 C28 0 14 14 14 32 C14 46 24 56 32 64 C22 74 14 88 14 102 C14 116 26 130 45 138 C62 146 95 154 140 158 V0 Z" fill="url(#arch-grad-2)" opacity="0.55"/>
+                <path d="M140 14 H55 C38 14 28 24 28 38 C28 50 36 60 44 68 C34 78 28 88 28 100 C28 112 40 124 58 132 C75 140 105 148 140 150" stroke="#F5A623" stroke-width="1" stroke-dasharray="3 3" opacity="0.35"/>
+                <defs>
+                  <linearGradient id="arch-grad-2" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#C43B2B"/>
+                    <stop offset="100%" stop-color="#5E140F"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+            <div class="card-filigree-frame" aria-hidden="true"></div>
+
+            <div class="card-content-col">
+              <div class="card-header-row">
+                <span class="card-serial">03</span>
+                <span class="card-divider-flourish">── ❖</span>
+              </div>
+              <h3 class="card-category-title">Artisan Coffee</h3>
+              <p class="card-category-tagline">Royal brews, modern moments.</p>
+              
+              <div class="card-action-wrap">
+                <span class="card-explore-btn">
+                  <span>EXPLORE</span>
+                  <span class="explore-arrow" aria-hidden="true">→</span>
+                </span>
+                <span class="card-dish-pill">3 Roasts</span>
+              </div>
+            </div>
+
+            <div class="card-image-col">
+              <div class="card-image-wrap" data-slot="menu-3">
+                <img src="images/artisan-coffee.jpg" alt="Artisan Coffee — Single-origin filter roasts and specialty brew" class="card-dish-photo" id="menu-dish-img-3" data-slot="menu-3" loading="lazy">
+                <div class="card-image-gradient" aria-hidden="true"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 04: Chaat & Small Plates -->
+          <div class="matka-course-card" data-category-index="3" role="button" tabindex="0" aria-label="Explore Chaat and Small Plates">
+            <div class="card-arch-watermark" aria-hidden="true">
+              <svg viewBox="0 0 140 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M140 0 H45 C28 0 14 14 14 32 C14 46 24 56 32 64 C22 74 14 88 14 102 C14 116 26 130 45 138 C62 146 95 154 140 158 V0 Z" fill="url(#arch-grad-3)" opacity="0.55"/>
+                <path d="M140 14 H55 C38 14 28 24 28 38 C28 50 36 60 44 68 C34 78 28 88 28 100 C28 112 40 124 58 132 C75 140 105 148 140 150" stroke="#F5A623" stroke-width="1" stroke-dasharray="3 3" opacity="0.35"/>
+                <defs>
+                  <linearGradient id="arch-grad-3" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#C43B2B"/>
+                    <stop offset="100%" stop-color="#5E140F"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+            <div class="card-filigree-frame" aria-hidden="true"></div>
+
+            <div class="card-content-col">
+              <div class="card-header-row">
+                <span class="card-serial">04</span>
+                <span class="card-divider-flourish">── ❖</span>
+              </div>
+              <h3 class="card-category-title">Chaat &amp; Small Plates</h3>
+              <p class="card-category-tagline">Bold bites. Rajasthani twists.</p>
+              
+              <div class="card-action-wrap">
+                <span class="card-explore-btn">
+                  <span>EXPLORE</span>
+                  <span class="explore-arrow" aria-hidden="true">→</span>
+                </span>
+                <span class="card-dish-pill">4 Street Classics</span>
+              </div>
+            </div>
+
+            <div class="card-image-col">
+              <div class="card-image-wrap" data-slot="menu-4">
+                <img src="images/raj-kachori.jpg" alt="Chaat &amp; Small Plates — Loaded Raj Kachori, Pyaaz Kachori and savory snacks" class="card-dish-photo" id="menu-dish-img-4" data-slot="menu-4" loading="lazy">
+                <div class="card-image-gradient" aria-hidden="true"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 05: Main Course -->
+          <div class="matka-course-card" data-category-index="4" role="button" tabindex="0" aria-label="Explore Main Course">
+            <div class="card-arch-watermark" aria-hidden="true">
+              <svg viewBox="0 0 140 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M140 0 H45 C28 0 14 14 14 32 C14 46 24 56 32 64 C22 74 14 88 14 102 C14 116 26 130 45 138 C62 146 95 154 140 158 V0 Z" fill="url(#arch-grad-4)" opacity="0.55"/>
+                <path d="M140 14 H55 C38 14 28 24 28 38 C28 50 36 60 44 68 C34 78 28 88 28 100 C28 112 40 124 58 132 C75 140 105 148 140 150" stroke="#F5A623" stroke-width="1" stroke-dasharray="3 3" opacity="0.35"/>
+                <defs>
+                  <linearGradient id="arch-grad-4" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#C43B2B"/>
+                    <stop offset="100%" stop-color="#5E140F"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+            <div class="card-filigree-frame" aria-hidden="true"></div>
+
+            <div class="card-content-col">
+              <div class="card-header-row">
+                <span class="card-serial">05</span>
+                <span class="card-divider-flourish">── ❖</span>
+              </div>
+              <h3 class="card-category-title">Main Course</h3>
+              <p class="card-category-tagline">Hearty meals. Royal heritage.</p>
+              
+              <div class="card-action-wrap">
+                <span class="card-explore-btn">
+                  <span>EXPLORE</span>
+                  <span class="explore-arrow" aria-hidden="true">→</span>
+                </span>
+                <span class="card-dish-pill">4 Hearth Mains</span>
+              </div>
+            </div>
+
+            <div class="card-image-col">
+              <div class="card-image-wrap" data-slot="menu-5">
+                <img src="images/laal-maas.jpg" alt="Main Course — Handi simmering curries, Jodhpuri specialties and artisanal rotis" class="card-dish-photo" id="menu-dish-img-5" data-slot="menu-5" loading="lazy">
+                <div class="card-image-gradient" aria-hidden="true"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 06: Royal Desserts -->
+          <div class="matka-course-card" data-category-index="5" role="button" tabindex="0" aria-label="Explore Royal Desserts">
+            <div class="card-arch-watermark" aria-hidden="true">
+              <svg viewBox="0 0 140 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M140 0 H45 C28 0 14 14 14 32 C14 46 24 56 32 64 C22 74 14 88 14 102 C14 116 26 130 45 138 C62 146 95 154 140 158 V0 Z" fill="url(#arch-grad-5)" opacity="0.55"/>
+                <path d="M140 14 H55 C38 14 28 24 28 38 C28 50 36 60 44 68 C34 78 28 88 28 100 C28 112 40 124 58 132 C75 140 105 148 140 150" stroke="#F5A623" stroke-width="1" stroke-dasharray="3 3" opacity="0.35"/>
+                <defs>
+                  <linearGradient id="arch-grad-5" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#C43B2B"/>
+                    <stop offset="100%" stop-color="#5E140F"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+            <div class="card-filigree-frame" aria-hidden="true"></div>
+
+            <div class="card-content-col">
+              <div class="card-header-row">
+                <span class="card-serial">06</span>
+                <span class="card-divider-flourish">── ❖</span>
+              </div>
+              <h3 class="card-category-title">Royal Desserts</h3>
+              <p class="card-category-tagline">Sweet traditions. Timeless joy.</p>
+              
+              <div class="card-action-wrap">
+                <span class="card-explore-btn">
+                  <span>EXPLORE</span>
+                  <span class="explore-arrow" aria-hidden="true">→</span>
+                </span>
+                <span class="card-dish-pill">3 Sweet Delights</span>
+              </div>
+            </div>
+
+            <div class="card-image-col">
+              <div class="card-image-wrap" data-slot="menu-6">
+                <img src="images/royal-dessert.jpg" alt="Royal Desserts — Rabri Ghevar, Malpua and earthen Matka Kulfi" class="card-dish-photo" id="menu-dish-img-6" data-slot="menu-6" loading="lazy">
+                <div class="card-image-gradient" aria-hidden="true"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Centerpiece: Handcrafted Clay Matka with Rising Steam & Tap Cue (At the Base) -->
+        <div class="matka-centerpiece-area">
+          <!-- Floating Steam Plumes (feathered via soft radial-gradients for 60fps) -->
+          <div class="steam-container" id="main-steam-container" aria-hidden="true">
+            <div class="steam-warp wisp-1"></div>
+            <div class="steam-warp wisp-2"></div>
+            <div class="steam-warp wisp-3"></div>
+          </div>
+
+          <!-- Handcrafted Matka SVG Illustration (Interactive Click/Touch Target) -->
+          <div class="matka-illustration" id="main-matka-trigger" data-slot="hero-matka" role="button" tabindex="0" aria-label="Tap clay matka to draw next menu course">
+            <svg viewBox="0 0 500 450" width="100%" height="auto" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Traditional Clay Matka with Folk Etchings">
+              <!-- Glow underneath -->
+              <ellipse cx="250" cy="420" rx="160" ry="25" fill="#C45A38" opacity="0.3" filter="url(#pot-blur)"/>
+
+              <!-- Pot Base Shadow -->
+              <ellipse cx="250" cy="405" rx="90" ry="18" fill="#1C1412" opacity="0.4"/>
+
+              <!-- Main Clay Body -->
+              <path class="matka-clay-body" d="M150 140 C80 190 60 320 150 390 C190 415 310 415 350 390 C440 320 420 190 350 140 C325 125 175 125 150 140 Z" fill="url(#clay-grad)"/>
+
+              <!-- Traditional Folk Etchings (Mandana / Warli Motifs) -->
+              <path d="M110 240 Q250 280 390 240" stroke="#F5ECD7" stroke-width="2.5" stroke-dasharray="6 6" opacity="0.6"/>
+              <path d="M100 270 Q250 315 400 270" stroke="#F5ECD7" stroke-width="3" stroke-dasharray="10 6" opacity="0.7"/>
+              <path d="M115 300 Q250 345 385 300" stroke="#F5ECD7" stroke-width="2" stroke-dasharray="4 4" opacity="0.5"/>
+
+              <!-- Decorative Sun / Peacocks motif band on belly -->
+              <g opacity="0.65" stroke="#F5ECD7" stroke-width="1.8" fill="none">
+                <polygon points="160,255 170,240 180,255"/>
+                <polygon points="190,260 200,245 210,260"/>
+                <polygon points="220,265 230,250 240,265"/>
+                <polygon points="250,266 260,251 270,266"/>
+                <polygon points="280,264 290,249 300,264"/>
+                <polygon points="310,259 320,244 330,259"/>
+                <polygon points="340,253 350,238 360,253"/>
+              </g>
+
+              <!-- Neck of the Pot -->
+              <path d="M165 145 C160 115 175 100 190 95 L310 95 C325 100 340 115 335 145 Z" fill="#BF4B28"/>
+              
+              <!-- Rim / Lip of the Pot -->
+              <ellipse class="matka-rim" cx="250" cy="95" rx="65" ry="18" fill="#A83C1C" stroke="#E66A45" stroke-width="3"/>
+              <!-- Interior opening shadow -->
+              <ellipse class="matka-opening" cx="250" cy="95" rx="52" ry="12" fill="#2B120B"/>
+
+              <!-- Clay Highlights & Texture Gradient -->
+              <path d="M110 220 C85 270 95 350 160 385 C115 340 110 270 135 220 Z" fill="#F38A65" opacity="0.45"/>
+
+              <defs>
+                <linearGradient id="clay-grad" x1="120" y1="130" x2="380" y2="410" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#E06943"/>
+                  <stop offset="35%" stop-color="#C4532D"/>
+                  <stop offset="75%" stop-color="#9C3A1A"/>
+                  <stop offset="100%" stop-color="#6B220C"/>
+                </linearGradient>
+                <filter id="pot-blur">
+                  <feGaussianBlur stdDeviation="10"/>
+                </filter>
+              </defs>
+            </svg>
+
+            <!-- Subtle Tap Cue / Affordance beneath the Matka -->
+            <div class="matka-tap-cue" id="matka-tap-cue">
+              <span class="tap-icon" aria-hidden="true">👆</span>
+              <span class="tap-text" id="matka-tap-cue-text">TAP MATKA TO DRAW COURSE 1</span>
+            </div>
+          </div>
+
+          <!-- Ambient glow behind pot -->
+          <div class="matka-glow" aria-hidden="true"></div>
+        </div>
+
+        <!-- Interactive Bottom Controls -->
+        <div class="matka-settled-bar" id="matka-settled-bar">
+          <button type="button" class="btn btn-secondary matka-reveal-all-btn" id="matka-reveal-all-btn">
+            <span>⚡ REVEAL ALL COURSES</span>
+          </button>
+          <a href="#visit" class="btn btn-primary matka-to-menu-btn js-reserve-btn">
+            <span>RESERVE A TABLE</span>
+            <span class="btn-arrow" aria-hidden="true">✦</span>
+          </a>
+          <button type="button" class="btn btn-secondary matka-replay-btn" id="matka-replay-btn">
+            <span>↺ RESET & DRAW AGAIN</span>
+          </button>
+        </div>
+
+        <!-- Expandable Page Modal Dialog -->
+        <div class="matka-page-modal" id="matka-page-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-folio-title">
+          <div class="modal-backdrop" id="modal-backdrop"></div>
+          <div class="modal-folio-card" id="modal-folio-card" role="document">
+            <button type="button" class="modal-close-btn" id="modal-close-btn" aria-label="Close expanded menu page">✕</button>
+            <div class="modal-folio-header">
+              <span class="modal-folio-badge" id="modal-folio-badge">PAGE 01</span>
+              <h3 class="modal-folio-title" id="modal-folio-title">Rajasthani Specials</h3>
+              <p class="modal-folio-desc" id="modal-folio-desc">Authentic flavours from the land of kings</p>
+              <div class="modal-folio-divider" aria-hidden="true"></div>
+            </div>
+            <div class="modal-folio-dishes" id="modal-folio-dishes">
+              <!-- Rendered dynamically by matka.js -->
+            </div>
+            <div class="modal-folio-footer">
+              <a href="#visit" class="btn btn-primary modal-to-menu-btn js-reserve-btn" id="modal-to-menu-btn">
+                <span>RESERVE A TABLE FOR THIS COURSE</span>
+                <span class="btn-arrow" aria-hidden="true">✦</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="matka-motif-row" aria-hidden="true">
+        <span>🏺</span>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         5. ASYMMETRIC GALLERY & LIGHTBOX
+         ═══════════════════════════════════════════════════════════ -->
+    <section class="gallery-section" id="gallery" aria-label="Visual Gallery">
+      <div class="container gallery-header reveal">
+        <span class="section-label">CAPTURED MOMENTS</span>
+        <h2>Sights, Textures & Traditions</h2>
+        <p>Click any photo to step into full view.</p>
+      </div>
+
+      <!-- Asymmetric 9-item Grid (populated by js/gallery.js) -->
+      <div class="gallery-grid" id="gallery-grid">
+        <!-- Rendered by gallery.js -->
+      </div>
+
+      <!-- Fullscreen Lightbox Modal (<dialog>) -->
+      <dialog class="gallery-lightbox" id="gallery-lightbox" aria-label="Image Preview">
+        <button class="lightbox-btn lightbox-close" id="lightbox-close" aria-label="Close Preview">
+          <svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+
+        <div class="lightbox-controls">
+          <button class="lightbox-btn" id="lightbox-prev" aria-label="Previous Image">
+            <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+          </button>
+          <button class="lightbox-btn" id="lightbox-next" aria-label="Next Image">
+            <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
+        </div>
+
+        <div class="lightbox-img-wrap">
+          <img src="" alt="" id="lightbox-img">
+        </div>
+
+        <div class="lightbox-counter" id="lightbox-counter">1 / 9</div>
+      </dialog>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         5B. HAVELI CAFÉ EXPERIENCE & ARCHED DOORWAY
+         ═══════════════════════════════════════════════════════════ -->
+    <section class="experience-section" id="experience" aria-label="Haveli Café Experience">
+      <!-- Interactive 3D Arched Haveli Doorway -->
+      <div class="doorway-wrap" role="region" aria-label="Haveli Courtyard Doorway">
+        <div class="doorway-frame"></div>
+        <div class="doorway-keystone">✦</div>
+        
+        <div class="doorway-arch">
+          <!-- Animated Courtyard Interior through the arch -->
+          <div class="doorway-interior">
+            <div class="courtyard-sky">
+              <div class="courtyard-moon"></div>
+              <div class="courtyard-stars">
+                <span class="star s1"></span>
+                <span class="star s2"></span>
+                <span class="star s3"></span>
+                <span class="star s4"></span>
+                <span class="star s5"></span>
+                <span class="star s6"></span>
+                <span class="star s7"></span>
+                <span class="star s8"></span>
+              </div>
+            </div>
+
+            <div class="courtyard-particles">
+              <span class="particle p1">🌸</span>
+              <span class="particle p2">✦</span>
+              <span class="particle p3">🌸</span>
+              <span class="particle p4">✦</span>
+              <span class="particle p5">🌸</span>
+              <span class="particle p6">✦</span>
+              <span class="particle p7">🌸</span>
+            </div>
+
+            <!-- Central courtyard fountain -->
+            <div class="courtyard-fountain">
+              <div class="fountain-jet"></div>
+              <div class="fountain-droplets">
+                <span class="drop d1"></span>
+                <span class="drop d2"></span>
+                <span class="drop d3"></span>
+              </div>
+              <div class="fountain-basin">
+                <div class="fountain-water"></div>
+                <div class="fountain-ripple r1"></div>
+                <div class="fountain-ripple r2"></div>
+              </div>
+            </div>
+
+            <div class="courtyard-glow-burst"></div>
+          </div>
+
+          <!-- Left Door Panel -->
+          <div class="door-panel left" aria-hidden="true">
+            <div class="door-panel-inner">
+              <div class="door-carving-border"></div>
+              <div class="door-studs">
+                <span class="stud"></span>
+                <span class="stud"></span>
+                <span class="stud"></span>
+                <span class="stud"></span>
+                <span class="stud"></span>
+                <span class="stud"></span>
+              </div>
+              <div class="door-knocker">
+                <div class="knocker-plate"></div>
+                <div class="knocker-ring"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Door Panel -->
+          <div class="door-panel right" aria-hidden="true">
+            <div class="door-panel-inner">
+              <div class="door-carving-border"></div>
+              <div class="door-studs">
+                <span class="stud"></span>
+                <span class="stud"></span>
+                <span class="stud"></span>
+                <span class="stud"></span>
+                <span class="stud"></span>
+                <span class="stud"></span>
+              </div>
+              <div class="door-knocker">
+                <div class="knocker-plate"></div>
+                <div class="knocker-ring"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section Intro Text -->
+      <div class="container experience-intro reveal">
+        <span class="experience-pre-headline">STEP THROUGH THE DOOR</span>
+        <h2>MORE THAN A MEAL</h2>
+        <p>A place to gather. A place to experience.
+A little piece of Rajasthan in Gorakhpur.</p>
+      </div>
+
+      <!-- 6-Photo Experience Grid -->
+      <div class="experience-grid">
+        <article class="experience-photo reveal" data-slot="experience-1">
+          <img src="images/haveli-courtyard.jpg" alt="Café Exterior & Courtyard" data-slot="experience-1" loading="lazy">
+        </article>
+
+        <article class="experience-photo reveal reveal-delay-1" data-slot="experience-2">
+          <img src="images/story-art.jpg" alt="Café Interior & Heritage Murals" data-slot="experience-2" loading="lazy">
+        </article>
+
+        <article class="experience-photo reveal reveal-delay-2" data-slot="experience-3">
+          <img src="images/woodfire-kiln.jpg" alt="Baithak Seating & Wall Frescoes" data-slot="experience-3" loading="lazy">
+        </article>
+
+        <article class="experience-photo reveal" data-slot="experience-4">
+          <img src="images/dal-baati.jpg" alt="Signature Woodfire Cuisine" data-slot="experience-4" loading="lazy">
+        </article>
+
+        <article class="experience-photo reveal reveal-delay-1" data-slot="experience-5">
+          <img src="images/matka-chai.jpg" alt="Clay Kulhad Chai Ceremony" data-slot="experience-5" loading="lazy">
+        </article>
+
+        <article class="experience-photo reveal reveal-delay-2" data-slot="experience-6">
+          <img src="images/royal-dessert.jpg" alt="Evening Lantern Ambience" data-slot="experience-6" loading="lazy">
+        </article>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         6. PATRON LOVE & REVIEWS (ABOVE LOCATION)
+         ═══════════════════════════════════════════════════════════ -->
+    <section class="reviews-section" id="reviews" aria-label="Guest Testimonials & Reviews">
+      <div class="container">
+        <!-- Section Header -->
+        <div class="reviews-header reveal">
+          <span class="section-label">VOICES FROM THE HEARTH</span>
+          <h2>Words of Love &amp; Memory</h2>
+          <p class="reviews-subtitle">"Over 1,200+ patrons have walked through our haveli courtyard and broken bread with us."</p>
+        </div>
+
+        <!-- Rating Scorecard Banner -->
+        <div class="reviews-scorecard reveal">
+          <div class="scorecard-main">
+            <span class="scorecard-big-num">4.5</span>
+            <div class="scorecard-details">
+              <div class="scorecard-stars" aria-label="4.5 out of 5 stars">★★★★½</div>
+              <span class="scorecard-caption">Based on 81+ Google Reviews • Gorakhpur</span>
+            </div>
+          </div>
+          <div class="scorecard-badges">
+            <div class="scorecard-badge">
+              <span class="badge-icon">⭐</span>
+              <span>Google: 4.5 (81 reviews)</span>
+            </div>
+            <div class="scorecard-badge">
+              <span class="badge-icon">🏡</span>
+              <span>Outdoor Seating &amp; Private Dining</span>
+            </div>
+            <div class="scorecard-badge">
+              <span class="badge-icon">🌿</span>
+              <span>Veg &amp; Non-Veg Delights</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Reviews Grid -->
+        <div class="reviews-grid">
+          <!-- Card 1: Shalini Sharma (Local Guide) -->
+          <article class="review-card reveal">
+            <div class="review-stars">★★★★★</div>
+            <div class="review-tag-row">
+              <span class="review-service-pill">बैठकर खाने की सुविधा (Dine-in)</span>
+              <span class="review-service-pill">डिनर</span>
+              <span class="review-service-pill highlight">₹400–600</span>
+            </div>
+            <p class="review-hindi">
+              "अच्छा खाना, बढ़िया माहौल, मनमोहक परिवेश और सजावट का शानदार नज़ारा। स्टार्टर और डिनर, दोनों में शाकाहारी और मांसाहारी व्यंजन स्वादिष्ट थे, साथ ही वहाँ का माहौल इसे और भी मनमोहक बना देता है।"
+            </p>
+            <p class="review-english">
+              "Good food, great ambiance, captivating surroundings, and wonderful decor. Both vegetarian and non-vegetarian dishes in starters and dinner were delicious, made even better by the pleasant vibe."
+            </p>
+            <span class="review-dish-tag">🌿 Veg &amp; Non-Veg Starters &amp; Dinner</span>
+            <div class="review-footer">
+              <div class="reviewer-meta">
+                <div class="reviewer-avatar">SS</div>
+                <div class="reviewer-info">
+                  <h4>Shalini Sharma</h4>
+                  <div class="reviewer-subline">
+                    <span class="reviewer-guide-badge">★ लोकल गाइड</span>
+                    <span>97 समीक्षाएं • 898 फ़ोटो</span>
+                  </div>
+                </div>
+              </div>
+              <span class="reviewer-verified">✓ 3 महीने पहले</span>
+            </div>
+          </article>
+
+          <!-- Card 2: Vijay Kumar -->
+          <article class="review-card reveal reveal-delay-1">
+            <div class="review-stars">★★★★★</div>
+            <div class="review-tag-row">
+              <span class="review-service-pill">बैठकर खाने की सुविधा</span>
+              <span class="review-service-pill">ब्रंच</span>
+              <span class="review-service-pill highlight">₹1,400–1,600</span>
+            </div>
+            <p class="review-hindi">
+              "लाल मटका मटन स्पेशल और चिकन बिरयानी बहुत ही स्वादिष्ट थे और सभी कर्मचारियों की सेवा भी बहुत अच्छी थी।"
+            </p>
+            <p class="review-english">
+              "Laal Matka Mutton Special and Chicken Biryani were very delicious, and the service from all the staff was also very good."
+            </p>
+            <span class="review-dish-tag">🍲 लाल मटका मटन स्पेशल &amp; चिकन बिरयानी</span>
+            
+            <div class="review-owner-reply">
+              <div class="owner-reply-header">
+                <span>💬 लाल मटका रेस्टोरेंट (कारोबार का मालिक)</span>
+              </div>
+              <p>"आपके प्रशंसा भरे शब्दों के लिए धन्यवाद 😊 हमें खुशी है कि आपको स्वाद पसंद आया। आशा है कि जल्द ही आपको फिर से सेवा देने का अवसर मिलेगा 🙏"</p>
+            </div>
+
+            <div class="review-footer">
+              <div class="reviewer-meta">
+                <div class="reviewer-avatar">VK</div>
+                <div class="reviewer-info">
+                  <h4>Vijay Kumar</h4>
+                  <div class="reviewer-subline">
+                    <span>2 समीक्षाएं • 1 फ़ोटो</span>
+                  </div>
+                </div>
+              </div>
+              <span class="reviewer-verified">✓ 6 महीने पहले</span>
+            </div>
+          </article>
+
+          <!-- Card 3: Prasanna Kumar -->
+          <article class="review-card reveal reveal-delay-2">
+            <div class="review-stars">★★★★★</div>
+            <div class="review-tag-row">
+              <span class="review-service-pill">लंच (Lunch)</span>
+              <span class="review-service-pill highlight">₹1,800–2,000</span>
+            </div>
+            <p class="review-hindi">
+              "खाना लाजवाब था! रोशन गुप्ता का आतिथ्य सत्कार लाजवाब है।"
+            </p>
+            <p class="review-english">
+              "The food was fabulous! Roshan Gupta's hospitality was truly outstanding."
+            </p>
+            <span class="review-dish-tag">✨ आतिथ्य सत्कार &amp; लाजवाब खाना</span>
+            <div class="review-footer">
+              <div class="reviewer-meta">
+                <div class="reviewer-avatar">PK</div>
+                <div class="reviewer-info">
+                  <h4>Prasanna Kumar</h4>
+                  <div class="reviewer-subline">
+                    <span>6 समीक्षाएं</span>
+                  </div>
+                </div>
+              </div>
+              <span class="reviewer-verified">✓ 5 महीने पहले</span>
+            </div>
+          </article>
+
+          <!-- Card 4: Pankaj Rajput (Local Guide) -->
+          <article class="review-card reveal">
+            <div class="review-stars">★★★★★</div>
+            <div class="review-tag-row">
+              <span class="review-service-pill">Google Verified Review</span>
+            </div>
+            <p class="review-hindi">
+              "बहुत अच्छी सेवा और स्वादिष्ट भोजन।"
+            </p>
+            <p class="review-english">
+              "Very good service and delicious food."
+            </p>
+            <span class="review-dish-tag">🍽️ बहुत अच्छी सेवा &amp; स्वादिष्ट भोजन</span>
+            <div class="review-footer">
+              <div class="reviewer-meta">
+                <div class="reviewer-avatar">PR</div>
+                <div class="reviewer-info">
+                  <h4>Pankaj Rajput</h4>
+                  <div class="reviewer-subline">
+                    <span class="reviewer-guide-badge">★ लोकल गाइड</span>
+                    <span>42 समीक्षाएं • 5 फ़ोटो</span>
+                  </div>
+                </div>
+              </div>
+              <span class="reviewer-verified">✓ 5 महीने पहले</span>
+            </div>
+          </article>
+
+          <!-- Card 5: Amit Kumar Rai (Local Guide) -->
+          <article class="review-card reveal reveal-delay-1">
+            <div class="review-stars">★★★★★</div>
+            <div class="review-tag-row">
+              <span class="review-service-pill">बैठकर खाने की सुविधा (Dine-in)</span>
+            </div>
+            <p class="review-hindi">
+              "शानदार माहौल और स्वादिष्ट भोजन।"
+            </p>
+            <p class="review-english">
+              "Splendid ambiance and delicious food."
+            </p>
+            <span class="review-dish-tag">🏮 शानदार माहौल &amp; स्वादिष्ट भोजन</span>
+            <div class="review-footer">
+              <div class="reviewer-meta">
+                <div class="reviewer-avatar">AR</div>
+                <div class="reviewer-info">
+                  <h4>Amit Kumar Rai</h4>
+                  <div class="reviewer-subline">
+                    <span class="reviewer-guide-badge">★ लोकल गाइड</span>
+                    <span>5 समीक्षाएं • 3 फ़ोटो</span>
+                  </div>
+                </div>
+              </div>
+              <span class="reviewer-verified">✓ 2 महीने पहले</span>
+            </div>
+          </article>
+
+          <!-- Card 6: Durgesh Pratap Pal -->
+          <article class="review-card reveal reveal-delay-2">
+            <div class="review-stars">★★★★★</div>
+            <div class="review-tag-row">
+              <span class="review-service-pill">Google Verified Review</span>
+            </div>
+            <p class="review-hindi">
+              "खाना अच्छा है और सेवा भी अच्छी है।"
+            </p>
+            <p class="review-english">
+              "Good food and the service is also very good."
+            </p>
+            <span class="review-dish-tag">⭐ अच्छा खाना &amp; अच्छी सेवा</span>
+
+            <div class="review-owner-reply">
+              <div class="owner-reply-header">
+                <span>💬 लाल मटका रेस्टोरेंट (कारोबार का मालिक)</span>
+              </div>
+              <p>"आपके प्रशंसा भरे शब्दों के लिए धन्यवाद 😊 हमें खुशी है कि आपको स्वाद पसंद आया। आशा है कि जल्द ही आपको फिर से सेवा देने का अवसर मिलेगा 🙏"</p>
+            </div>
+
+            <div class="review-footer">
+              <div class="reviewer-meta">
+                <div class="reviewer-avatar">DP</div>
+                <div class="reviewer-info">
+                  <h4>Durgesh Pratap Pal</h4>
+                  <div class="reviewer-subline">
+                    <span>1 समीक्षा</span>
+                  </div>
+                </div>
+              </div>
+              <span class="reviewer-verified">✓ 5 महीने पहले</span>
+            </div>
+          </article>
+        </div>
+
+        <!-- Review Action Bar -->
+        <div class="reviews-action-bar reveal">
+          <p>Dined with us recently in Gorakhpur? We would cherish hearing your story.</p>
+          <div class="reviews-cta-row">
+            <a href="https://maps.google.com/?q=Laal+Matka+Restaurant+Taramandal+Gorakhpur" target="_blank" rel="noopener noreferrer" class="btn btn-outline" id="review-google-btn">
+              <span>✍️ Leave a Review on Google</span>
+            </a>
+            <a href="#visit" class="btn btn-primary js-reserve-btn" id="review-reserve-btn">
+              <span>Reserve Your Table</span>
+              <span class="btn-arrow" aria-hidden="true">✦</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         7. VISIT US / LOCATION & HOURS
+         ═══════════════════════════════════════════════════════════ -->
+    <section class="visit-section" id="visit" aria-label="Location, Hours & Reservations">
+      <div class="container visit-header reveal">
+        <h2 class="visit-headline devanagari-display">
+          पधारो.
+        </h2>
+        <p class="visit-subhead">Come experience Laal Matka at Taramandal, Gorakhpur.</p>
+      </div>
+
+      <div class="container visit-grid">
+        <!-- Info Column -->
+        <div class="visit-info reveal">
+          <div class="visit-info-block">
+            <span class="visit-info-label">Address</span>
+            <p class="visit-info-value" id="visit-address">
+              Rail Vihar Colony Phase 3rd, Taramandal, Gorakhpur, Uttar Pradesh 273017
+            </p>
+          </div>
+
+          <div class="visit-info-block">
+            <span class="visit-info-label">Opening Hours</span>
+            <div class="hours-table" id="hours-table">
+              <!-- Populated by main.js from content.js -->
+            </div>
+          </div>
+
+          <div class="visit-info-block">
+            <span class="visit-info-label">Reservations & Inquiries</span>
+            <p class="visit-info-value">
+              Phone: <a href="tel:+919876543210" id="visit-phone">+91 98765 43210</a><br>
+              Email: <a href="mailto:hello@laalmatka.in" id="visit-email">hello@laalmatka.in</a>
+            </p>
+          </div>
+
+          <div class="visit-info-block">
+            <span class="visit-info-label">Follow Along</span>
+            <div class="visit-socials">
+              <a href="#" class="social-link js-instagram-link" aria-label="Instagram">
+                <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                Instagram
+              </a>
+              <a href="#" class="social-link js-facebook-link" aria-label="Facebook">
+                <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                Facebook
+              </a>
+            </div>
+          </div>
+
+          <div class="visit-cta">
+            <a href="#" class="btn btn-primary js-reserve-btn" id="visit-reserve-btn">
+              Reserve via WhatsApp
+            </a>
+            <a href="#" class="btn btn-dark js-directions-btn" id="visit-directions-btn">
+              Get Directions
+            </a>
+          </div>
+        </div>
+
+        <!-- Map Column -->
+        <div class="visit-map-col reveal reveal-delay-2">
+          <div class="map-frame">
+            <div class="map-frame-inner">
+              <!-- Embedded Map Frame -->
+              <iframe
+                id="map-iframe"
+                title="Laal Matka Location Map"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3557.9!2d75.8!3d26.9!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjbCsDU0JzAwLjAiTiA3NcKwNDgnMDAuMCJF!5e0!3m2!1sen!2sin!4v1234567890"
+                width="100%"
+                height="100%"
+                style="border:0;"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+          </div>
+          <p class="map-caption">Near Champa Devi Park &amp; Gautam Vihar, Taramandal • Outdoor Seating &amp; Private Dining</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         10. CLOSING SECTION & GREETING
+         ═══════════════════════════════════════════════════════════ -->
+    <section class="closing-section" id="closing" aria-label="Padharo Mhare Ghar">
+      <div class="closing-bg"></div>
+      <div class="closing-bg-noise"></div>
+
+      <!-- Character with Folded Hands (Namaste Pose) -->
+      <div class="closing-character reveal">
+        <div class="closing-character-inner" data-slot="closing-character">
+          <svg viewBox="0 0 400 550" width="320" height="440" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Rajasthani Folk Character with Folded Hands Greeting Padharo Mhare Ghar">
+            <!-- Aura -->
+            <circle cx="200" cy="220" r="140" fill="url(#closing-char-glow)" opacity="0.35"/>
+
+            <!-- Angrakha / Kurta -->
+            <path d="M130 350 L80 540 L320 540 L270 350 L230 330 L200 340 L170 330 Z" fill="#D95338" stroke="#F5ECD7" stroke-width="2.5"/>
+
+            <!-- Saffron Dupatta -->
+            <path d="M140 350 C140 430 160 510 175 550 L195 550 C175 490 165 430 165 350 Z" fill="#F5A623"/>
+            <path d="M260 350 C260 430 240 510 225 550 L205 550 C225 490 235 430 235 350 Z" fill="#F5A623"/>
+
+            <!-- Folded Hands in Namaste (Anjali Mudra) -->
+            <g transform="translate(0, -10)">
+              <!-- Forearms -->
+              <path d="M140 370 L185 335 L200 365 L160 395 Z" fill="#D95338"/>
+              <path d="M260 370 L215 335 L200 365 L240 395 Z" fill="#D95338"/>
+              <!-- Hands -->
+              <path d="M192 315 C192 300 200 290 200 290 C200 290 208 300 208 315 L208 350 L192 350 Z" fill="#F3B78C" stroke="#D18760" stroke-width="1.5"/>
+              <!-- Golden Bangles (Kada) -->
+              <rect x="180" y="348" width="14" height="6" rx="2" fill="#F5A623" transform="rotate(-30 180 348)"/>
+              <rect x="208" y="342" width="14" height="6" rx="2" fill="#F5A623" transform="rotate(30 208 342)"/>
+            </g>
+
+            <!-- Neck -->
+            <rect x="180" y="270" width="40" height="50" rx="8" fill="#E8A87C"/>
+
+            <!-- Face -->
+            <path d="M155 180 C155 130 245 130 245 180 C245 245 225 285 200 285 C175 285 155 245 155 180 Z" fill="#F3B78C"/>
+
+            <!-- Smiling Lotus Eyes (Warm, Greeting Expression) -->
+            <path d="M168 180 Q180 172 192 180" stroke="#2B1810" stroke-width="3" stroke-linecap="round" fill="none"/>
+            <path d="M208 180 Q220 172 232 180" stroke="#2B1810" stroke-width="3" stroke-linecap="round" fill="none"/>
+
+            <!-- Tilak -->
+            <circle cx="200" cy="155" r="4" fill="#C42B1C"/>
+
+            <!-- Nose -->
+            <path d="M200 180 L203 205 L197 208" stroke="#D18760" stroke-width="2" stroke-linecap="round"/>
+
+            <!-- Friendly Moustache -->
+            <path d="M156 215 C175 218 195 215 200 220 C205 215 225 218 244 215 C258 212 260 200 256 195 C252 208 240 224 200 226 C160 224 148 208 144 195 C140 200 142 212 156 215 Z" fill="#241510"/>
+
+            <!-- Turban (Royal Saffron) -->
+            <g>
+              <ellipse cx="200" cy="125" rx="70" ry="36" fill="#E65100"/>
+              <path d="M130 130 C125 70 275 60 275 125 C265 75 145 70 130 130 Z" fill="#F57C00"/>
+              <path d="M140 105 C160 45 250 40 260 95 C245 55 155 50 140 105 Z" fill="#FF9800"/>
+              <circle cx="200" cy="95" r="9" fill="#F5A623" stroke="#F5ECD7" stroke-width="2"/>
+            </g>
+
+            <defs>
+              <radialGradient id="closing-char-glow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#F5A623" stop-opacity="0.9"/>
+                <stop offset="100%" stop-color="#3D8B88" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Closing Text -->
+      <div class="closing-content reveal reveal-delay-2">
+        <h2 class="closing-brand">
+          LAAL <span class="closing-brand-devanagari">मटका</span>
+        </h2>
+        <div class="closing-ornament-row" aria-hidden="true">
+          <span>✦ ✦ ✦</span>
+        </div>
+        <p class="closing-tagline devanagari-display">
+          "पधारो म्हारे घर"
+        </p>
+
+        <div class="closing-ctas">
+          <a href="#visit" class="btn btn-outline" id="closing-visit-btn">
+            Visit Us
+          </a>
+          <a href="#" class="btn btn-primary js-reserve-btn" id="closing-reserve-btn">
+            Reserve a Table
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       11. FOOTER
+       ═══════════════════════════════════════════════════════════ -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-logo">
+      LAAL <span class="footer-logo-devanagari">मटका</span>
+    </div>
+
+    <nav class="footer-nav" aria-label="Footer Navigation">
+      <a href="#hero">Home</a>
+      <a href="#story">Our Story</a>
+      <a href="#art-to-table">Our Craft</a>
+      <a href="#menu">Menu</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#visit">Visit Us</a>
+    </nav>
+
+    <div class="footer-socials">
+      <a href="#" class="footer-social-btn js-instagram-link" aria-label="Instagram">
+        <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      </a>
+      <a href="#" class="footer-social-btn js-facebook-link" aria-label="Facebook">
+        <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+      </a>
+      <a href="#" class="footer-social-btn js-twitter-link" aria-label="Twitter">
+        <svg viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg>
+      </a>
+    </div>
+
+    <div class="footer-copyright">
+      &copy; <span id="current-year">2026</span> LAAL MATKA RESTAURANT • TARAMANDAL, GORAKHPUR. ALL RIGHTS RESERVED.
+    </div>
+  </footer>
+
+  <!-- Floating Asset Uploader Shortcut -->
+  <aside class="floating-asset-btn-wrap" aria-label="Asset Management">
+    <a href="uploader.html" class="floating-asset-btn" title="Open Image Uploader & Asset Studio">
+      <span class="fab-icon">📸</span>
+      <span class="fab-text">Upload / Manage Images</span>
+    </a>
+  </aside>
+
+  <!-- Script Modules -->
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,170 @@
+/* ============================================================
+   LAAL MATKA — CSS DESIGN TOKENS (variables.css)
+   Rich Rajasthani Folk Palette & High-Contrast Design System
+   ============================================================ */
+
+:root {
+  /* ── Brand Colors (Vibrant Rajasthani Spectrum) ─────────── */
+  --laal:             hsl(6, 82%, 46%);        /* Radiant Vermilion Red */
+  --laal-light:       hsl(6, 85%, 58%);        /* Lighter Vermilion for hover */
+  --laal-glow:        hsl(6, 88%, 64%);        /* Bright Coral highlight */
+  --laal-dark:        hsl(6, 80%, 32%);        /* Deep Red */
+  
+  --teal:             hsl(174, 44%, 38%);      /* Turquoise — hero & story wall */
+  --teal-light:       hsl(174, 48%, 52%);      /* Vibrant Turquoise highlight */
+  --teal-bright:      hsl(174, 60%, 65%);      /* Accent Turquoise */
+  --teal-dark:        hsl(174, 46%, 18%);      /* Deep Teal Shadow */
+  --teal-deep:        hsl(174, 50%, 12%);      /* Midnight Teal */
+
+  --terracotta:       hsl(20, 62%, 52%);       /* Warm Desert Clay / Matka */
+  --terracotta-light: hsl(22, 68%, 64%);       /* Light baked clay */
+  --terracotta-dark:  hsl(18, 55%, 28%);       /* Rich earthenware */
+  --terracotta-deep:  hsl(16, 50%, 14%);       /* Deep clay umber */
+
+  --marigold:         hsl(42, 96%, 54%);       /* Radiant Marigold Yellow */
+  --marigold-light:   hsl(44, 98%, 68%);       /* Luminous Gold */
+  --marigold-dark:    hsl(38, 92%, 44%);       /* Deep Amber */
+
+  --ivory:            hsl(40, 42%, 96%);       /* Crisp Warm Cream */
+  --ivory-muted:      hsl(40, 30%, 88%);       /* High-contrast secondary text */
+  --ivory-subtle:     hsl(40, 24%, 78%);       /* High-contrast captions */
+  --ivory-dark:       hsl(38, 26%, 82%);       /* Border / card tint */
+
+  --charcoal-black:   hsl(24, 20%, 9%);        /* Rich deep black */
+  --charcoal:         hsl(24, 18%, 15%);       /* Dark rich brown */
+  --charcoal-mid:     hsl(24, 14%, 28%);       /* Mid charcoal */
+  --charcoal-card:    hsla(24, 22%, 18%, 0.85);/* Glassmorphic card surface */
+
+  /* ── Section Gradient Backgrounds (Seamless Scenic Canvas) ── */
+  --bg-hero:          radial-gradient(ellipse at 30% 70%, hsl(174, 50%, 16%) 0%, transparent 60%),
+                      radial-gradient(ellipse at 80% 20%, hsl(174, 42%, 28%) 0%, transparent 50%),
+                      linear-gradient(160deg, hsl(174, 46%, 22%) 0%, hsl(174, 42%, 18%) 60%, hsl(174, 45%, 15%) 100%);
+
+  --bg-matka:         linear-gradient(180deg,
+                        hsl(174, 45%, 15%) 0%,
+                        hsl(120, 15%, 15%) 15%,
+                        hsl(22, 45%, 17%) 50%,
+                        hsl(18, 52%, 14%) 100%);
+
+  --bg-menu:          radial-gradient(ellipse at 80% 10%, hsla(42, 90%, 50%, 0.08) 0%, transparent 50%),
+                      radial-gradient(ellipse at 20% 80%, hsla(6, 80%, 45%, 0.08) 0%, transparent 50%),
+                      linear-gradient(180deg,
+                        hsl(18, 52%, 14%) 0%,
+                        hsl(16, 44%, 16%) 50%,
+                        hsl(20, 40%, 13%) 100%);
+
+  --bg-art-to-table:  radial-gradient(ellipse at 50% 0%, hsla(20, 55%, 50%, 0.08) 0%, transparent 60%),
+                      radial-gradient(ellipse at 80% 100%, hsla(174, 40%, 35%, 0.08) 0%, transparent 60%),
+                      linear-gradient(180deg,
+                        hsl(20, 40%, 13%) 0%,
+                        hsl(220, 32%, 14%) 45%,
+                        hsl(215, 30%, 12%) 100%);
+
+  --bg-story:         radial-gradient(ellipse at 80% 30%, hsla(42, 90%, 55%, 0.07) 0%, transparent 60%),
+                      radial-gradient(ellipse at 20% 70%, hsla(6, 80%, 45%, 0.06) 0%, transparent 60%),
+                      linear-gradient(180deg,
+                        hsl(215, 30%, 12%) 0%,
+                        hsl(174, 40%, 16%) 40%,
+                        hsl(174, 38%, 12%) 100%);
+
+  --bg-experience:    radial-gradient(ellipse at 50% 20%, hsla(42, 90%, 50%, 0.08) 0%, transparent 60%),
+                      linear-gradient(180deg,
+                        hsl(174, 38%, 12%) 0%,
+                        hsl(18, 42%, 17%) 40%,
+                        hsl(22, 38%, 14%) 100%);
+
+  --bg-gallery:       radial-gradient(ellipse at 20% 30%, hsla(174, 45%, 40%, 0.06) 0%, transparent 50%),
+                      radial-gradient(ellipse at 80% 70%, hsla(42, 90%, 50%, 0.07) 0%, transparent 50%),
+                      linear-gradient(180deg,
+                        hsl(22, 38%, 14%) 0%,
+                        hsl(28, 30%, 15%) 50%,
+                        hsl(24, 35%, 13%) 100%);
+
+  --bg-visit:         radial-gradient(ellipse at 70% 30%, hsla(6, 80%, 45%, 0.08) 0%, transparent 60%),
+                      linear-gradient(180deg,
+                        hsl(24, 35%, 13%) 0%,
+                        hsl(16, 38%, 16%) 45%,
+                        hsl(174, 42%, 18%) 100%);
+
+  --bg-closing:       radial-gradient(ellipse at 70% 30%, hsl(174, 52%, 16%) 0%, transparent 60%),
+                      linear-gradient(160deg,
+                        hsl(174, 42%, 22%) 0%,
+                        hsl(174, 45%, 15%) 100%);
+
+  /* ── Semantic aliases ─────────────────────────────────── */
+  --color-bg:         hsl(18, 52%, 14%);
+  --color-text:       var(--ivory);
+  --color-text-mid:   var(--ivory-muted);
+  --color-text-subtle:var(--ivory-subtle);
+  --color-accent:     var(--marigold);
+  --color-accent-teal:var(--teal-bright);
+  --color-primary:    var(--laal);
+
+  /* ── Typography ───────────────────────────────────────── */
+  --font-display:     'Yatra One', 'Rozha One', 'Playfair Display', cursive, serif;
+  --font-devanagari:  'Yatra One', 'Rozha One', 'Kalam', 'Devanagari MT', cursive;
+  --font-serif:       'Playfair Display', 'Georgia', serif;
+  --font-sans:        'DM Sans', 'Helvetica Neue', sans-serif;
+
+  /* ── Font sizes (fluid clamp scale) ──────────────────── */
+  --text-xs:   clamp(0.72rem, 1vw,   0.82rem);
+  --text-sm:   clamp(0.88rem, 1.2vw, 0.98rem);
+  --text-base: clamp(1.02rem, 1.5vw, 1.12rem);
+  --text-lg:   clamp(1.15rem, 1.8vw, 1.35rem);
+  --text-xl:   clamp(1.35rem, 2.2vw, 1.65rem);
+  --text-2xl:  clamp(1.65rem, 2.8vw, 2.25rem);
+  --text-3xl:  clamp(2.1rem,  4vw,   3.1rem);
+  --text-4xl:  clamp(2.7rem,  5.5vw, 4.6rem);
+  --text-5xl:  clamp(3.6rem,  7vw,   6.6rem);
+  --text-hero: clamp(4.2rem,  9vw,   8.8rem);
+
+  /* ── Spacing ──────────────────────────────────────────── */
+  --space-1:   0.25rem;
+  --space-2:   0.5rem;
+  --space-3:   0.75rem;
+  --space-4:   1rem;
+  --space-6:   1.5rem;
+  --space-8:   2rem;
+  --space-10:  2.5rem;
+  --space-12:  3rem;
+  --space-16:  4rem;
+  --space-20:  5rem;
+  --space-24:  6rem;
+  --space-32:  8rem;
+
+  /* ── Layout ───────────────────────────────────────────── */
+  --max-w:     1440px;
+  --gutter:    clamp(1.5rem, 5vw, 5rem);
+  --section-pad: clamp(4.5rem, 9vw, 8.5rem);
+
+  /* ── Radii ────────────────────────────────────────────── */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+
+  /* ── Shadows & Glows ──────────────────────────────────── */
+  --shadow-sm:     0 2px 10px hsla(24, 20%, 8%, 0.3);
+  --shadow-md:     0 8px 28px hsla(24, 20%, 8%, 0.4);
+  --shadow-lg:     0 16px 52px hsla(24, 20%, 8%, 0.5);
+  --shadow-xl:     0 32px 84px hsla(24, 20%, 8%, 0.6);
+  --glow-laal:     0 4px 24px hsla(6, 82%, 46%, 0.45);
+  --glow-marigold: 0 4px 20px hsla(42, 96%, 54%, 0.4);
+  --glow-teal:     0 4px 24px hsla(174, 48%, 52%, 0.35);
+
+  /* ── Transitions ──────────────────────────────────────── */
+  --ease-out:      cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out:   cubic-bezier(0.45, 0, 0.55, 1);
+  --duration-fast: 200ms;
+  --duration-med:  400ms;
+  --duration-slow: 700ms;
+  --duration-xslow:1200ms;
+
+  /* ── Z-index layers ───────────────────────────────────── */
+  --z-base:      0;
+  --z-content:   10;
+  --z-overlay:   50;
+  --z-character: 60;
+  --z-nav:       100;
+  --z-lightbox:  200;
+}
