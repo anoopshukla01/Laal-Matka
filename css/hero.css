@@ -344,10 +344,46 @@
 }
 
 @media (max-width: 768px) {
+  .hero-content {
+    grid-template-columns: 1fr;
+    padding-top: 6.5rem;
+    padding-bottom: 4rem;
+    gap: var(--space-6);
+  }
+
+  .hero-character {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    order: -1;
+    max-height: 220px;
+    margin-bottom: var(--space-2);
+  }
+
+  .hero-arch {
+    width: 220px;
+    height: 250px;
+    border-radius: 110px 110px 0 0;
+  }
+
+  .character-svg-wrap svg {
+    width: 200px;
+    height: 260px;
+  }
+
   .hero-brand-name {
-    font-size: clamp(2.4rem, 11vw, 3.8rem);
+    font-size: clamp(2.2rem, 9.5vw, 3.4rem);
     justify-content: center;
   }
-  .hero-character { display: none; }
-  .hero-content { grid-template-columns: 1fr; }
+
+  .hero-ctas {
+    flex-direction: column;
+    width: 100%;
+    gap: var(--space-3);
+  }
+
+  .hero-ctas .btn {
+    width: 100%;
+    justify-content: center;
+  }
 }

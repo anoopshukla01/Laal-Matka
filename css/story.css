@@ -229,6 +229,18 @@
 }
 
 @media (max-width: 768px) {
-  .story-illustration { display: none; }
+  .story-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+
+  .story-illustration {
+    display: block;
+    width: 100%;
+    max-width: 340px;
+    margin-inline: auto;
+    margin-top: var(--space-6);
+  }
+
   .story-word { font-size: var(--text-3xl); }
 }

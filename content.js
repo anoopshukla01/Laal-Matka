@@ -69,37 +69,37 @@ export const ASSETS = {
     w: 600, h: 900,
   },
   artToTable: [
-    { stage: "ART", path: "images/story-art.jpg", label: "ART STAGE — Miniature Painting & Heritage Wall Art", w: 800, h: 600 },
-    { stage: "CRAFT", path: "images/potter-craft.jpg", label: "CRAFT STAGE — Master Potter Shaping Earthen Clay", w: 800, h: 600 },
-    { stage: "FIRE", path: "images/woodfire-kiln.jpg", label: "FIRE STAGE — Slow Kiln Baking & Woodfire Tandoor", w: 800, h: 600 },
-    { stage: "FLAVOUR", path: "images/laal-maas.jpg", label: "FLAVOUR STAGE — Stone-Ground Mathania Chillies & Spices", w: 800, h: 600 },
-    { stage: "TABLE", path: "images/dal-baati.jpg", label: "TABLE STAGE — Feast Plated on Royal Dining Table", w: 800, h: 600 },
+    { stage: "ART", path: "images/real-att-art.jpg", label: "ART STAGE — Miniature Painting & Heritage Wall Art", w: 800, h: 600 },
+    { stage: "CRAFT", path: "images/real-att-craft.jpg", label: "CRAFT STAGE — Master Potter Shaping Earthen Clay", w: 800, h: 600 },
+    { stage: "FIRE", path: "images/real-att-fire.jpg", label: "FIRE STAGE — Slow Kiln Baking & Woodfire Tandoor", w: 800, h: 600 },
+    { stage: "FLAVOUR", path: "images/real-att-flavour.jpg", label: "FLAVOUR STAGE — Stone-Ground Mathania Chillies & Spices", w: 800, h: 600 },
+    { stage: "TABLE", path: "images/real-att-table.jpg", label: "TABLE STAGE — Feast Plated on Royal Dining Table", w: 800, h: 600 },
   ],
   experience: [
-    { slot: "experience-1", path: "images/haveli-courtyard.jpg", label: "CAFÉ EXTERIOR — 800×600px", w: 800, h: 600 },
-    { slot: "experience-2", path: "images/story-art.jpg", label: "CAFÉ INTERIOR — 800×600px", w: 800, h: 600 },
-    { slot: "experience-3", path: "images/woodfire-kiln.jpg", label: "SEATING AREA — 800×600px", w: 800, h: 600 },
-    { slot: "experience-4", path: "images/dal-baati.jpg", label: "SIGNATURE FOOD — 800×600px", w: 800, h: 600 },
-    { slot: "experience-5", path: "images/matka-chai.jpg", label: "DRINKS / CHAI — 800×600px", w: 800, h: 600 },
-    { slot: "experience-6", path: "images/royal-dessert.jpg", label: "PEOPLE / AMBIENCE — 800×600px", w: 800, h: 600 },
+    { slot: "experience-1", path: "images/real-experience-1.jpg", label: "CAFÉ EXTERIOR — 800×600px", w: 800, h: 600 },
+    { slot: "experience-2", path: "images/real-experience-2.jpg", label: "CAFÉ INTERIOR — 800×600px", w: 800, h: 600 },
+    { slot: "experience-3", path: "images/real-experience-3.jpg", label: "SEATING AREA — 800×600px", w: 800, h: 600 },
+    { slot: "experience-4", path: "images/real-experience-4.jpg", label: "SIGNATURE FOOD — 800×600px", w: 800, h: 600 },
+    { slot: "experience-5", path: "images/real-experience-5.jpg", label: "DRINKS / CHAI — 800×600px", w: 800, h: 600 },
+    { slot: "experience-6", path: "images/real-experience-6.jpg", label: "PEOPLE / AMBIENCE — 800×600px", w: 800, h: 600 },
   ],
   gallery: [
-    { slot: "gallery-1", path: "images/story-art.jpg", label: "Folk Art Detail — Miniature Painting Mural", w: 800, h: 1000 },
-    { slot: "gallery-2", path: "images/haveli-courtyard.jpg", label: "Courtyard Dining & Haveli Architecture", w: 1200, h: 800 },
-    { slot: "gallery-3", path: "images/potter-craft.jpg", label: "Master Potter Shaping Desert Matka", w: 600, h: 600 },
-    { slot: "gallery-4", path: "images/dal-baati.jpg", label: "Dal Baati Churma Royal Feast", w: 800, h: 1000 },
-    { slot: "gallery-5", path: "images/matka-chai.jpg", label: "Signature Saffron Matka Chai Poured in Kulhad", w: 1200, h: 800 },
-    { slot: "gallery-6", path: "images/raj-kachori.jpg", label: "Loaded Shahi Raj Kachori", w: 600, h: 600 },
-    { slot: "gallery-7", path: "images/woodfire-kiln.jpg", label: "Woodfire Kiln & Clay Baking", w: 800, h: 1000 },
-    { slot: "gallery-8", path: "images/laal-maas.jpg", label: "Simmering Mathania Laal Maas", w: 1200, h: 800 },
-    { slot: "gallery-9", path: "images/royal-dessert.jpg", label: "Royal Ghevar with Rabri & Rose Petals", w: 600, h: 600 },
+    { slot: "gallery-1", path: "images/real-gallery-1.jpg", label: "Folk Art Detail — Miniature Painting Mural", w: 800, h: 1000 },
+    { slot: "gallery-2", path: "images/real-gallery-2.jpg", label: "Courtyard Dining & Haveli Architecture", w: 1200, h: 800 },
+    { slot: "gallery-3", path: "images/real-gallery-3.jpg", label: "Master Potter Shaping Desert Matka", w: 600, h: 600 },
+    { slot: "gallery-4", path: "images/real-gallery-4.jpg", label: "Dal Baati Churma Royal Feast", w: 800, h: 1000 },
+    { slot: "gallery-5", path: "images/real-experience-5.jpg", label: "Signature Saffron Matka Chai Poured in Kulhad", w: 1200, h: 800 },
+    { slot: "gallery-6", path: "images/real-gallery-6.jpg", label: "Loaded Shahi Raj Kachori", w: 600, h: 600 },
+    { slot: "gallery-7", path: "images/real-gallery-7.jpg", label: "Woodfire Kiln & Clay Baking", w: 800, h: 1000 },
+    { slot: "gallery-8", path: "images/real-gallery-8.jpg", label: "Simmering Mathania Laal Maas", w: 1200, h: 800 },
+    { slot: "gallery-9", path: "images/real-gallery-9.jpg", label: "Royal Ghevar with Rabri & Rose Petals", w: 600, h: 600 },
   ],
   dishes: {
     0: {
       0: { path: "images/dal-baati.jpg", label: "Dal Baati Churma" },
       1: { path: "images/laal-maas.jpg", label: "Laal Maas" },
-      2: { path: "images/crop_dal-baati.jpg", label: "Gatte ki Sabzi" },
-      3: { path: "images/story-art.jpg", label: "Ker Sangri" },
+      2: { path: "images/gatte-ki-sabzi.jpg", label: "Gatte ki Sabzi" },
+      3: { path: "images/ker-sangri.jpg", label: "Ker Sangri" },
       4: { path: "images/laal-maas.jpg", label: "Safed Maas" }
     },
     1: {
@@ -113,10 +113,9 @@ export const ASSETS = {
       2: { path: "images/artisan-coffee.jpg", label: "Cold Brew" }
     },
     3: {
-      0: { path: "images/raj-kachori.jpg", label: "Raj Kachori" },
-      1: { path: "images/crop_raj-kachori.jpg", label: "Dahi Bada" },
-      2: { path: "images/pyaaz-kachori.jpg", label: "Mirchi Vada" },
-      3: { path: "images/crop_raj-kachori.jpg", label: "Samosa Chaat" }
+      0: { path: "images/raj-kachori.jpg", label: "Loaded Shahi Raj Kachori" },
+      1: { path: "images/pyaaz-kachori.jpg", label: "Jodhpuri Pyaaz Kachori" },
+      2: { path: "images/raj-kachori.jpg", label: "Mirchi Vada" }
     },
     4: {
       0: { path: "images/laal-maas.jpg", label: "Laal Maas" },

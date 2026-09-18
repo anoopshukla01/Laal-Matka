@@ -41,7 +41,7 @@ export const SLOTS_METADATA = [
     desc: 'Rajasthani miniature artwork / hand-painted courtyard mural.',
     specs: '600×800px • 3:4 Portrait',
     fitDefault: 'cover',
-    defaultImage: 'images/story-art.jpg',
+    defaultImage: 'images/real-story-illustration.jpg',
     keywords: ['story', 'mural', 'painting', 'heritage', 'miniature', 'art', 'jaipur']
   },
 
@@ -54,7 +54,7 @@ export const SLOTS_METADATA = [
     desc: 'Intricate Rajasthani miniature painting, patterns, and pigments.',
     specs: '800×600px • 4:3 Landscape',
     fitDefault: 'cover',
-    defaultImage: 'images/story-art.jpg',
+    defaultImage: 'images/real-att-art.jpg',
     keywords: ['stage1', 'art', 'miniature', 'painting', 'fresco', 'brush', 'color']
   },
   {
@@ -65,7 +65,7 @@ export const SLOTS_METADATA = [
     desc: "Master potter's hands spinning and shaping raw terracotta clay.",
     specs: '800×600px • 4:3 Landscape',
     fitDefault: 'cover',
-    defaultImage: 'images/potter-craft.jpg',
+    defaultImage: 'images/real-att-craft.jpg',
     keywords: ['stage2', 'craft', 'potter', 'wheel', 'hands', 'clay', 'shaping']
   },
   {
@@ -76,7 +76,7 @@ export const SLOTS_METADATA = [
     desc: 'Glowing woodfire kiln, tandoor coals, and baking flames.',
     specs: '800×600px • 4:3 Landscape',
     fitDefault: 'cover',
-    defaultImage: 'images/woodfire-kiln.jpg',
+    defaultImage: 'images/real-att-fire.jpg',
     keywords: ['stage3', 'fire', 'kiln', 'flame', 'tandoor', 'baking', 'coal', 'ember']
   },
   {
@@ -87,7 +87,7 @@ export const SLOTS_METADATA = [
     desc: 'Vibrant whole Mathania chillies, saffron, cloves, and ground masala.',
     specs: '800×600px • 4:3 Landscape',
     fitDefault: 'cover',
-    defaultImage: 'images/laal-maas.jpg',
+    defaultImage: 'images/real-att-flavour.jpg',
     keywords: ['stage4', 'flavour', 'flavor', 'spice', 'chilli', 'masala', 'saffron', 'ingredients']
   },
   {
@@ -98,7 +98,7 @@ export const SLOTS_METADATA = [
     desc: 'Steaming royal feast served on rustic brass thali or earthenware.',
     specs: '800×600px • 4:3 Landscape',
     fitDefault: 'cover',
-    defaultImage: 'images/dal-baati.jpg',
+    defaultImage: 'images/real-att-table.jpg',
     keywords: ['stage5', 'table', 'thali', 'feast', 'plated', 'served', 'meal', 'dalbaati']
   },
 
@@ -179,7 +179,7 @@ export const SLOTS_METADATA = [
     desc: 'Exterior courtyard view, ornate jharokhas, and welcoming entrance.',
     specs: '800×600px (or 16:9) • Landscape',
     fitDefault: 'cover',
-    defaultImage: 'images/haveli-courtyard.jpg',
+    defaultImage: 'images/real-experience-1.jpg',
     keywords: ['exterior', 'facade', 'gate', 'entrance', 'building', 'courtyard', 'outside']
   },
   {
@@ -190,7 +190,7 @@ export const SLOTS_METADATA = [
     desc: 'Heritage courtyard with center fountain and heritage archways.',
     specs: '800×600px • 4:3 Landscape',
     fitDefault: 'cover',
-    defaultImage: 'images/story-art.jpg',
+    defaultImage: 'images/real-experience-2.jpg',
     keywords: ['interior', 'courtyard', 'fountain', 'archway', 'haveli']
   },
   {
@@ -201,7 +201,7 @@ export const SLOTS_METADATA = [
     desc: 'Low baithak seating with colourful bolsters and vintage lanterns.',
     specs: '800×600px • 4:3 Landscape',
     fitDefault: 'cover',
-    defaultImage: 'images/woodfire-kiln.jpg',
+    defaultImage: 'images/real-experience-3.jpg',
     keywords: ['seating', 'baithak', 'cushions', 'fresco', 'decor', 'table']
   },
   {
@@ -212,7 +212,7 @@ export const SLOTS_METADATA = [
     desc: 'Chef cooking over open fire, hot baati fresh out of coals.',
     specs: '800×600px • 4:3 Landscape',
     fitDefault: 'cover',
-    defaultImage: 'images/dal-baati.jpg',
+    defaultImage: 'images/real-experience-4.jpg',
     keywords: ['tandoor', 'cooking', 'chef', 'signature', 'food', 'hot']
   },
   {
@@ -223,7 +223,7 @@ export const SLOTS_METADATA = [
     desc: 'Clay matka chai brewed with cardamom and saffron.',
     specs: '800×600px • 4:3 Landscape',
     fitDefault: 'cover',
-    defaultImage: 'images/matka-chai.jpg',
+    defaultImage: 'images/real-experience-5.jpg',
     keywords: ['chai', 'tea', 'kulhad', 'matka-chai', 'drinks', 'beverage']
   },
   {
@@ -234,7 +234,7 @@ export const SLOTS_METADATA = [
     desc: 'Nighttime twilight glow, flickering fanoos lanterns, and happy diners.',
     specs: '800×600px • 4:3 Landscape',
     fitDefault: 'cover',
-    defaultImage: 'images/royal-dessert.jpg',
+    defaultImage: 'images/real-experience-6.jpg',
     keywords: ['evening', 'lantern', 'night', 'ambience', 'people', 'guests', 'glow']
   },
 
@@ -247,7 +247,7 @@ export const SLOTS_METADATA = [
     desc: 'Close-up of intricate hand-painted Rajasthani art patterns.',
     specs: '800×1000px • Portrait',
     fitDefault: 'cover',
-    defaultImage: 'images/story-art.jpg',
+    defaultImage: 'images/real-gallery-1.jpg',
     keywords: ['gal1', 'pattern', 'detail', 'mural', 'mandana', 'folk']
   },
   {
@@ -258,7 +258,7 @@ export const SLOTS_METADATA = [
     desc: 'Wide panoramic view of dining hall with arched corridors.',
     specs: '1200×800px • Wide Landscape',
     fitDefault: 'cover',
-    defaultImage: 'images/haveli-courtyard.jpg',
+    defaultImage: 'images/real-gallery-2.jpg',
     keywords: ['gal2', 'wide', 'interior', 'dining', 'hall', 'room']
   },
   {
@@ -269,7 +269,7 @@ export const SLOTS_METADATA = [
     desc: 'Artistic close-up of clay pots and earthenware textures.',
     specs: '600×600px • Square',
     fitDefault: 'cover',
-    defaultImage: 'images/potter-craft.jpg',
+    defaultImage: 'images/real-gallery-3.jpg',
     keywords: ['gal3', 'pottery', 'macro', 'texture', 'earthenware']
   },
   {
@@ -280,7 +280,7 @@ export const SLOTS_METADATA = [
     desc: 'Overhead royal Rajasthani thali spread with katoris.',
     specs: '800×1000px • Portrait',
     fitDefault: 'cover',
-    defaultImage: 'images/dal-baati.jpg',
+    defaultImage: 'images/real-gallery-4.jpg',
     keywords: ['gal4', 'thali', 'plating', 'dish', 'laalmaas', 'dalbaati']
   },
   {
@@ -291,7 +291,7 @@ export const SLOTS_METADATA = [
     desc: 'Chai pouring ceremony into traditional terracotta cups.',
     specs: '1200×800px • Landscape',
     fitDefault: 'cover',
-    defaultImage: 'images/matka-chai.jpg',
+    defaultImage: 'images/real-experience-5.jpg',
     keywords: ['gal5', 'pour', 'cutting', 'tea', 'steam', 'action']
   },
   {
@@ -302,7 +302,7 @@ export const SLOTS_METADATA = [
     desc: 'Traditional carved wooden window overlooking courtyard.',
     specs: '600×600px • Square',
     fitDefault: 'cover',
-    defaultImage: 'images/raj-kachori.jpg',
+    defaultImage: 'images/real-gallery-6.jpg',
     keywords: ['gal6', 'jharokha', 'window', 'carving', 'woodwork']
   },
   {
@@ -313,7 +313,7 @@ export const SLOTS_METADATA = [
     desc: 'Baskets of red chillies and fragrant whole spices.',
     specs: '800×1000px • Portrait',
     fitDefault: 'cover',
-    defaultImage: 'images/woodfire-kiln.jpg',
+    defaultImage: 'images/real-gallery-7.jpg',
     keywords: ['gal7', 'bazaar', 'market', 'spices', 'chillies', 'red']
   },
   {
@@ -324,7 +324,7 @@ export const SLOTS_METADATA = [
     desc: 'Rooftop view of Jaipur illuminated at sunset.',
     specs: '1200×800px • Landscape',
     fitDefault: 'cover',
-    defaultImage: 'images/laal-maas.jpg',
+    defaultImage: 'images/real-gallery-8.jpg',
     keywords: ['gal8', 'rooftop', 'sunset', 'view', 'skyline', 'evening']
   },
   {
@@ -335,7 +335,7 @@ export const SLOTS_METADATA = [
     desc: 'Warm candle and lantern reflections on clay pottery.',
     specs: '600×600px • Square',
     fitDefault: 'cover',
-    defaultImage: 'images/royal-dessert.jpg',
+    defaultImage: 'images/real-gallery-9.jpg',
     keywords: ['gal9', 'night', 'candle', 'lantern', 'atmosphere', 'shadows']
   }
 ];

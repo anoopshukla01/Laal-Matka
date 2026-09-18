@@ -100,7 +100,10 @@ export function initMatka() {
     const targetCard = cards[revealedCount];
     if (targetCard) {
       targetCard.classList.add('is-drawn', 'is-newest');
-      trigger.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      // On desktop, keep matka pot in view; on phone, let natural flow prevail
+      if (window.innerWidth > 768) {
+        trigger.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
     }
 
     revealedCount++;
@@ -108,22 +111,30 @@ export function initMatka() {
   }
 
   /**
-   * Frame-1 Trigger Handler (supports click & touch)
+   * Frame-1 Trigger Handler (prevents ghost double-firing on phones)
    */
+  let lastTouchTime = 0;
   function handleTrigger(e) {
     if (e) {
-      e.preventDefault();
+      if (e.type === 'touchend') {
+        lastTouchTime = Date.now();
+      } else if (e.type === 'click') {
+        if (Date.now() - lastTouchTime < 600) {
+          // Ignore synthetic click right after touchend
+          return;
+        }
+      }
       e.stopPropagation();
     }
     if (isAnimating) return;
     isAnimating = true;
-    setTimeout(() => { isAnimating = false; }, 220);
+    setTimeout(() => { isAnimating = false; }, 350);
 
     drawNextPage();
   }
 
   trigger.addEventListener('click', handleTrigger);
-  trigger.addEventListener('touchend', handleTrigger, { passive: false });
+  trigger.addEventListener('touchend', handleTrigger, { passive: true });
 
   statusPill?.addEventListener('click', handleTrigger);
 

@@ -286,7 +286,14 @@ p {
   position: fixed;
   bottom: 24px;
   right: 24px;
-  z-index: 999;
+  z-index: 500;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+body.nav-mobile-open .floating-asset-btn-wrap {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 }
 
 .floating-asset-btn {
@@ -324,10 +331,15 @@ p {
   font-size: 1.1rem;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
+  .floating-asset-btn-wrap {
+    bottom: 16px;
+    right: 16px;
+  }
   .floating-asset-btn {
     padding: 8px 14px;
-    font-size: 0.7rem;
+    font-size: 0.72rem;
+    gap: 6px;
   }
 }
 

@@ -165,6 +165,6 @@
   --z-content:   10;
   --z-overlay:   50;
   --z-character: 60;
-  --z-nav:       100;
-  --z-lightbox:  200;
+  --z-nav:       1000;
+  --z-lightbox:  2000;
 }
