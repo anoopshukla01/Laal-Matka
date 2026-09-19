@@ -925,6 +925,76 @@
               <span class="particle p7">🌸</span>
             </div>
 
+            <!-- Majestic Animated Hindi "पधारो" Calligraphy inside the Gate -->
+            <div class="courtyard-padharo-container" id="courtyard-padharo-container" aria-label="पधारो — Padharo Welcome Greeting">
+              <div class="padharo-shimmer-halo" aria-hidden="true"></div>
+              
+              <svg class="padharo-calligraphy-svg" viewBox="0 0 540 220" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <!-- Royal Gold Gradient -->
+                  <linearGradient id="padharoGold" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#FFF8E7"/>
+                    <stop offset="25%" stop-color="#F5A623"/>
+                    <stop offset="65%" stop-color="#F39C12"/>
+                    <stop offset="100%" stop-color="#D35400"/>
+                  </linearGradient>
+
+                  <!-- Warm Golden Glow Filter -->
+                  <filter id="padharoGlow" x="-30%" y="-30%" width="160%" height="160%">
+                    <feGaussianBlur stdDeviation="6" result="blur"/>
+                    <feMerge>
+                      <feMergeNode in="blur"/>
+                      <feMergeNode in="blur"/>
+                      <feMergeNode in="SourceGraphic"/>
+                    </feMerge>
+                  </filter>
+                  
+                  <filter id="sparkGlow" x="-50%" y="-50%" width="200%" height="200%">
+                    <feGaussianBlur stdDeviation="3" result="blur"/>
+                    <feMerge>
+                      <feMergeNode in="blur"/>
+                      <feMergeNode in="SourceGraphic"/>
+                    </feMerge>
+                  </filter>
+                </defs>
+
+                <!-- Left & Right Royal Filigree Flourishes -->
+                <g class="padharo-flourish-group">
+                  <path d="M 65 115 Q 95 102 125 115" stroke="url(#padharoGold)" stroke-width="2" fill="none" stroke-linecap="round"/>
+                  <circle cx="60" cy="115" r="3" fill="#F5A623"/>
+                  <circle cx="130" cy="115" r="2.5" fill="#F5A623"/>
+
+                  <path d="M 475 115 Q 445 102 415 115" stroke="url(#padharoGold)" stroke-width="2" fill="none" stroke-linecap="round"/>
+                  <circle cx="480" cy="115" r="3" fill="#F5A623"/>
+                  <circle cx="410" cy="115" r="2.5" fill="#F5A623"/>
+                </g>
+
+                <!-- 1. Ambient Glow Underlay -->
+                <text x="270" y="125" class="padharo-glow-layer" text-anchor="middle" filter="url(#padharoGlow)">पधारो</text>
+
+                <!-- 2. Handwriting Stroke Outline (draws out stroke by stroke) -->
+                <text x="270" y="125" class="padharo-stroke-draw" text-anchor="middle">पधारो</text>
+
+                <!-- 3. Final Royal Gold Fill with Metallic Gradient & Shimmer -->
+                <text x="270" y="125" class="padharo-fill-layer" text-anchor="middle">पधारो</text>
+
+                <!-- Sub-label: PADHARO MHARE GHAR -->
+                <text x="270" y="162" class="padharo-subtext" text-anchor="middle">PADHARO MHARE GHAR</text>
+
+                <!-- Traveling Golden Light Quill Spark -->
+                <circle cx="0" cy="0" r="5" class="padharo-spark-pen" filter="url(#sparkGlow)" fill="#FFF9E6"/>
+              </svg>
+
+              <!-- Floating Sparkles around the calligraphy -->
+              <div class="padharo-sparks" aria-hidden="true">
+                <span class="pspark ps1">✨</span>
+                <span class="pspark ps2">✦</span>
+                <span class="pspark ps3">✨</span>
+                <span class="pspark ps4">✦</span>
+                <span class="pspark ps5">✨</span>
+              </div>
+            </div>
+
             <!-- Central courtyard fountain -->
             <div class="courtyard-fountain">
               <div class="fountain-jet"></div>

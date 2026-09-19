@@ -370,13 +370,24 @@ export function initDoorway() {
         if (entry.isIntersecting) {
           setTimeout(() => {
             doorway.classList.add('door-open');
-          }, 600);
+          }, 400);
           doorObserver.unobserve(doorway);
         }
       });
     },
-    { threshold: 0.4 }
+    { threshold: 0.25 }
   );
 
   doorObserver.observe(doorway);
+
+  // Allow clicking/tapping the gate to replay the royal calligraphy animation
+  doorway.addEventListener('click', () => {
+    doorway.classList.add('door-open');
+    const container = document.getElementById('courtyard-padharo-container');
+    if (container) {
+      container.classList.remove('replay-anim');
+      void container.offsetWidth; // force reflow
+      container.classList.add('replay-anim');
+    }
+  });
 }
