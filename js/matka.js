@@ -12,6 +12,19 @@
  */
 
 import { MENU_CATEGORIES } from '../content.js';
+import { saveAsset, getSyncAssets } from './storage.js';
+
+const DEFAULT_MENU_PAGE_IMAGES = [
+  'images/menu-page-1.jpg',
+  'images/menu-page-4.jpg',
+  'images/menu-page-3.jpg',
+  'images/menu-page-3.jpg',
+  'images/menu-page-4.jpg',
+  'images/menu-page-1.jpg',
+  'images/menu-page-1.jpg',
+  'images/menu-page-4.jpg',
+  'images/menu-page-2.jpg'
+];
 
 export function initMatka() {
   const matkaSection    = document.getElementById('matka');
@@ -26,22 +39,235 @@ export function initMatka() {
   const replayBtn       = document.getElementById('matka-replay-btn');
 
   // Modal Elements
-  const modal           = document.getElementById('matka-page-modal');
-  const modalBackdrop   = document.getElementById('modal-backdrop');
-  const modalCloseBtn   = document.getElementById('modal-close-btn');
-  const modalBadge      = document.getElementById('modal-folio-badge');
-  const modalTitle      = document.getElementById('modal-folio-title');
-  const modalDesc       = document.getElementById('modal-folio-desc');
-  const modalDishes     = document.getElementById('modal-folio-dishes');
-  const modalToMenuBtn  = document.getElementById('modal-to-menu-btn');
+  const modal               = document.getElementById('matka-page-modal');
+  const modalBackdrop       = document.getElementById('modal-backdrop');
+  const modalCloseBtn       = document.getElementById('modal-close-btn');
+  const modalBadge          = document.getElementById('modal-folio-badge');
+  const modalTitle          = document.getElementById('modal-folio-title');
+  const modalDesc           = document.getElementById('modal-folio-desc');
+  const modalPagePills      = document.getElementById('modal-page-nav-pills');
+  const modalPageImg        = document.getElementById('modal-menu-page-img');
+  const modalUploadPageNum  = document.getElementById('modal-upload-page-num');
+  const modalFileInput      = document.getElementById('modal-page-file-input');
+  const modalDropzone       = document.getElementById('modal-page-dropzone');
+  const modalZoomBtn        = document.getElementById('modal-zoom-btn');
+  const modalPrevPageBtn    = document.getElementById('modal-prev-page-btn');
+  const modalNextPageBtn    = document.getElementById('modal-next-page-btn');
+  const modalPageCounter    = document.getElementById('modal-page-counter');
+  const modalToMenuBtn      = document.getElementById('modal-to-menu-btn');
+
+  // Lightbox Elements
+  const zoomLightbox        = document.getElementById('menu-zoom-lightbox');
+  const zoomLightboxImg     = document.getElementById('menu-zoom-img');
+  const zoomLightboxClose   = document.getElementById('menu-zoom-close');
 
   if (!matkaSection || !stage || !trigger) return;
 
-  let revealedCount = 0; // Starts with 0 revealed, draws on tap as in original design
+  let revealedCount = 0; // Starts with 0 revealed, draws on tap
   let activeModalCategoryIndex = 0;
   let isAnimating = false;
 
-  const totalPages = cards.length; // 6
+  const totalPages = cards.length; // 9 cards
+
+  /**
+   * Helper: Get current active image for page index
+   */
+  function getPageImageSrc(pageIndex) {
+    const slotKey = `menu-${pageIndex + 1}`;
+    const syncAssets = getSyncAssets();
+    if (syncAssets[slotKey]?.dataUrl) {
+      return syncAssets[slotKey].dataUrl;
+    }
+    return DEFAULT_MENU_PAGE_IMAGES[pageIndex] || 'images/menu-page-1.jpg';
+  }
+
+  /**
+   * Render Page Pills (01 to 09)
+   */
+  function renderPagePills() {
+    if (!modalPagePills) return;
+    modalPagePills.innerHTML = '';
+    for (let i = 0; i < totalPages; i++) {
+      const pill = document.createElement('button');
+      pill.type = 'button';
+      pill.className = `modal-page-pill ${i === activeModalCategoryIndex ? 'is-active' : ''}`;
+      pill.setAttribute('data-page-index', i);
+      const numStr = i + 1 < 10 ? `0${i + 1}` : `${i + 1}`;
+      pill.textContent = numStr;
+      pill.title = `Switch to Page ${numStr}: ${MENU_CATEGORIES[i]?.name || ''}`;
+      pill.addEventListener('click', (e) => {
+        e.stopPropagation();
+        updateModalPage(i);
+      });
+      modalPagePills.appendChild(pill);
+    }
+  }
+
+  /**
+   * Update Modal View to Specified Category Index
+   */
+  function updateModalPage(catIndex) {
+    if (catIndex < 0) catIndex = totalPages - 1;
+    if (catIndex >= totalPages) catIndex = 0;
+    activeModalCategoryIndex = catIndex;
+
+    const cat = MENU_CATEGORIES[catIndex];
+    if (!cat) return;
+
+    const pageNum = catIndex + 1 < 10 ? `0${catIndex + 1}` : `${catIndex + 1}`;
+    if (modalBadge) modalBadge.textContent = `PAGE ${pageNum} • ${cat.name.toUpperCase()}`;
+    if (modalTitle) modalTitle.textContent = cat.name;
+    if (modalDesc) modalDesc.textContent = cat.desc;
+    if (modalUploadPageNum) modalUploadPageNum.textContent = pageNum;
+    if (modalPageCounter) modalPageCounter.textContent = `Page ${catIndex + 1} of ${totalPages}`;
+
+    const imgSrc = getPageImageSrc(catIndex);
+    if (modalPageImg) {
+      modalPageImg.src = imgSrc;
+      modalPageImg.alt = `${cat.name} — Menu Page ${pageNum}`;
+    }
+
+    // Update Pills Active State
+    modalPagePills?.querySelectorAll('.modal-page-pill').forEach((pill, idx) => {
+      pill.classList.toggle('is-active', idx === catIndex);
+    });
+  }
+
+  /**
+   * Handle File Upload (FileReader + saveAsset sync)
+   */
+  async function handlePageFileUpload(file) {
+    if (!file || !file.type.startsWith('image/')) {
+      alert('Please choose a valid image file (JPG, PNG, WEBP).');
+      return;
+    }
+    const slotKey = `menu-${activeModalCategoryIndex + 1}`;
+    const reader = new FileReader();
+
+    reader.onload = async (e) => {
+      const dataUrl = e.target.result;
+      try {
+        // Immediate local preview in modal
+        if (modalPageImg) modalPageImg.src = dataUrl;
+
+        // Immediate update on homepage card
+        const cardDishImg = document.getElementById(`menu-dish-img-${activeModalCategoryIndex + 1}`);
+        if (cardDishImg) cardDishImg.src = dataUrl;
+
+        // Persist to IndexedDB and LocalStorage
+        await saveAsset(slotKey, dataUrl, {
+          fileName: file.name,
+          fileSize: file.size,
+          fit: 'contain'
+        });
+
+        // Visual feedback
+        if (modalUploadPageNum) {
+          const originalText = modalUploadPageNum.textContent;
+          modalUploadPageNum.textContent = '✓ Saved!';
+          setTimeout(() => {
+            modalUploadPageNum.textContent = originalText;
+          }, 1800);
+        }
+      } catch (err) {
+        console.error('Failed to save menu page image:', err);
+      }
+    };
+    reader.readAsDataURL(file);
+  }
+
+  // File input change handler
+  modalFileInput?.addEventListener('change', (e) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      handlePageFileUpload(file);
+      modalFileInput.value = '';
+    }
+  });
+
+  // Drag and drop handlers on modalDropzone
+  if (modalDropzone) {
+    ['dragenter', 'dragover'].forEach(evt => {
+      modalDropzone.addEventListener(evt, (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        modalDropzone.classList.add('is-dragover');
+      });
+    });
+
+    ['dragleave', 'drop'].forEach(evt => {
+      modalDropzone.addEventListener(evt, (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        modalDropzone.classList.remove('is-dragover');
+      });
+    });
+
+    modalDropzone.addEventListener('drop', (e) => {
+      const file = e.dataTransfer?.files?.[0];
+      if (file) {
+        handlePageFileUpload(file);
+      }
+    });
+  }
+
+  // Navigation Prev / Next
+  modalPrevPageBtn?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    updateModalPage(activeModalCategoryIndex - 1);
+  });
+
+  modalNextPageBtn?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    updateModalPage(activeModalCategoryIndex + 1);
+  });
+
+  // Fullscreen Zoom Lightbox
+  function openZoomLightbox() {
+    if (!zoomLightbox || !modalPageImg) return;
+    if (zoomLightboxImg) {
+      zoomLightboxImg.src = modalPageImg.src;
+      zoomLightboxImg.alt = modalPageImg.alt;
+    }
+    if (typeof zoomLightbox.showModal === 'function') {
+      try {
+        zoomLightbox.showModal();
+      } catch (_) {
+        zoomLightbox.setAttribute('open', '');
+      }
+    } else {
+      zoomLightbox.setAttribute('open', '');
+    }
+  }
+
+  function closeZoomLightbox() {
+    if (!zoomLightbox) return;
+    if (typeof zoomLightbox.close === 'function') {
+      try {
+        zoomLightbox.close();
+      } catch (_) {
+        zoomLightbox.removeAttribute('open');
+      }
+    } else {
+      zoomLightbox.removeAttribute('open');
+    }
+  }
+
+  modalZoomBtn?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    openZoomLightbox();
+  });
+
+  zoomLightboxClose?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    closeZoomLightbox();
+  });
+
+  zoomLightbox?.addEventListener('click', (e) => {
+    if (e.target === zoomLightbox) {
+      closeZoomLightbox();
+    }
+  });
 
   /**
    * Updates status badge & tap cue text
@@ -58,96 +284,74 @@ export function initMatka() {
       stage.classList.add('has-drawn');
     } else {
       if (statusText) statusText.textContent = `✨ ALL ${totalPages} COURSES REVEALED • TAP ANY CARD TO EXPAND`;
-      if (cueText) cueText.textContent = 'ALL COURSES REVEALED • TAP TO EXPAND';
+      if (cueText) cueText.textContent = 'EXPLORE ANY COURSE';
       stage.classList.add('has-drawn');
-      stage.setAttribute('data-state', 'settled');
+      stage.setAttribute('data-state', 'complete');
     }
   }
 
-  // Initial call to set status text
-  updateStatusUI();
-
   /**
-   * Draws out the next menu page from the matka
+   * Emergence animation for a single card.
    */
-  function drawNextPage() {
-    if (revealedCount >= totalPages) {
-      // If all are already out, smoothly pulse the cards to invite clicking
-      cards.forEach(c => {
-        c.style.animation = 'none';
-        void c.offsetWidth;
-        c.style.animation = 'matkaPageSummon 0.45s ease';
-      });
+  function revealNextCard() {
+    if (revealedCount >= totalPages || isAnimating) return;
+    isAnimating = true;
+
+    cards.forEach(c => c.classList.remove('is-newest'));
+
+    const cardToReveal = cards[revealedCount];
+    if (!cardToReveal) {
+      isAnimating = false;
       return;
     }
 
-    // 1. Tactile squash on the matka
-    stage.classList.add('is-squashing');
-    setTimeout(() => stage.classList.remove('is-squashing'), 200);
-
-    // 2. Surge steam from the mouth
-    if (steamContainer) {
-      steamContainer.classList.remove('is-surging');
-      void steamContainer.offsetWidth; // force reflow
-      steamContainer.classList.add('is-surging');
-      setTimeout(() => steamContainer.classList.remove('is-surging'), 1600);
-    }
-
-    // 3. Mark previous newest card as settled
-    cards.forEach(c => c.classList.remove('is-newest'));
-
-    // 4. Reveal current card with 3D emergence
-    const targetCard = cards[revealedCount];
-    if (targetCard) {
-      targetCard.classList.add('is-drawn', 'is-newest');
-      // On desktop, keep matka pot in view; on phone, let natural flow prevail
-      if (window.innerWidth > 768) {
-        trigger.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      }
-    }
-
+    cardToReveal.classList.add('is-drawn', 'is-newest');
     revealedCount++;
     updateStatusUI();
+
+    triggerSteamBurst();
+
+    trigger.classList.add('is-tapped');
+    setTimeout(() => {
+      trigger.classList.remove('is-tapped');
+      isAnimating = false;
+    }, 450);
   }
 
   /**
-   * Frame-1 Trigger Handler (prevents ghost double-firing on phones)
+   * Steam burst effect triggered when a card emerges from the pot
    */
-  let lastTouchTime = 0;
-  function handleTrigger(e) {
-    if (e) {
-      if (e.type === 'touchend') {
-        lastTouchTime = Date.now();
-      } else if (e.type === 'click') {
-        if (Date.now() - lastTouchTime < 600) {
-          // Ignore synthetic click right after touchend
-          return;
-        }
-      }
-      e.stopPropagation();
-    }
-    if (isAnimating) return;
-    isAnimating = true;
-    setTimeout(() => { isAnimating = false; }, 350);
-
-    drawNextPage();
+  function triggerSteamBurst() {
+    if (!steamContainer) return;
+    steamContainer.classList.remove('surge');
+    void steamContainer.offsetWidth; // Force reflow
+    steamContainer.classList.add('surge');
+    setTimeout(() => {
+      steamContainer.classList.remove('surge');
+    }, 1200);
   }
 
-  trigger.addEventListener('click', handleTrigger);
-  trigger.addEventListener('touchend', handleTrigger, { passive: true });
+  // Click & Touch listener on the handcrafted Matka
+  trigger.addEventListener('click', (e) => {
+    e.preventDefault();
+    revealNextCard();
+  });
 
-  statusPill?.addEventListener('click', handleTrigger);
+  // Accessible keyboard controls (Enter or Space to draw)
+  trigger.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      revealNextCard();
+    }
+  });
 
-  // Reveal All Pages shortcut
+  // Reveal All shortcut action
   revealAllBtn?.addEventListener('click', (e) => {
     e.stopPropagation();
-    let delay = 0;
-    while (revealedCount < totalPages) {
-      setTimeout(() => {
-        drawNextPage();
-      }, delay);
-      delay += 160;
-    }
+    cards.forEach(c => c.classList.add('is-drawn'));
+    revealedCount = totalPages;
+    updateStatusUI();
+    triggerSteamBurst();
   });
 
   // Replay / Reset action
@@ -162,43 +366,9 @@ export function initMatka() {
    * Expand Page Modal Logic
    */
   function openPageModal(catIndex) {
-    activeModalCategoryIndex = catIndex;
-    const cat = MENU_CATEGORIES[catIndex];
-    if (!cat || !modal) return;
-
-    const pageNum = catIndex + 1 < 10 ? `0${catIndex + 1}` : `${catIndex + 1}`;
-    if (modalBadge) modalBadge.textContent = `PAGE ${pageNum} • ${cat.name.toUpperCase()}`;
-    if (modalTitle) modalTitle.textContent = cat.name;
-    if (modalDesc) modalDesc.textContent = cat.desc;
-
-    const renderPrice = (priceStr) => {
-      if (!priceStr) return '';
-      if (priceStr.includes('•')) {
-        const parts = priceStr.split('•').map(p => p.trim());
-        return `<div class="modal-price-chips">${parts.map(p => `<span class="price-chip">${p}</span>`).join('')}</div>`;
-      }
-      return `<span class="modal-dish-price">${priceStr}</span>`;
-    };
-
-    // Render full dishes with pricing, descriptions, and tags
-    if (modalDishes) {
-      modalDishes.innerHTML = (cat.items || []).map(dish => `
-        <article class="modal-dish-row">
-          <div class="modal-dish-head">
-            <div class="modal-dish-name-wrap">
-              <span class="dish-veg-tag ${dish.veg ? 'veg' : 'nonveg'}" title="${dish.veg ? 'Vegetarian' : 'Non-Vegetarian'}"></span>
-              <h4 class="modal-dish-name">${dish.name}</h4>
-            </div>
-            ${renderPrice(dish.price)}
-          </div>
-          <p class="modal-dish-desc">${dish.desc}</p>
-          <div class="modal-dish-tags">
-            ${(dish.tags || []).map(tag => `<span class="modal-dish-tag">${tag}</span>`).join('')}
-          </div>
-        </article>
-      `).join('');
-    }
-
+    if (!modal) return;
+    renderPagePills();
+    updateModalPage(catIndex);
     modal.classList.add('is-open');
     modal.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
@@ -211,7 +381,7 @@ export function initMatka() {
     document.body.style.overflow = '';
   }
 
-  // Bind Card Click -> Expand Page
+  // Bind Card Click -> Expand Page Modal
   cards.forEach((card, i) => {
     card.addEventListener('click', (e) => {
       e.preventDefault();
@@ -232,8 +402,12 @@ export function initMatka() {
   modalBackdrop?.addEventListener('click', closePageModal);
 
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modal?.classList.contains('is-open')) {
-      closePageModal();
+    if (e.key === 'Escape') {
+      if (zoomLightbox?.hasAttribute('open')) {
+        closeZoomLightbox();
+      } else if (modal?.classList.contains('is-open')) {
+        closePageModal();
+      }
     }
   });
 
