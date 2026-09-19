@@ -24,12 +24,15 @@ export const ALIAS_MAP = {
   'att-table': ['att-table', 'att-5', 'stage-5', 'table-stage'],
 
   // Matka Emerging Menu Course Cards
-  'menu-1': ['menu-1', 'rajasthani-specials', 'dal-baati', 'menu-dish-1', 'dish-dal-baati', 'course-1', 'rajasthani-specials-0'],
-  'menu-2': ['menu-2', 'matka-chai', 'drinks', 'menu-dish-2', 'dish-matka-chai', 'course-2', 'matka-chai-&-drinks-0', 'matka-chai-drinks-0'],
-  'menu-3': ['menu-3', 'artisan-coffee', 'coffee', 'menu-dish-3', 'dish-artisan-coffee', 'course-3', 'artisan-coffee-0'],
-  'menu-4': ['menu-4', 'chaat', 'raj-kachori', 'menu-dish-4', 'dish-raj-kachori', 'course-4', 'chaat-&-small-plates-0', 'chaat-small-plates-0'],
-  'menu-5': ['menu-5', 'main-course', 'laal-maas', 'menu-dish-5', 'dish-laal-maas', 'course-5', 'main-course-0'],
-  'menu-6': ['menu-6', 'royal-desserts', 'royal-dessert', 'ghevar', 'menu-dish-6', 'dish-royal-dessert', 'course-6', 'royal-desserts-0'],
+  'menu-1': ['menu-1', 'veg-starters', 'starter', 'starters', 'menu-dish-1', 'course-1'],
+  'menu-2': ['menu-2', 'non-veg-starters', 'tandoori', 'chicken-tikka', 'menu-dish-2', 'course-2'],
+  'menu-3': ['menu-3', 'veg-main-course', 'daal-makhani', 'paneer', 'menu-dish-3', 'course-3'],
+  'menu-4': ['menu-4', 'mushroom-specials', 'mushroom', 'menu-dish-4', 'course-4'],
+  'menu-5': ['menu-5', 'chicken-main-course', 'butter-chicken', 'menu-dish-5', 'course-5'],
+  'menu-6': ['menu-6', 'mutton-main-course', 'mutton', 'laal-maas', 'menu-dish-6', 'course-6'],
+  'menu-7': ['menu-7', 'anda-curry', 'egg-curry', 'menu-dish-7', 'course-7'],
+  'menu-8': ['menu-8', 'dum-biryani', 'biryani', 'menu-dish-8', 'course-8'],
+  'menu-9': ['menu-9', 'shakes-coffee-desserts', 'shakes', 'desserts', 'coffee', 'menu-dish-9', 'course-9'],
 
   // Haveli Café Experience
   'experience-1': ['experience-1', 'exp-1', 'cafe-exterior', 'exterior'],
@@ -207,11 +210,13 @@ export function applyDirectAsset(slot, item) {
   });
 
   // Direct specific hooks
-  for (let i = 1; i <= 6; i++) {
+  for (let i = 1; i <= 9; i++) {
     if (allKeys.includes(`menu-${i}`)) {
       const cardImg = document.getElementById(`menu-dish-img-${i}`);
       if (cardImg) applyAssetToElement(cardImg, item);
     }
+  }
+  for (let i = 1; i <= 6; i++) {
     if (allKeys.includes(`experience-${i}`)) {
       const expEl = document.querySelector(`.experience-photo[data-slot="experience-${i}"]`);
       if (expEl) applyAssetToElement(expEl, item);
@@ -279,8 +284,8 @@ export async function injectCustomAssets() {
       }
     });
 
-    // 2. Direct bindings for 6 Menu Emerging Cards by ID
-    for (let i = 1; i <= 6; i++) {
+    // 2. Direct bindings for 9 Menu Emerging Cards by ID
+    for (let i = 1; i <= 9; i++) {
       const cardImg = document.getElementById(`menu-dish-img-${i}`);
       if (cardImg) {
         const item = findAssetForSlot(`menu-${i}`, assets);

@@ -102,72 +102,105 @@ export const SLOTS_METADATA = [
     keywords: ['stage5', 'table', 'thali', 'feast', 'plated', 'served', 'meal', 'dalbaati']
   },
 
-  // ── 4. Matka Menu Courses (6 Emerging Dishes) ──────────────────
+  // ── 4. Matka Menu Courses (9 Emerging Dishes) ──────────────────
   {
     id: 'menu-1',
     section: 'menu',
     sectionName: 'Matka Menu Courses',
-    name: 'Course 01: Rajasthani Specials (Dal Baati)',
-    desc: 'Golden crisp baatis, panchmel dal, churma and royal curries.',
+    name: 'Course 01: Veg Starters',
+    desc: 'Crisp pakauras, tender tikkas & clay-fired kebabs.',
     specs: '800×600px • 4:3 or Card',
     fitDefault: 'cover',
-    defaultImage: 'images/dal-baati.jpg',
-    keywords: ['dalbaati', 'dal-baati', 'baati', 'churma', 'specials', 'course1', 'menu1', 'menu-1']
+    defaultImage: 'images/raj-kachori.jpg',
+    keywords: ['veg-starter', 'starter', 'starters', 'kabab', 'tikka', 'pakauda', 'paneer-tikka', 'menu1', 'menu-1']
   },
   {
     id: 'menu-2',
     section: 'menu',
     sectionName: 'Matka Menu Courses',
-    name: 'Course 02: Matka Chai & Drinks',
-    desc: 'Terracotta kulhad saffron tea, kahwa, shikanji and thandai.',
+    name: 'Course 02: Non-Veg Starters',
+    desc: 'Charcoal tandoori chicken, chicken malai tikka & seekh kebabs.',
     specs: '800×600px • 4:3 or Card',
     fitDefault: 'cover',
-    defaultImage: 'images/matka-chai.jpg',
-    keywords: ['chai', 'matka-chai', 'kulhad', 'tea', 'kahwa', 'shikanji', 'thandai', 'course2', 'menu2', 'menu-2']
+    defaultImage: 'images/test_card1.jpg',
+    keywords: ['nonveg-starter', 'tandoori', 'chicken-tikka', 'seekh', 'galouti', 'tandoor', 'menu2', 'menu-2']
   },
   {
     id: 'menu-3',
     section: 'menu',
     sectionName: 'Matka Menu Courses',
-    name: 'Course 03: Artisan Coffee',
-    desc: 'Single-origin filter coffee, cardamom latte and slow cold brew.',
+    name: 'Course 03: Veg Main Course',
+    desc: 'Slow-cooked lentils, shahi paneer, daal makhani & rich gravies.',
     specs: '800×600px • 4:3 or Card',
     fitDefault: 'cover',
-    defaultImage: 'images/artisan-coffee.jpg',
-    keywords: ['coffee', 'artisan-coffee', 'latte', 'espresso', 'coldbrew', 'course3', 'menu3', 'menu-3']
+    defaultImage: 'images/gatte-ki-sabzi.jpg',
+    keywords: ['veg-main', 'paneer', 'daal', 'daal-makhani', 'shahi-paneer', 'curry', 'menu3', 'menu-3']
   },
   {
     id: 'menu-4',
     section: 'menu',
     sectionName: 'Matka Menu Courses',
-    name: 'Course 04: Chaat & Small Plates',
-    desc: 'Crispy Raj Kachori loaded with dahi, chutneys, sprouts and sev.',
+    name: 'Course 04: Mushroom Specials',
+    desc: 'Fresh button mushrooms in rich do pyaza, kadhai & earthen masala gravies.',
     specs: '800×600px • 4:3 or Card',
     fitDefault: 'cover',
-    defaultImage: 'images/raj-kachori.jpg',
-    keywords: ['chaat', 'raj-kachori', 'pyaaz-kachori', 'kachori', 'bada', 'course4', 'menu4', 'menu-4']
+    defaultImage: 'images/ker-sangri.jpg',
+    keywords: ['mushroom', 'mushroom-masala', 'kadhai-mushroom', 'earthen', 'menu4', 'menu-4']
   },
   {
     id: 'menu-5',
     section: 'menu',
     sectionName: 'Matka Menu Courses',
-    name: 'Course 05: Main Course (Laal Maas)',
-    desc: 'Handi simmering Mathania red chilli curries and heritage recipes.',
+    name: 'Course 05: Chicken Main Course',
+    desc: 'Butter chicken, handi chicken, kadhai chicken & slow-cooked gravies.',
     specs: '800×600px • 4:3 or Card',
     fitDefault: 'cover',
     defaultImage: 'images/laal-maas.jpg',
-    keywords: ['laalmaas', 'laal-maas', 'curry', 'mutton', 'paneer', 'main', 'course5', 'menu5', 'menu-5']
+    keywords: ['chicken', 'butter-chicken', 'handi-chicken', 'chicken-curry', 'menu5', 'menu-5']
   },
   {
     id: 'menu-6',
     section: 'menu',
     sectionName: 'Matka Menu Courses',
-    name: 'Course 06: Royal Desserts (Ghevar)',
-    desc: 'Honeycomb Ghevar drenched in rabri, rose petals and dry fruits.',
+    name: 'Course 06: Mutton Main Course',
+    desc: 'Laal Matka special mutton, slow-braised bhuna gosht & rogan josh.',
+    specs: '800×600px • 4:3 or Card',
+    fitDefault: 'cover',
+    defaultImage: 'images/real-experience-4.jpg',
+    keywords: ['mutton', 'gosht', 'rogan-josh', 'laal-matka-mutton', 'laalmaas', 'menu6', 'menu-6']
+  },
+  {
+    id: 'menu-7',
+    section: 'menu',
+    sectionName: 'Matka Menu Courses',
+    name: 'Course 07: Anda Curry',
+    desc: 'Golden fried eggs in rustic gravy, egg bhurji & skillet masala omelettes.',
+    specs: '800×600px • 4:3 or Card',
+    fitDefault: 'cover',
+    defaultImage: 'images/pyaaz-kachori.jpg',
+    keywords: ['anda', 'egg', 'anda-curry', 'egg-curry', 'bhurji', 'omelet', 'menu7', 'menu-7']
+  },
+  {
+    id: 'menu-8',
+    section: 'menu',
+    sectionName: 'Matka Menu Courses',
+    name: 'Course 08: Dum Biryani',
+    desc: 'Aged basmati rice dum-cooked with saffron, mutton, chicken & spices.',
+    specs: '800×600px • 4:3 or Card',
+    fitDefault: 'cover',
+    defaultImage: 'images/royal-thaali.jpg',
+    keywords: ['biryani', 'dum-biryani', 'chicken-biryani', 'mutton-biryani', 'rice', 'menu8', 'menu-8']
+  },
+  {
+    id: 'menu-9',
+    section: 'menu',
+    sectionName: 'Matka Menu Courses',
+    name: 'Course 09: Shakes, Coffee & Desserts',
+    desc: 'Thick milkshakes, cold brews, hot coffee, gulab jamun & rasmalai.',
     specs: '800×600px • 4:3 or Card',
     fitDefault: 'cover',
     defaultImage: 'images/royal-dessert.jpg',
-    keywords: ['dessert', 'desserts', 'royal-dessert', 'ghevar', 'rabri', 'malpua', 'kulfi', 'sweet', 'course6', 'menu6', 'menu-6']
+    keywords: ['shake', 'shakes', 'coffee', 'cold-coffee', 'dessert', 'gulab-jamun', 'rasmalai', 'sweet', 'menu9', 'menu-9']
   },
 
   // ── 4. Haveli Café Experience ──────────────────────────────────

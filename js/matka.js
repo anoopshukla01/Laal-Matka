@@ -166,9 +166,19 @@ export function initMatka() {
     const cat = MENU_CATEGORIES[catIndex];
     if (!cat || !modal) return;
 
-    if (modalBadge) modalBadge.textContent = `PAGE 0${catIndex + 1} • ${cat.name.toUpperCase()}`;
+    const pageNum = catIndex + 1 < 10 ? `0${catIndex + 1}` : `${catIndex + 1}`;
+    if (modalBadge) modalBadge.textContent = `PAGE ${pageNum} • ${cat.name.toUpperCase()}`;
     if (modalTitle) modalTitle.textContent = cat.name;
     if (modalDesc) modalDesc.textContent = cat.desc;
+
+    const renderPrice = (priceStr) => {
+      if (!priceStr) return '';
+      if (priceStr.includes('•')) {
+        const parts = priceStr.split('•').map(p => p.trim());
+        return `<div class="modal-price-chips">${parts.map(p => `<span class="price-chip">${p}</span>`).join('')}</div>`;
+      }
+      return `<span class="modal-dish-price">${priceStr}</span>`;
+    };
 
     // Render full dishes with pricing, descriptions, and tags
     if (modalDishes) {
@@ -179,7 +189,7 @@ export function initMatka() {
               <span class="dish-veg-tag ${dish.veg ? 'veg' : 'nonveg'}" title="${dish.veg ? 'Vegetarian' : 'Non-Vegetarian'}"></span>
               <h4 class="modal-dish-name">${dish.name}</h4>
             </div>
-            <span class="modal-dish-price">${dish.price}</span>
+            ${renderPrice(dish.price)}
           </div>
           <p class="modal-dish-desc">${dish.desc}</p>
           <div class="modal-dish-tags">
