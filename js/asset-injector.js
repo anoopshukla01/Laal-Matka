@@ -5,7 +5,7 @@
  * non-destructive DOM updates, and live BroadcastChannel sync.
  */
 
-import { getAllAssets, getSyncAssets, removeAsset } from './storage.js';
+import { getAllAssets, getSyncAssets, removeAsset, getContentOverrides } from './storage.js';
 
 // Comprehensive slot alias mappings so varying names resolve cleanly without collisions
 export const ALIAS_MAP = {
@@ -354,15 +354,105 @@ export async function injectCustomAssets() {
   }
 }
 
+/**
+ * Injects administrative content text overrides across live site
+ */
+export function injectContentOverrides() {
+  const overrides = getContentOverrides();
+  if (!overrides || Object.keys(overrides).length === 0) return;
+
+  // Hero Section
+  if (overrides.greeting) {
+    const el = document.getElementById('hero-greeting');
+    if (el) el.textContent = overrides.greeting;
+  }
+  if (overrides.subtitle) {
+    const el = document.querySelector('.hero-subtitle');
+    if (el) el.textContent = overrides.subtitle;
+  }
+  if (overrides.tagline) {
+    const el = document.querySelector('.hero-tagline');
+    if (el) el.textContent = `"${overrides.tagline.replace(/^"+|"+$/g, '')}"`;
+  }
+
+  // Visit / Contact Section
+  if (overrides.address) {
+    const el = document.getElementById('visit-address');
+    if (el) el.textContent = overrides.address;
+  }
+  if (overrides.phone) {
+    const el = document.getElementById('visit-phone');
+    if (el) {
+      el.textContent = overrides.phone;
+      el.href = `tel:${overrides.phone.replace(/[^0-9+]/g, '')}`;
+    }
+  }
+  if (overrides.email) {
+    const el = document.getElementById('visit-email');
+    if (el) {
+      el.textContent = overrides.email;
+      el.href = `mailto:${overrides.email.trim()}`;
+    }
+  }
+  if (overrides.whatsapp) {
+    document.querySelectorAll('.js-reserve-btn').forEach(btn => {
+      btn.href = overrides.whatsapp;
+    });
+  }
+  if (overrides.directions_url) {
+    const el = document.getElementById('visit-directions-btn');
+    if (el) el.href = overrides.directions_url;
+  }
+  if (overrides.map_embed_url) {
+    const el = document.getElementById('map-iframe');
+    if (el) el.src = overrides.map_embed_url;
+  }
+  if (overrides.hours) {
+    const el = document.getElementById('hours-table');
+    if (el) {
+      el.innerHTML = `
+        <div class="hours-row">
+          <span class="hours-day">Monday – Sunday</span>
+          <span class="hours-time">${overrides.hours}</span>
+        </div>
+      `;
+    }
+  }
+
+  // Social Links
+  if (overrides.instagram_url) {
+    document.querySelectorAll('.js-instagram-link').forEach(a => a.href = overrides.instagram_url);
+  }
+  if (overrides.facebook_url) {
+    document.querySelectorAll('.js-facebook-link').forEach(a => a.href = overrides.facebook_url);
+  }
+
+  // Story texts
+  if (overrides.story_title) {
+    const el = document.querySelector('.story-headline');
+    if (el) el.textContent = overrides.story_title;
+  }
+  if (overrides.story_lead) {
+    const el = document.querySelector('.story-lead');
+    if (el) el.textContent = overrides.story_lead;
+  }
+  if (overrides.story_quote) {
+    const el = document.querySelector('.story-pullquote blockquote');
+    if (el) el.textContent = `"${overrides.story_quote.replace(/^"+|"+$/g, '')}"`;
+  }
+}
+
 // ── Live Instant Sync Across Tabs ──────────────────────────────────
 try {
   if (typeof BroadcastChannel !== 'undefined') {
     const channel = new BroadcastChannel('laal_matka_asset_sync');
     channel.onmessage = (event) => {
-      console.log('[Laal Matka] Real-time asset sync event received:', event.data);
       const { type, slot, item } = event.data || {};
       if (type === 'asset-updated' && slot && item) {
         applyDirectAsset(slot, item);
+      }
+      if (type === 'content-field-updated' || type === 'content-all-updated' || type === 'content-all-cleared') {
+        injectContentOverrides();
       }
       injectCustomAssets();
     };
@@ -370,22 +460,27 @@ try {
 
   window.addEventListener('storage', (e) => {
     if (e.key === 'laal_matka_assets_v1') {
-      console.log('[Laal Matka] Storage update detected, re-injecting assets...');
       immediateSyncInject();
       injectCustomAssets();
+    }
+    if (e.key === 'laal_matka_content_overrides_v1') {
+      injectContentOverrides();
     }
   });
 } catch (_) {}
 
 // Immediate execution
 immediateSyncInject();
+injectContentOverrides();
 
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', () => {
     immediateSyncInject();
+    injectContentOverrides();
     injectCustomAssets();
   });
 } else {
   immediateSyncInject();
+  injectContentOverrides();
   injectCustomAssets();
 }

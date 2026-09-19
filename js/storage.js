@@ -303,3 +303,107 @@ export async function clearAllAssets() {
 
   return true;
 }
+
+// ─────────────────────────────────────────────
+// CONTENT TEXT OVERRIDES (CMS)
+// ─────────────────────────────────────────────
+const LS_CONTENT_KEY = 'laal_matka_content_overrides_v1';
+
+/**
+ * Get all content text overrides synchronously
+ */
+export function getContentOverrides() {
+  try {
+    const raw = localStorage.getItem(LS_CONTENT_KEY);
+    return raw ? JSON.parse(raw) : {};
+  } catch (_) {
+    return {};
+  }
+}
+
+/**
+ * Save a single content override field
+ */
+export function saveContentOverride(key, value) {
+  try {
+    const current = getContentOverrides();
+    current[key] = value;
+    localStorage.setItem(LS_CONTENT_KEY, JSON.stringify(current));
+    syncChannel?.postMessage({ type: 'content-field-updated', key, value, all: current });
+    return current;
+  } catch (err) {
+    console.error('[storage] Failed to save content override:', err);
+    return null;
+  }
+}
+
+/**
+ * Save all content overrides at once
+ */
+export function saveAllContentOverrides(map) {
+  try {
+    localStorage.setItem(LS_CONTENT_KEY, JSON.stringify(map));
+    syncChannel?.postMessage({ type: 'content-all-updated', all: map });
+    return map;
+  } catch (err) {
+    console.error('[storage] Failed to save all content overrides:', err);
+    return null;
+  }
+}
+
+/**
+ * Clear all content text overrides
+ */
+export function clearAllContentOverrides() {
+  try {
+    localStorage.removeItem(LS_CONTENT_KEY);
+    syncChannel?.postMessage({ type: 'content-all-cleared' });
+    return true;
+  } catch (_) {
+    return false;
+  }
+}
+
+/**
+ * Export full site backup (Assets + Content Text)
+ */
+export async function exportFullSiteBackup() {
+  const assets = await getAllAssets();
+  const content = getContentOverrides();
+  return {
+    version: 1,
+    exportedAt: new Date().toISOString(),
+    site: 'LAAL MATKA RESTAURANT GORAKHPUR',
+    assets,
+    content
+  };
+}
+
+/**
+ * Import full site backup
+ */
+export async function importFullSiteBackup(data) {
+  if (!data || typeof data !== 'object') {
+    throw new Error('Invalid backup data format');
+  }
+
+  // Restore content text overrides
+  if (data.content && typeof data.content === 'object') {
+    saveAllContentOverrides(data.content);
+  }
+
+  // Restore assets
+  if (data.assets && typeof data.assets === 'object') {
+    for (const [slot, item] of Object.entries(data.assets)) {
+      if (item && item.dataUrl) {
+        await saveAsset(slot, item.dataUrl, {
+          fileName: item.fileName || `${slot}.jpg`,
+          fileSize: item.fileSize || 0,
+          fit: item.fit || 'cover'
+        });
+      }
+    }
+  }
+
+  return true;
+}

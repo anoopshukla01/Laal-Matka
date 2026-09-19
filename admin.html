@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin &amp; Content Management Studio — LAAL MATKA</title>
+  <meta name="robots" content="noindex, nofollow" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Yatra+One&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/admin.css" />
+</head>
+
+<body class="admin-body">
+  <!-- ═══════════════════════════════════════════════════════════
+       1. AUTHENTICATION / LOGIN GATEWAY OVERLAY
+       ═══════════════════════════════════════════════════════════ -->
+  <div class="admin-login-overlay" id="admin-login-overlay">
+    <div class="admin-login-box">
+      <div class="admin-login-brand">
+        <div class="admin-brand-emblem">🏺</div>
+        <h1 class="admin-brand-title">LAAL <span>मटका</span></h1>
+        <p class="admin-brand-tagline">Management &amp; Content Studio</p>
+      </div>
+
+      <form id="admin-login-form">
+        <div class="admin-form-group">
+          <label for="admin-user-input">Administrator ID</label>
+          <div class="admin-input-wrap">
+            <input type="text" id="admin-user-input" class="admin-input" value="admin" required autocomplete="username" />
+          </div>
+        </div>
+
+        <div class="admin-form-group">
+          <label for="admin-pass-input">Passcode / Key</label>
+          <div class="admin-input-wrap">
+            <input type="password" id="admin-pass-input" class="admin-input" placeholder="Enter password" required autocomplete="current-password" autofocus />
+            <button type="button" class="admin-input-btn-icon" id="btn-toggle-pass" title="Show / Hide Passcode">👁️</button>
+          </div>
+        </div>
+
+        <div class="admin-login-feedback" id="admin-login-feedback"></div>
+
+        <button type="submit" class="admin-btn admin-btn-full" id="btn-login-submit">
+          <span>Sign In to Admin Studio</span>
+          <span>→</span>
+        </button>
+
+        <p class="admin-hint-text">
+          Default passcode: <code style="color: var(--admin-gold); background: rgba(0,0,0,0.4); padding: 2px 6px; border-radius: 4px;">laalmatka2026</code>
+        </p>
+      </form>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       2. TOP NAVIGATION HEADER
+       ═══════════════════════════════════════════════════════════ -->
+  <header class="admin-header">
+    <div class="admin-header-inner">
+      <div class="admin-nav-brand">
+        <div class="admin-nav-logo">LAAL <span>मटका</span></div>
+        <span class="admin-badge">Admin Studio</span>
+      </div>
+
+      <div class="admin-header-actions">
+        <button type="button" class="admin-btn admin-btn-secondary" id="btn-export-backup" title="Export complete backup of all texts and uploaded images">
+          <span>📦 Export Backup</span>
+        </button>
+
+        <label for="admin-backup-file-input" class="admin-btn admin-btn-secondary" title="Restore texts &amp; images from JSON backup" style="cursor: pointer;">
+          <span>📥 Import Backup</span>
+        </label>
+        <input type="file" id="admin-backup-file-input" accept=".json" style="display: none;" />
+
+        <a href="index.html" target="_blank" class="admin-btn admin-btn-secondary" title="View live website in a new tab">
+          <span>👁️ Live Site ↗</span>
+        </a>
+
+        <button type="button" class="admin-btn admin-btn-danger" id="btn-logout" title="Sign out of Admin Studio">
+          <span>🚪 Logout</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       3. MAIN CMS WORKSPACE
+       ═══════════════════════════════════════════════════════════ -->
+  <main class="admin-main">
+    <!-- Sidebar Navigation -->
+    <aside class="admin-sidebar">
+      <nav class="admin-tab-nav" aria-label="CMS Sections">
+        <button type="button" class="admin-tab-btn is-active" data-target="panel-menu">
+          <span class="admin-tab-icon">📜</span>
+          <span>Menu Pages (01–09)</span>
+        </button>
+
+        <button type="button" class="admin-tab-btn" data-target="panel-hero">
+          <span class="admin-tab-icon">🌟</span>
+          <span>Hero &amp; Identity</span>
+        </button>
+
+        <button type="button" class="admin-tab-btn" data-target="panel-story">
+          <span class="admin-tab-icon">🏺</span>
+          <span>Our Story &amp; Heritage</span>
+        </button>
+
+        <button type="button" class="admin-tab-btn" data-target="panel-craft">
+          <span class="admin-tab-icon">🎨</span>
+          <span>Our Craft (5 Stages)</span>
+        </button>
+
+        <button type="button" class="admin-tab-btn" data-target="panel-experience">
+          <span class="admin-tab-icon">🏛️</span>
+          <span>Café Experience (6 Spots)</span>
+        </button>
+
+        <button type="button" class="admin-tab-btn" data-target="panel-gallery">
+          <span class="admin-tab-icon">🖼️</span>
+          <span>Folk Gallery (9 Photos)</span>
+        </button>
+
+        <button type="button" class="admin-tab-btn" data-target="panel-reviews">
+          <span class="admin-tab-icon">⭐</span>
+          <span>Customer Reviews</span>
+        </button>
+
+        <button type="button" class="admin-tab-btn" data-target="panel-contact">
+          <span class="admin-tab-icon">📍</span>
+          <span>Location &amp; Hours</span>
+        </button>
+
+        <button type="button" class="admin-tab-btn" data-target="panel-security">
+          <span class="admin-tab-icon">🔒</span>
+          <span>Admin Security</span>
+        </button>
+      </nav>
+    </aside>
+
+    <!-- Content Panels Container -->
+    <section class="admin-content-area">
+      <!-- ── Panel 1: Menu Pages (01 to 09) ──────────────────── -->
+      <div class="admin-panel is-active" id="panel-menu">
+        <div class="admin-panel-header">
+          <div>
+            <h2 class="admin-panel-title">Menu Pages Management (01 to 09)</h2>
+            <p class="admin-panel-desc">Click any thumbnail or drop a photo to replace the menu page scan on the website. Text and titles update live.</p>
+          </div>
+        </div>
+
+        <div class="admin-cards-grid" id="menu-cards-grid">
+          <!-- Populated by admin.js -->
+        </div>
+      </div>
+
+      <!-- ── Panel 2: Hero & Identity ────────────────────────── -->
+      <div class="admin-panel" id="panel-hero">
+        <div class="admin-panel-header">
+          <div>
+            <h2 class="admin-panel-title">Hero Section &amp; Brand Identity</h2>
+            <p class="admin-panel-desc">Customize café headlines, welcome greetings, and character mascots.</p>
+          </div>
+          <button type="button" class="admin-btn js-save-text-btn" data-section="hero">
+            <span>💾 Save Hero Texts</span>
+          </button>
+        </div>
+
+        <div class="admin-cards-grid">
+          <div class="admin-card">
+            <div class="admin-card-header">
+              <h3 class="admin-card-title">Brand Text Copy</h3>
+              <span class="admin-card-badge">Public Copy</span>
+            </div>
+            <div class="admin-card-body">
+              <div class="admin-field">
+                <label for="input-hero-greeting">Welcome Greeting</label>
+                <input type="text" id="input-hero-greeting" class="admin-input" data-key="greeting" />
+              </div>
+              <div class="admin-field">
+                <label for="input-hero-subtitle">Subtitle / Category</label>
+                <input type="text" id="input-hero-subtitle" class="admin-input" data-key="subtitle" />
+              </div>
+              <div class="admin-field">
+                <label for="input-hero-tagline">Main Tagline</label>
+                <textarea id="input-hero-tagline" class="admin-input admin-textarea" data-key="tagline"></textarea>
+              </div>
+              <div class="admin-field">
+                <label for="input-closing-line">Closing Farewell (Footer)</label>
+                <input type="text" id="input-closing-line" class="admin-input" data-key="closing_line" />
+              </div>
+            </div>
+          </div>
+
+          <div class="admin-card">
+            <div class="admin-card-header">
+              <h3 class="admin-card-title">Closing Mascot Illustration</h3>
+              <span class="admin-card-badge">Namaste Greeting</span>
+            </div>
+            <div class="admin-card-body">
+              <div class="admin-thumb-box js-asset-dropzone" data-slot="closing-character" title="Click or drop photo to replace closing mascot">
+                <img src="images/closing-character.jpg" alt="Closing Mascot" class="admin-thumb-img" id="thumb-closing-character" />
+                <div class="admin-thumb-overlay">
+                  <span class="admin-thumb-icon">📷</span>
+                  <span class="admin-thumb-text">Replace Mascot Photo</span>
+                </div>
+                <input type="file" accept="image/*" class="js-card-file-input" style="display: none;" />
+              </div>
+              <p class="admin-panel-desc">Shown in the closing "Padharo Mhare Ghar" section with folded hands.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Panel 3: Our Story & Heritage ────────────────────── -->
+      <div class="admin-panel" id="panel-story">
+        <div class="admin-panel-header">
+          <div>
+            <h2 class="admin-panel-title">Our Story &amp; Heritage</h2>
+            <p class="admin-panel-desc">Manage the narrative of Gorakhpur's authentic Matka dining.</p>
+          </div>
+          <button type="button" class="admin-btn js-save-text-btn" data-section="story">
+            <span>💾 Save Story Texts</span>
+          </button>
+        </div>
+
+        <div class="admin-cards-grid">
+          <div class="admin-card" style="grid-column: 1 / -1;">
+            <div class="admin-card-header">
+              <h3 class="admin-card-title">Narrative Content</h3>
+            </div>
+            <div class="admin-card-body">
+              <div class="admin-field">
+                <label for="input-story-title">Story Headline</label>
+                <input type="text" id="input-story-title" class="admin-input" data-key="story_title" />
+              </div>
+              <div class="admin-field">
+                <label for="input-story-lead">Lead Sentence</label>
+                <textarea id="input-story-lead" class="admin-input admin-textarea" data-key="story_lead"></textarea>
+              </div>
+              <div class="admin-field">
+                <label for="input-story-quote">Pullquote / Philosophy</label>
+                <input type="text" id="input-story-quote" class="admin-input" data-key="story_quote" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Panel 4: Our Craft (5 Stages) ───────────────────── -->
+      <div class="admin-panel" id="panel-craft">
+        <div class="admin-panel-header">
+          <div>
+            <h2 class="admin-panel-title">From Art to Table (5 Stages)</h2>
+            <p class="admin-panel-desc">Upload photos and adjust descriptions for each stage of the Matka journey.</p>
+          </div>
+        </div>
+
+        <div class="admin-cards-grid" id="craft-cards-grid">
+          <!-- Populated by admin.js -->
+        </div>
+      </div>
+
+      <!-- ── Panel 5: Café Experience (6 Spots) ───────────────── -->
+      <div class="admin-panel" id="panel-experience">
+        <div class="admin-panel-header">
+          <div>
+            <h2 class="admin-panel-title">Haveli Café Experience (6 Spots)</h2>
+            <p class="admin-panel-desc">Manage the photos representing the ambiance, architecture, and dining courtyard.</p>
+          </div>
+        </div>
+
+        <div class="admin-cards-grid" id="experience-cards-grid">
+          <!-- Populated by admin.js -->
+        </div>
+      </div>
+
+      <!-- ── Panel 6: Folk Gallery (9 Photos) ────────────────── -->
+      <div class="admin-panel" id="panel-gallery">
+        <div class="admin-panel-header">
+          <div>
+            <h2 class="admin-panel-title">Folk Gallery (9 Photos)</h2>
+            <p class="admin-panel-desc">Curate the asymmetric visual feast gallery on the live website.</p>
+          </div>
+        </div>
+
+        <div class="admin-cards-grid" id="gallery-cards-grid">
+          <!-- Populated by admin.js -->
+        </div>
+      </div>
+
+      <!-- ── Panel 7: Customer Reviews ───────────────────────── -->
+      <div class="admin-panel" id="panel-reviews">
+        <div class="admin-panel-header">
+          <div>
+            <h2 class="admin-panel-title">Customer Reviews &amp; Testimonials</h2>
+            <p class="admin-panel-desc">Manage genuine reviews, ratings, and owner responses.</p>
+          </div>
+          <button type="button" class="admin-btn" id="btn-add-review">
+            <span>+ Add Review</span>
+          </button>
+        </div>
+
+        <div class="admin-reviews-list" id="reviews-container">
+          <!-- Populated by admin.js -->
+        </div>
+      </div>
+
+      <!-- ── Panel 8: Location, Hours & WhatsApp ──────────────── -->
+      <div class="admin-panel" id="panel-contact">
+        <div class="admin-panel-header">
+          <div>
+            <h2 class="admin-panel-title">Location, Hours &amp; Reservation Link</h2>
+            <p class="admin-panel-desc">Update contact information, business hours, and reservation links.</p>
+          </div>
+          <button type="button" class="admin-btn js-save-text-btn" data-section="contact">
+            <span>💾 Save Contact Details</span>
+          </button>
+        </div>
+
+        <div class="admin-cards-grid">
+          <div class="admin-card" style="grid-column: 1 / -1;">
+            <div class="admin-card-header">
+              <h3 class="admin-card-title">Contact &amp; Location Details</h3>
+            </div>
+            <div class="admin-card-body" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.25rem;">
+              <div class="admin-field">
+                <label for="input-address">Address</label>
+                <textarea id="input-address" class="admin-input admin-textarea" data-key="address"></textarea>
+              </div>
+
+              <div class="admin-field">
+                <label for="input-phone">Phone Number</label>
+                <input type="text" id="input-phone" class="admin-input" data-key="phone" />
+              </div>
+
+              <div class="admin-field">
+                <label for="input-email">Email Address</label>
+                <input type="email" id="input-email" class="admin-input" data-key="email" />
+              </div>
+
+              <div class="admin-field">
+                <label for="input-whatsapp">WhatsApp Reservation Link</label>
+                <input type="url" id="input-whatsapp" class="admin-input" data-key="whatsapp" />
+              </div>
+
+              <div class="admin-field">
+                <label for="input-hours">Opening Hours</label>
+                <input type="text" id="input-hours" class="admin-input" data-key="hours" placeholder="11:00 AM – 11:00 PM" />
+              </div>
+
+              <div class="admin-field">
+                <label for="input-directions-url">Google Maps Navigation Link</label>
+                <input type="url" id="input-directions-url" class="admin-input" data-key="directions_url" />
+              </div>
+
+              <div class="admin-field" style="grid-column: 1 / -1;">
+                <label for="input-map-embed-url">Google Maps Embed URL (iframe src)</label>
+                <input type="url" id="input-map-embed-url" class="admin-input" data-key="map_embed_url" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Panel 9: Security & Passcode ────────────────────── -->
+      <div class="admin-panel" id="panel-security">
+        <div class="admin-panel-header">
+          <div>
+            <h2 class="admin-panel-title">Admin Passcode &amp; Safeguards</h2>
+            <p class="admin-panel-desc">Change the passcode required to access this portal.</p>
+          </div>
+        </div>
+
+        <div class="admin-cards-grid">
+          <div class="admin-card">
+            <div class="admin-card-header">
+              <h3 class="admin-card-title">Change Admin Passcode</h3>
+            </div>
+            <div class="admin-card-body">
+              <form id="form-change-pass">
+                <div class="admin-field" style="margin-bottom: 1rem;">
+                  <label for="input-new-pass">New Passcode</label>
+                  <input type="password" id="input-new-pass" class="admin-input" placeholder="Enter new passcode" required />
+                </div>
+                <div class="admin-field" style="margin-bottom: 1.25rem;">
+                  <label for="input-confirm-pass">Confirm Passcode</label>
+                  <input type="password" id="input-confirm-pass" class="admin-input" placeholder="Repeat new passcode" required />
+                </div>
+                <button type="submit" class="admin-btn">Update Passcode</button>
+              </form>
+            </div>
+          </div>
+
+          <div class="admin-card">
+            <div class="admin-card-header">
+              <h3 class="admin-card-title">Factory Reset Safeguard</h3>
+            </div>
+            <div class="admin-card-body">
+              <p class="admin-panel-desc" style="margin-bottom: 1rem;">
+                Revert all custom uploaded photos, menu pages, and text overrides back to default website content.
+              </p>
+              <button type="button" class="admin-btn admin-btn-danger" id="btn-factory-reset">
+                ⚠️ Reset All Content to Defaults
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Toast Container -->
+  <div class="admin-toast-container" id="admin-toast-container"></div>
+
+  <!-- Scripts -->
+  <script type="module" src="js/admin.js"></script>
+</body>
+</html>

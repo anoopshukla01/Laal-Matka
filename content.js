@@ -407,6 +407,5 @@ export const NAV_LINKS = [
   { label: "Gallery", href: "#gallery" },
   { label: "Reviews", href: "#reviews" },
   { label: "Visit Us", href: "#visit" },
-  { label: "Upload Images", href: "uploader.html" },
 ];
 
