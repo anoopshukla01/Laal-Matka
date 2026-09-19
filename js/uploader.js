@@ -111,7 +111,7 @@ export const SLOTS_METADATA = [
     desc: 'Crisp pakauras, tender tikkas & clay-fired kebabs.',
     specs: '800×600px • 4:3 or Card',
     fitDefault: 'cover',
-    defaultImage: 'images/raj-kachori.jpg',
+    defaultImage: 'images/menu-page-1.jpg',
     keywords: ['veg-starter', 'starter', 'starters', 'kabab', 'tikka', 'pakauda', 'paneer-tikka', 'menu1', 'menu-1']
   },
   {
@@ -122,7 +122,7 @@ export const SLOTS_METADATA = [
     desc: 'Charcoal tandoori chicken, chicken malai tikka & seekh kebabs.',
     specs: '800×600px • 4:3 or Card',
     fitDefault: 'cover',
-    defaultImage: 'images/test_card1.jpg',
+    defaultImage: 'images/menu-page-4.jpg',
     keywords: ['nonveg-starter', 'tandoori', 'chicken-tikka', 'seekh', 'galouti', 'tandoor', 'menu2', 'menu-2']
   },
   {
@@ -133,7 +133,7 @@ export const SLOTS_METADATA = [
     desc: 'Slow-cooked lentils, shahi paneer, daal makhani & rich gravies.',
     specs: '800×600px • 4:3 or Card',
     fitDefault: 'cover',
-    defaultImage: 'images/gatte-ki-sabzi.jpg',
+    defaultImage: 'images/menu-page-3.jpg',
     keywords: ['veg-main', 'paneer', 'daal', 'daal-makhani', 'shahi-paneer', 'curry', 'menu3', 'menu-3']
   },
   {
@@ -144,7 +144,7 @@ export const SLOTS_METADATA = [
     desc: 'Fresh button mushrooms in rich do pyaza, kadhai & earthen masala gravies.',
     specs: '800×600px • 4:3 or Card',
     fitDefault: 'cover',
-    defaultImage: 'images/ker-sangri.jpg',
+    defaultImage: 'images/menu-page-3.jpg',
     keywords: ['mushroom', 'mushroom-masala', 'kadhai-mushroom', 'earthen', 'menu4', 'menu-4']
   },
   {
@@ -155,7 +155,7 @@ export const SLOTS_METADATA = [
     desc: 'Butter chicken, handi chicken, kadhai chicken & slow-cooked gravies.',
     specs: '800×600px • 4:3 or Card',
     fitDefault: 'cover',
-    defaultImage: 'images/laal-maas.jpg',
+    defaultImage: 'images/menu-page-4.jpg',
     keywords: ['chicken', 'butter-chicken', 'handi-chicken', 'chicken-curry', 'menu5', 'menu-5']
   },
   {
@@ -166,7 +166,7 @@ export const SLOTS_METADATA = [
     desc: 'Laal Matka special mutton, slow-braised bhuna gosht & rogan josh.',
     specs: '800×600px • 4:3 or Card',
     fitDefault: 'cover',
-    defaultImage: 'images/real-experience-4.jpg',
+    defaultImage: 'images/menu-page-1.jpg',
     keywords: ['mutton', 'gosht', 'rogan-josh', 'laal-matka-mutton', 'laalmaas', 'menu6', 'menu-6']
   },
   {
@@ -177,7 +177,7 @@ export const SLOTS_METADATA = [
     desc: 'Golden fried eggs in rustic gravy, egg bhurji & skillet masala omelettes.',
     specs: '800×600px • 4:3 or Card',
     fitDefault: 'cover',
-    defaultImage: 'images/pyaaz-kachori.jpg',
+    defaultImage: 'images/menu-page-1.jpg',
     keywords: ['anda', 'egg', 'anda-curry', 'egg-curry', 'bhurji', 'omelet', 'menu7', 'menu-7']
   },
   {
@@ -188,7 +188,7 @@ export const SLOTS_METADATA = [
     desc: 'Aged basmati rice dum-cooked with saffron, mutton, chicken & spices.',
     specs: '800×600px • 4:3 or Card',
     fitDefault: 'cover',
-    defaultImage: 'images/royal-thaali.jpg',
+    defaultImage: 'images/menu-page-4.jpg',
     keywords: ['biryani', 'dum-biryani', 'chicken-biryani', 'mutton-biryani', 'rice', 'menu8', 'menu-8']
   },
   {
@@ -199,7 +199,7 @@ export const SLOTS_METADATA = [
     desc: 'Thick milkshakes, cold brews, hot coffee, gulab jamun & rasmalai.',
     specs: '800×600px • 4:3 or Card',
     fitDefault: 'cover',
-    defaultImage: 'images/royal-dessert.jpg',
+    defaultImage: 'images/menu-page-2.jpg',
     keywords: ['shake', 'shakes', 'coffee', 'cold-coffee', 'dessert', 'gulab-jamun', 'rasmalai', 'sweet', 'menu9', 'menu-9']
   },
 
@@ -879,6 +879,21 @@ function setupFilterTabs() {
       loadSavedAssets();
     });
   });
+
+  // Check URL hash or query param (e.g. uploader.html#menu or uploader.html?filter=menu)
+  const hash = window.location.hash.replace('#', '').toLowerCase();
+  const urlParams = new URLSearchParams(window.location.search);
+  const filterParam = urlParams.get('filter') || hash;
+  if (filterParam) {
+    const matchingTab = Array.from(tabs).find(t => t.dataset.filter === filterParam);
+    if (matchingTab) {
+      tabs.forEach(t => t.classList.remove('active'));
+      matchingTab.classList.add('active');
+      currentFilter = matchingTab.dataset.filter;
+      renderSlotCards();
+      loadSavedAssets();
+    }
+  }
 }
 
 /**
