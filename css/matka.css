@@ -819,31 +819,6 @@
   margin: 0;
 }
 
-.modal-header-actions {
-  flex-shrink: 0;
-}
-
-.modal-upload-trigger-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  padding: 0.45rem 1rem;
-  font-size: 0.8rem;
-  font-weight: 600;
-  border-radius: 9999px;
-  cursor: pointer;
-  background: var(--gradient-vermilion, linear-gradient(135deg, #E06943 0%, #C4431E 100%));
-  color: #FFF;
-  border: 1px solid hsla(42, 96%, 54%, 0.4);
-  box-shadow: 0 4px 14px rgba(224, 105, 67, 0.35);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.modal-upload-trigger-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(224, 105, 67, 0.5);
-}
-
 .modal-folio-divider {
   width: 100%;
   height: 1.5px;
@@ -851,9 +826,9 @@
   background: linear-gradient(90deg, var(--marigold, #F39C12) 0%, rgba(243, 156, 18, 0.2) 80%, transparent 100%);
 }
 
-/* ── Menu Page Image Viewer & Dropzone ─────────────────────── */
+/* ── Menu Page Image Viewer ────────────────────────────────── */
 .modal-menu-image-container {
-  padding: 0.5rem 1.75rem 1rem 1.75rem;
+  padding: 0.5rem 1.75rem 0.75rem 1.75rem;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
@@ -875,13 +850,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  justify-content: center;
 }
 
 .modal-image-wrapper {
   position: relative;
   width: 100%;
-  max-width: 620px;
+  max-width: 680px;
   border-radius: 14px;
   overflow: hidden;
   border: 1px solid rgba(243, 156, 18, 0.35);
@@ -890,12 +865,19 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: zoom-in;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.modal-image-wrapper:hover {
+  border-color: var(--marigold, #F39C12);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.85), 0 0 30px rgba(243, 156, 18, 0.2);
 }
 
 .modal-menu-page-img {
   width: 100%;
   height: auto;
-  max-height: 52vh;
+  max-height: 68vh;
   object-fit: contain;
   display: block;
   transition: transform 0.2s ease;
@@ -903,7 +885,7 @@
 
 .modal-image-floating-bar {
   position: absolute;
-  bottom: 12px;
+  bottom: 14px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -911,88 +893,33 @@
   background: rgba(18, 9, 6, 0.88);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  padding: 0.4rem 0.75rem;
+  padding: 0.4rem 0.85rem;
   border-radius: 9999px;
   border: 1px solid rgba(243, 156, 18, 0.35);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
   z-index: 5;
+  pointer-events: auto;
 }
 
-.modal-zoom-btn,
-.modal-replace-btn {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(243, 156, 18, 0.3);
+.modal-zoom-btn {
+  background: transparent;
+  border: none;
   color: var(--ivory, #FAF3E0);
-  font-size: 0.76rem;
-  padding: 0.35rem 0.75rem;
+  font-size: 0.78rem;
+  padding: 0.2rem 0.6rem;
   border-radius: 9999px;
   cursor: pointer;
   transition: all 0.2s ease;
   white-space: nowrap;
 }
 
-.modal-zoom-btn:hover,
-.modal-replace-btn:hover {
-  background: var(--marigold, #F39C12);
-  color: #1A0D08;
-  border-color: var(--marigold, #F39C12);
-  font-weight: 600;
-}
-
-/* Modal Page Dropzone */
-.modal-page-dropzone {
-  width: 100%;
-  max-width: 620px;
-  border: 2px dashed rgba(243, 156, 18, 0.35);
-  border-radius: 12px;
-  padding: 0.85rem 1.25rem;
-  text-align: center;
-  background: rgba(243, 156, 18, 0.04);
-  transition: all 0.2s ease;
-}
-
-.modal-page-dropzone.is-dragover {
-  border-color: var(--marigold, #F39C12);
-  background: rgba(243, 156, 18, 0.14);
-  transform: scale(1.01);
-}
-
-.dropzone-hint-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.25rem;
-}
-
-.dropzone-icon {
-  font-size: 1.3rem;
-}
-
-.dropzone-text {
-  font-size: 0.82rem;
-  color: var(--ivory, #FAF3E0);
-  margin: 0;
-}
-
-.dropzone-browse-link {
+.modal-zoom-btn:hover {
   color: var(--marigold, #F39C12);
-  text-decoration: underline;
-  cursor: pointer;
-  font-weight: 600;
-}
-
-.dropzone-browse-link:hover {
-  color: #FFF;
-}
-
-.dropzone-sub {
-  font-size: 0.7rem;
-  color: rgba(250, 243, 224, 0.6);
 }
 
 /* Modal Footer */
 .modal-folio-footer {
-  padding: 0.9rem 1.75rem;
+  padding: 0.85rem 1.75rem;
   border-top: 1px solid rgba(243, 156, 18, 0.2);
   background: rgba(20, 10, 7, 0.7);
   display: flex;

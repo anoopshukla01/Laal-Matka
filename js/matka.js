@@ -47,9 +47,7 @@ export function initMatka() {
   const modalDesc           = document.getElementById('modal-folio-desc');
   const modalPagePills      = document.getElementById('modal-page-nav-pills');
   const modalPageImg        = document.getElementById('modal-menu-page-img');
-  const modalUploadPageNum  = document.getElementById('modal-upload-page-num');
-  const modalFileInput      = document.getElementById('modal-page-file-input');
-  const modalDropzone       = document.getElementById('modal-page-dropzone');
+  const modalImageWrapper   = document.getElementById('modal-image-wrapper');
   const modalZoomBtn        = document.getElementById('modal-zoom-btn');
   const modalPrevPageBtn    = document.getElementById('modal-prev-page-btn');
   const modalNextPageBtn    = document.getElementById('modal-next-page-btn');
@@ -118,7 +116,6 @@ export function initMatka() {
     if (modalBadge) modalBadge.textContent = `PAGE ${pageNum} • ${cat.name.toUpperCase()}`;
     if (modalTitle) modalTitle.textContent = cat.name;
     if (modalDesc) modalDesc.textContent = cat.desc;
-    if (modalUploadPageNum) modalUploadPageNum.textContent = pageNum;
     if (modalPageCounter) modalPageCounter.textContent = `Page ${catIndex + 1} of ${totalPages}`;
 
     const imgSrc = getPageImageSrc(catIndex);
@@ -130,84 +127,6 @@ export function initMatka() {
     // Update Pills Active State
     modalPagePills?.querySelectorAll('.modal-page-pill').forEach((pill, idx) => {
       pill.classList.toggle('is-active', idx === catIndex);
-    });
-  }
-
-  /**
-   * Handle File Upload (FileReader + saveAsset sync)
-   */
-  async function handlePageFileUpload(file) {
-    if (!file || !file.type.startsWith('image/')) {
-      alert('Please choose a valid image file (JPG, PNG, WEBP).');
-      return;
-    }
-    const slotKey = `menu-${activeModalCategoryIndex + 1}`;
-    const reader = new FileReader();
-
-    reader.onload = async (e) => {
-      const dataUrl = e.target.result;
-      try {
-        // Immediate local preview in modal
-        if (modalPageImg) modalPageImg.src = dataUrl;
-
-        // Immediate update on homepage card
-        const cardDishImg = document.getElementById(`menu-dish-img-${activeModalCategoryIndex + 1}`);
-        if (cardDishImg) cardDishImg.src = dataUrl;
-
-        // Persist to IndexedDB and LocalStorage
-        await saveAsset(slotKey, dataUrl, {
-          fileName: file.name,
-          fileSize: file.size,
-          fit: 'contain'
-        });
-
-        // Visual feedback
-        if (modalUploadPageNum) {
-          const originalText = modalUploadPageNum.textContent;
-          modalUploadPageNum.textContent = '✓ Saved!';
-          setTimeout(() => {
-            modalUploadPageNum.textContent = originalText;
-          }, 1800);
-        }
-      } catch (err) {
-        console.error('Failed to save menu page image:', err);
-      }
-    };
-    reader.readAsDataURL(file);
-  }
-
-  // File input change handler
-  modalFileInput?.addEventListener('change', (e) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      handlePageFileUpload(file);
-      modalFileInput.value = '';
-    }
-  });
-
-  // Drag and drop handlers on modalDropzone
-  if (modalDropzone) {
-    ['dragenter', 'dragover'].forEach(evt => {
-      modalDropzone.addEventListener(evt, (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        modalDropzone.classList.add('is-dragover');
-      });
-    });
-
-    ['dragleave', 'drop'].forEach(evt => {
-      modalDropzone.addEventListener(evt, (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        modalDropzone.classList.remove('is-dragover');
-      });
-    });
-
-    modalDropzone.addEventListener('drop', (e) => {
-      const file = e.dataTransfer?.files?.[0];
-      if (file) {
-        handlePageFileUpload(file);
-      }
     });
   }
 
@@ -252,6 +171,12 @@ export function initMatka() {
       zoomLightbox.removeAttribute('open');
     }
   }
+
+  // Clicking the image wrapper or zoom button opens the fullscreen lightbox
+  modalImageWrapper?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    openZoomLightbox();
+  });
 
   modalZoomBtn?.addEventListener('click', (e) => {
     e.stopPropagation();

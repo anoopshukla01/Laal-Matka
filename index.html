@@ -795,41 +795,21 @@
                   <h3 class="modal-folio-title" id="modal-folio-title">Veg Starters</h3>
                   <p class="modal-folio-desc" id="modal-folio-desc">Crisp pakauras, tender tikkas & clay-fired kebabs</p>
                 </div>
-                
-                <div class="modal-header-actions">
-                  <label for="modal-page-file-input" class="btn btn-primary modal-upload-trigger-btn" id="modal-upload-trigger-btn" title="Upload new image for this menu page">
-                    <span class="upload-icon">📷</span>
-                    <span>Upload Page <span id="modal-upload-page-num">01</span> Image</span>
-                  </label>
-                  <input type="file" id="modal-page-file-input" accept="image/*" style="display: none;" />
-                </div>
               </div>
 
               <div class="modal-folio-divider" aria-hidden="true"></div>
             </div>
 
-            <!-- Menu Page Image Viewer & Dropzone -->
+            <!-- Menu Page Image Viewer -->
             <div class="modal-menu-image-container" id="modal-menu-image-container">
               <div class="modal-image-stage" id="modal-image-stage">
-                <div class="modal-image-wrapper" id="modal-image-wrapper">
+                <div class="modal-image-wrapper" id="modal-image-wrapper" title="Click to view full screen">
                   <img src="images/menu-page-1.jpg" alt="Menu Page Image" class="modal-menu-page-img" id="modal-menu-page-img" loading="eager" />
                   
                   <div class="modal-image-floating-bar">
                     <button type="button" class="btn btn-secondary modal-zoom-btn" id="modal-zoom-btn" title="Click to inspect full resolution">
                       <span>🔍 Zoom Fullscreen</span>
                     </button>
-                    <label for="modal-page-file-input" class="btn btn-secondary modal-replace-btn" title="Choose new image for this page">
-                      <span>🔄 Replace Image</span>
-                    </label>
-                  </div>
-                </div>
-
-                <!-- Dropzone hint -->
-                <div class="modal-page-dropzone" id="modal-page-dropzone">
-                  <div class="dropzone-hint-content">
-                    <span class="dropzone-icon">📥</span>
-                    <p class="dropzone-text">Drag &amp; drop a menu photo here, or <label for="modal-page-file-input" class="dropzone-browse-link">browse from device</label></p>
-                    <span class="dropzone-sub">PNG, JPG, WEBP • Saves instantly to live website</span>
                   </div>
                 </div>
               </div>
@@ -848,9 +828,6 @@
               </div>
 
               <div class="modal-footer-cta-group">
-                <a href="uploader.html" class="btn btn-secondary modal-studio-link" title="Open full bulk uploader" target="_blank">
-                  <span>📁 Studio</span>
-                </a>
                 <a href="#visit" class="btn btn-primary modal-to-menu-btn js-reserve-btn" id="modal-to-menu-btn">
                   <span>RESERVE TABLE</span>
                   <span class="btn-arrow" aria-hidden="true">✦</span>
